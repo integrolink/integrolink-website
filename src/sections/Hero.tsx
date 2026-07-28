@@ -8,14 +8,7 @@ export function Hero() {
       aria-label="IntegroLink — Integramos tecnologia. Ligamos soluções."
       className="relative isolate min-h-[42rem] overflow-hidden bg-foreground sm:min-h-[46rem] lg:min-h-[calc(100svh-5.5rem)]"
     >
-      <Image
-        src="/brand/integrolink-hero.png"
-        alt="Casa inteligente ligada à aplicação móvel IntegroLink"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      <div className="hero-background absolute inset-0" aria-hidden="true" />
 
       <div
         aria-hidden="true"
