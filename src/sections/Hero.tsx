@@ -14,12 +14,12 @@ export function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[69%_center] sm:object-[66%_center] lg:object-center"
+        className="object-cover object-center"
       />
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,17,31,0.28)_0%,rgba(8,17,31,0.04)_45%,rgba(8,17,31,0.72)_100%)] lg:bg-[linear-gradient(90deg,rgba(8,17,31,0.62)_0%,rgba(8,17,31,0.22)_38%,rgba(8,17,31,0)_68%)]"
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,17,31,0.12)_0%,rgba(8,17,31,0.02)_52%,rgba(8,17,31,0.5)_100%)] lg:bg-[linear-gradient(90deg,rgba(8,17,31,0.34)_0%,rgba(8,17,31,0.08)_48%,rgba(8,17,31,0.04)_100%)]"
       />
 
       <Container className="relative flex min-h-[42rem] flex-col justify-between py-10 sm:min-h-[46rem] sm:py-14 lg:min-h-[calc(100svh-5.5rem)] lg:justify-center lg:py-20">
