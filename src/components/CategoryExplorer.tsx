@@ -19,6 +19,9 @@ export type CategoryItem = {
   label: string;
   statement: string;
   icon: CategoryIconName;
+  description: string;
+  capabilities: string[];
+  capabilitiesTitle: string;
 };
 
 type CategoryExplorerProps = {
@@ -121,6 +124,7 @@ function CategoryIcon({ name }: { name: CategoryIconName }) {
 
 export function CategoryExplorer({ items }: CategoryExplorerProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+  const [isExpanded, setIsExpanded] = useState(false);
   const activeItem = items.find((item) => item.id === activeId) ?? items[0];
 
   if (!activeItem) {
@@ -145,7 +149,10 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
               key={item.id}
               type="button"
               aria-pressed={isActive}
-              onClick={() => setActiveId(item.id)}
+              onClick={() => {
+                setActiveId(item.id);
+                setIsExpanded(false);
+              }}
               className={`group flex min-h-40 flex-col items-center justify-center gap-4 border px-3 py-5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand ${
                 isActive
                   ? "border-brand bg-brand text-white"
@@ -172,14 +179,65 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
       <div
         key={activeItem.id}
         aria-live="polite"
-        className="mt-5 border-l-2 border-brand bg-white/[0.035] px-6 py-7 sm:mt-6 sm:px-9 sm:py-9"
+        className="mt-5 border-l-2 border-brand bg-white/[0.035] sm:mt-6"
       >
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
-          {activeItem.label}
-        </p>
-        <p className="mt-3 max-w-3xl text-xl font-semibold leading-snug tracking-[-0.025em] text-content-foreground sm:text-3xl">
-          {activeItem.statement}
-        </p>
+        <button
+          type="button"
+          aria-expanded={isExpanded}
+          aria-controls={`details-${activeItem.id}`}
+          onClick={() => setIsExpanded((current) => !current)}
+          className="flex w-full items-center justify-between gap-6 px-6 py-7 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:px-9 sm:py-9"
+        >
+          <span>
+            <span className="block text-xs font-bold uppercase tracking-[0.18em] text-brand">
+              {activeItem.label}
+            </span>
+            <span className="mt-3 block max-w-3xl text-xl font-semibold leading-snug tracking-[-0.025em] text-content-foreground sm:text-3xl">
+              {activeItem.statement}
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/20 text-content-foreground transition-colors hover:border-brand hover:text-brand sm:size-12"
+          >
+            <span className="absolute h-px w-4 bg-current" />
+            <span
+              className={`absolute h-4 w-px bg-current transition-transform ${
+                isExpanded ? "rotate-90 opacity-0" : ""
+              }`}
+            />
+          </span>
+        </button>
+
+        <div
+          id={`details-${activeItem.id}`}
+          hidden={!isExpanded}
+          className="border-t border-white/10 px-6 pb-8 pt-7 sm:px-9 sm:pb-10 sm:pt-9"
+        >
+            <p className="max-w-4xl text-base leading-8 text-content-muted sm:text-lg">
+              {activeItem.description}
+            </p>
+
+            <div className="mt-9">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-content-foreground">
+                {activeItem.capabilitiesTitle}
+              </p>
+              <ul className="mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-2">
+                {activeItem.capabilities.map((capability) => (
+                  <li
+                    key={capability}
+                    className="flex items-start gap-3 border-t border-white/8 pt-3 text-sm leading-6 text-content-muted sm:text-base"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 size-1.5 shrink-0 rounded-full bg-brand"
+                    />
+                    {capability}
+                  </li>
+                ))}
+              </ul>
+            </div>
+        </div>
       </div>
     </div>
   );
