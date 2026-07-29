@@ -151,9 +151,16 @@ export function HomeExperience() {
               <p className="text-xs font-bold uppercase tracking-[.18em] text-white/35">Sem integração</p>
               <div className="mt-6 grid gap-2 sm:grid-cols-2">
                 {["Câmaras", "Alarme", "Luzes", "Climatização", "Energia"].map((item, index) => (
-                  <div key={item} className="flex items-center gap-3 border border-white/10 bg-[#090f17] px-4 py-4">
+                  <div key={item} className="grid min-w-0 grid-cols-[auto_1fr] items-center gap-3 border border-white/10 bg-[#090f17] px-4 py-4">
                     <span className="text-xs font-bold text-white/25">{index + 1}</span>
-                    <span className="text-sm text-content-muted">Aplicação para {item}</span>
+                    <span className="min-w-0 text-content-muted">
+                      <span className="block text-[.65rem] uppercase tracking-[.08em] text-white/35">
+                        Aplicação
+                      </span>
+                      <span className="mt-0.5 block break-words text-sm font-semibold">
+                        {item}
+                      </span>
+                    </span>
                   </div>
                 ))}
               </div>
@@ -183,14 +190,14 @@ export function HomeExperience() {
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {sectors.map((sector, index) => (
-              <Link href="/setores-de-atuacao" key={sector.title} className="group relative min-h-72 overflow-hidden border border-white/10 bg-[#0d1622] p-5 sm:min-h-80 sm:p-7">
+              <Link href="/setores-de-atuacao" key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-white/10 bg-[#0d1622] p-5 pb-16 sm:min-h-80 sm:p-7 sm:pb-20">
                 <div className="absolute -bottom-14 -right-14 size-52 rounded-full border border-brand/15 transition-transform duration-500 group-hover:scale-125" />
                 <div className="absolute -bottom-4 -right-4 size-28 rounded-full border border-brand/25" />
                 <span className="text-xs font-bold tracking-[.16em] text-white/20">0{index + 1}</span>
                 <LineIcon name={sector.icon} className="mt-10 size-10 text-brand sm:mt-12 sm:size-12" />
                 <h3 className="mt-7 text-lg font-bold tracking-[-.03em] sm:mt-8 sm:text-2xl">{sector.title}</h3>
                 <p className="mt-3 max-w-[14rem] text-xs leading-5 text-content-muted sm:text-sm sm:leading-6">{sector.text}</p>
-                <span className="absolute bottom-5 left-5 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:text-sm">Descobrir →</span>
+                <span className="absolute bottom-5 left-5 right-5 border-t border-white/10 pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">Descobrir →</span>
               </Link>
             ))}
           </div>
