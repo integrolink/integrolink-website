@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HeroMedia } from "@/components/HeroMedia";
 import { Container } from "@/components/ui/Container";
 
 export function Hero() {
@@ -6,16 +7,11 @@ export function Hero() {
     <section
       id="inicio"
       aria-label="IntegroLink — Integramos tecnologia. Ligamos soluções."
-      className="relative isolate min-h-[42rem] overflow-hidden bg-foreground sm:min-h-[46rem] lg:min-h-[calc(100svh-5.5rem)]"
+      className="relative isolate min-h-[36rem] overflow-hidden bg-[#0b1d38] sm:min-h-[40rem] lg:min-h-[42rem]"
     >
-      <div className="hero-background absolute inset-0" aria-hidden="true" />
+      <HeroMedia />
 
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,17,31,0.12)_0%,rgba(8,17,31,0.02)_52%,rgba(8,17,31,0.5)_100%)] lg:bg-[linear-gradient(90deg,rgba(8,17,31,0.34)_0%,rgba(8,17,31,0.08)_48%,rgba(8,17,31,0.04)_100%)]"
-      />
-
-      <Container className="relative flex min-h-[42rem] flex-col justify-between py-10 sm:min-h-[46rem] sm:py-14 lg:min-h-[calc(100svh-5.5rem)] lg:justify-center lg:py-20">
+      <Container className="relative flex min-h-[36rem] flex-col justify-center py-12 sm:min-h-[40rem] sm:py-16 lg:min-h-[42rem]">
         <div className="max-w-[34rem]">
           <Image
             src="/brand/integrolink-signature-white.svg"
@@ -23,10 +19,10 @@ export function Hero() {
             width={1547}
             height={377}
             priority
-            className="h-auto w-full max-w-[31rem] drop-shadow-[0_8px_28px_rgba(0,0,0,0.28)]"
+            className="h-auto w-full max-w-[31rem] drop-shadow-[0_8px_28px_rgba(0,0,0,0.2)]"
           />
 
-          <p className="mt-7 max-w-md text-base leading-7 text-white/82 sm:text-lg sm:leading-8">
+          <p className="mt-7 max-w-md text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
             Automação, segurança e eficiência integradas num único ecossistema,
             para casas e empresas.
           </p>
@@ -37,17 +33,6 @@ export function Hero() {
           >
             Conheça as nossas soluções
             <span aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div className="flex items-end justify-between text-xs font-semibold uppercase tracking-[0.16em] text-white/70 lg:absolute lg:inset-x-10 lg:bottom-8">
-          <span>Smart Home · Smart Business</span>
-          <a
-            href="/servicos"
-            aria-label="Descer para conhecer as soluções"
-            className="hidden size-10 items-center justify-center border border-white/35 text-lg transition-colors hover:border-white hover:text-white sm:flex"
-          >
-            ↓
           </a>
         </div>
       </Container>

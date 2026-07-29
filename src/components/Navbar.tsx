@@ -11,7 +11,7 @@ const navigation = [
 
 export function Navbar() {
   return (
-    <header className="relative z-30 border-b border-white/10 bg-foreground">
+    <header className="relative z-30 border-b border-white/12 bg-[#0c2345]">
       <Container className="flex h-[4.75rem] items-center justify-between sm:h-[5.5rem]">
         <Logo />
 

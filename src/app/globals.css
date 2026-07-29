@@ -59,10 +59,12 @@ a {
   background-image: url("/brand/integrolink-hero-mobile.png");
   background-position: center;
   background-size: cover;
+  filter: brightness(1.28) saturate(0.94);
 }
 
 @media (min-width: 48rem) {
   .hero-background {
     background-image: url("/brand/integrolink-hero.png");
+    filter: brightness(1.22) saturate(0.96);
   }
 }
