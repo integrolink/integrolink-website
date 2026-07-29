@@ -9,6 +9,9 @@
   --brand: #2375ff;
   --brand-dark: #154699;
   --brand-soft: #eaf2ff;
+  --content-background: #0a0f17;
+  --content-foreground: #edf2f7;
+  --content-muted: #9ba8b8;
 }
 
 @theme inline {
@@ -20,6 +23,9 @@
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
   --color-brand-soft: var(--brand-soft);
+  --color-content-background: var(--content-background);
+  --color-content-foreground: var(--content-foreground);
+  --color-content-muted: var(--content-muted);
   --font-sans: Arial, Helvetica, sans-serif;
 }
 

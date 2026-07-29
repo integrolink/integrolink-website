@@ -13,7 +13,7 @@ export function PageIntro({
   description,
 }: PageIntroProps) {
   return (
-    <main className="bg-background">
+    <main className="bg-content-background">
       <section className="relative isolate min-h-[25rem] overflow-hidden bg-[#0b1d38] sm:min-h-[30rem]">
         <HeroMedia />
         <Container className="relative flex min-h-[25rem] items-center py-14 sm:min-h-[30rem] sm:py-20">
@@ -29,9 +29,9 @@ export function PageIntro({
         </Container>
       </section>
 
-      <section className="bg-background">
+      <section className="bg-content-background">
         <Container className="py-16 sm:py-24">
-          <p className="max-w-2xl border-l-2 border-brand pl-5 text-lg leading-8 text-muted sm:text-xl">
+          <p className="max-w-2xl border-l-2 border-brand pl-5 text-lg leading-8 text-content-muted sm:text-xl">
             {description}
           </p>
         </Container>
