@@ -1,16 +1,19 @@
 import { HeroMedia } from "@/components/HeroMedia";
 import { Container } from "@/components/ui/Container";
+import type { ReactNode } from "react";
 
 type PageIntroProps = {
   eyebrow: string;
   title: string;
   description: string;
+  children?: ReactNode;
 };
 
 export function PageIntro({
   eyebrow,
   title,
   description,
+  children,
 }: PageIntroProps) {
   return (
     <main className="bg-content-background">
@@ -22,7 +25,7 @@ export function PageIntro({
               <span className="h-px w-10 bg-brand" aria-hidden="true" />
               {eyebrow}
             </p>
-            <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-white drop-shadow-sm sm:text-6xl">
+            <h1 className="max-w-4xl text-3xl font-bold leading-[1.08] tracking-[-0.04em] text-white drop-shadow-sm sm:text-4xl lg:text-5xl">
               {title}
             </h1>
           </div>
@@ -34,6 +37,7 @@ export function PageIntro({
           <p className="max-w-2xl border-l-2 border-brand pl-5 text-lg leading-8 text-content-muted sm:text-xl">
             {description}
           </p>
+          {children}
         </Container>
       </section>
     </main>
