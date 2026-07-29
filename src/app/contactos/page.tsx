@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { PageIntro } from "@/components/PageIntro";
+import { ContactExperience } from "@/components/ContactExperience";
 
 export const metadata: Metadata = {
   title: "Contactos | IntegroLink",
@@ -15,8 +16,10 @@ export default function ContactsPage() {
       <PageIntro
         eyebrow="Contactos"
         title="O primeiro passo para uma solução integrada começa com uma conversa."
-        description="A informação de contacto e o formulário serão adicionados depois de definirmos os canais oficiais da empresa."
-      />
+        description="Conte-nos o que pretende melhorar. Nós ajudamos a transformar essa necessidade numa solução simples, integrada e preparada para evoluir."
+      >
+        <ContactExperience />
+      </PageIntro>
     </>
   );
 }
