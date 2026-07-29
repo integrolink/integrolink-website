@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Logo() {
   return (
-    <a
-      href="#inicio"
+    <Link
+      href="/"
       aria-label="IntegroLink — página inicial"
-      className="inline-flex items-center"
+      className="inline-flex items-center transition-opacity active:opacity-65"
     >
       <Image
         src="/brand/integrolink-symbol-white.svg"
@@ -15,6 +16,6 @@ export function Logo() {
         priority
         className="h-11 w-auto sm:h-12"
       />
-    </a>
+    </Link>
   );
 }

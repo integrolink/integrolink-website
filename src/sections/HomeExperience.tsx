@@ -71,8 +71,8 @@ function LineIcon({ name, className = "size-7" }: { name: IconName; className?: 
 
 function EcosystemGraphic() {
   const nodes = [
-    ["Iluminação", "6", "14"], ["Segurança", "72", "14"], ["Climatização", "5", "76"],
-    ["Energia", "75", "76"], ["Rede", "2", "45"], ["Acessos", "79", "45"],
+    ["Iluminação", "4", "14"], ["Segurança", "74", "14"], ["Climatização", "3", "76"],
+    ["Energia", "75", "76"], ["Rede", "1", "45"], ["Acessos", "77", "45"],
   ];
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[35rem]" aria-label="Seis sistemas ligados à IntegroLink">
@@ -83,7 +83,15 @@ function EcosystemGraphic() {
         <circle cx="50" cy="50" r="17" fill="#2375FF" opacity=".08" className="hub-pulse" />
       </svg>
       {nodes.map(([label, left, top]) => (
-        <div key={label} style={{ left: `${left}%`, top: `${top}%` }} className="absolute flex h-[15%] w-[19%] min-w-16 items-center justify-center border border-white/14 bg-[#0d1622] px-2 text-center text-[0.58rem] font-bold uppercase tracking-[0.08em] text-white/70 sm:text-xs">
+        <div
+          key={label}
+          style={{ left: `${left}%`, top: `${top}%` }}
+          className={`absolute flex h-[15%] w-[22%] min-w-0 items-center justify-center whitespace-nowrap border border-white/14 bg-[#0d1622] px-1 text-center font-bold uppercase text-white/70 sm:w-[19%] sm:min-w-16 sm:px-2 sm:text-xs sm:tracking-[0.08em] ${
+            label === "Climatização"
+              ? "text-[0.45rem] tracking-0"
+              : "text-[0.5rem] tracking-[0.04em]"
+          }`}
+        >
           {label}
         </div>
       ))}

@@ -19,7 +19,7 @@ export function Navbar() {
         <details className="group relative">
           <summary
             aria-label="Abrir menu de navegação"
-            className="flex size-12 cursor-pointer list-none items-center justify-center rounded-sm border border-white/25 bg-white/5 transition-colors hover:border-white/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white [&::-webkit-details-marker]:hidden"
+            className="flex size-12 cursor-pointer list-none items-center justify-center rounded-sm border border-white/25 bg-white/5 transition-colors hover:border-white/60 hover:bg-white/10 active:border-brand active:bg-brand/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white [&::-webkit-details-marker]:hidden"
           >
             <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">
               <span className="h-0.5 w-full bg-white transition-transform group-open:translate-y-2 group-open:rotate-45" />
@@ -37,7 +37,7 @@ export function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="flex min-h-12 items-center justify-between border-b border-white/7 px-4 text-sm font-semibold text-white/78 transition-colors last:border-0 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-brand"
+                    className="flex min-h-12 touch-manipulation items-center justify-between border-b border-white/7 px-4 text-sm font-semibold text-white/78 transition-colors last:border-0 hover:bg-white/5 hover:text-white active:bg-brand active:text-white focus-visible:outline-2 focus-visible:outline-brand"
                   >
                     {item.label}
                     <span aria-hidden="true" className="text-brand">
