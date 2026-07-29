@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { HeroMedia } from "@/components/HeroMedia";
 import { Container } from "@/components/ui/Container";
 
@@ -22,18 +23,26 @@ export function Hero() {
             className="h-auto w-full max-w-[31rem] drop-shadow-[0_8px_28px_rgba(0,0,0,0.2)]"
           />
 
-          <p className="mt-7 max-w-md text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
-            Automação, segurança e eficiência integradas num único ecossistema,
-            para casas e empresas.
+          <p className="mt-7 max-w-[34rem] text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
+            Soluções de automação, segurança, redes e gestão energética para
+            habitações, alojamentos locais, empresas e condomínios.
           </p>
 
-          <a
-            href="/servicos"
-            className="mt-8 inline-flex min-h-12 items-center gap-4 border border-white/60 bg-white px-6 text-sm font-bold text-foreground transition-colors hover:border-white hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          >
-            Conheça as nossas soluções
-            <span aria-hidden="true">→</span>
-          </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/servicos"
+              className="inline-flex min-h-12 items-center gap-4 border border-brand bg-brand px-6 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.28)] transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              Conheça os serviços
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/contactos"
+              className="inline-flex min-h-12 items-center border border-white/45 bg-[#08111f]/25 px-6 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              Pedir orçamento
+            </Link>
+          </div>
         </div>
       </Container>
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 
 export type CategoryIconName =
   | "home"
@@ -123,6 +123,7 @@ function CategoryIcon({ name }: { name: CategoryIconName }) {
 }
 
 export function CategoryExplorer({ items }: CategoryExplorerProps) {
+  const selectorRef = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
   const [isExpanded, setIsExpanded] = useState(false);
   const activeItem = items.find((item) => item.id === activeId) ?? items[0];
@@ -134,6 +135,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
   return (
     <div className="mt-14 sm:mt-20">
       <div
+        ref={selectorRef}
         className={`grid gap-4 ${
           items.length > 4
             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
@@ -237,6 +239,21 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
                 ))}
               </ul>
             </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                setIsExpanded(false);
+                selectorRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+              className="mt-9 inline-flex min-h-11 items-center gap-3 border border-white/20 px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+            >
+              <span aria-hidden="true">↑</span>
+              Escolher outra área
+            </button>
         </div>
       </div>
     </div>

@@ -76,7 +76,7 @@ export function WhyUsExperience() {
                   className="flex items-center justify-between border border-white/10 bg-content-background px-4 py-3"
                 >
                   <span className="text-xs font-bold uppercase tracking-[0.12em] text-white/35">
-                    App {index + 1}
+                    Aplicação {index + 1}
                   </span>
                   <span className="text-sm font-semibold text-content-muted">
                     {system}

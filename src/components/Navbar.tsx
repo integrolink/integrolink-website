@@ -1,5 +1,6 @@
 import { Logo } from "@/components/Logo";
 import { Container } from "@/components/ui/Container";
+import Link from "next/link";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -29,20 +30,20 @@ export function Navbar() {
 
           <nav
             aria-label="Navegação principal"
-            className="absolute right-0 top-[3.75rem] w-[min(20rem,calc(100vw-2.5rem))] overflow-hidden border border-line bg-white p-3 shadow-[0_24px_80px_rgba(8,17,31,0.22)]"
+            className="absolute right-0 top-[3.75rem] w-[min(20rem,calc(100vw-2.5rem))] overflow-hidden border border-white/12 bg-[#0b1728] p-3 text-white shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
           >
             <ul>
               {navigation.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
-                    className="flex min-h-12 items-center justify-between px-4 text-sm font-semibold transition-colors hover:bg-brand-soft hover:text-brand focus-visible:outline-2 focus-visible:outline-brand"
+                    className="flex min-h-12 items-center justify-between border-b border-white/7 px-4 text-sm font-semibold text-white/78 transition-colors last:border-0 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-brand"
                   >
                     {item.label}
-                    <span aria-hidden="true" className="text-muted">
-                      ↗
+                    <span aria-hidden="true" className="text-brand">
+                      →
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
