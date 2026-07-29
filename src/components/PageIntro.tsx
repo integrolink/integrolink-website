@@ -22,7 +22,7 @@ export function PageIntro({
               <span className="h-px w-10 bg-brand" aria-hidden="true" />
               {eyebrow}
             </p>
-            <h1 className="max-w-3xl text-5xl font-bold leading-[0.98] tracking-[-0.05em] text-white drop-shadow-sm sm:text-7xl">
+            <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-white drop-shadow-sm sm:text-6xl">
               {title}
             </h1>
           </div>

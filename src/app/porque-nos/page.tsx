@@ -14,7 +14,7 @@ export default function WhyUsPage() {
       <Navbar />
       <PageIntro
         eyebrow="Porquê nós?"
-        title="Integração com critério."
+        title="Cada projeto é pensado para responder às suas necessidades, hoje e no futuro."
         description="Aqui iremos explicar o método, os princípios e as vantagens concretas de trabalhar com a IntegroLink."
       />
     </>

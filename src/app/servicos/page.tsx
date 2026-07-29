@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <Navbar />
       <PageIntro
         eyebrow="Serviços"
-        title="Tecnologia integrada, de ponta a ponta."
+        title="Soluções tecnológicas concebidas para aumentar o conforto, a segurança e a eficiência do seu espaço."
         description="Estamos a organizar esta área para apresentar cada solução com clareza, detalhe técnico e foco nas necessidades de cada projeto."
       />
     </>

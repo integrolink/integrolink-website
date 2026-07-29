@@ -14,7 +14,7 @@ export default function SectorsPage() {
       <Navbar />
       <PageIntro
         eyebrow="Setores de atuação"
-        title="Soluções ajustadas a cada contexto."
+        title="Adaptamos cada solução às necessidades específicas de cada espaço e de cada cliente."
         description="Esta página será construída em torno dos setores em que a IntegroLink atua, sem generalizações nem serviços que não façam parte da empresa."
       />
     </>

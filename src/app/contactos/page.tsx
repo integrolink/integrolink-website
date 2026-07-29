@@ -14,7 +14,7 @@ export default function ContactsPage() {
       <Navbar />
       <PageIntro
         eyebrow="Contactos"
-        title="Vamos falar sobre o seu projeto."
+        title="O primeiro passo para uma solução integrada começa com uma conversa."
         description="A informação de contacto e o formulário serão adicionados depois de definirmos os canais oficiais da empresa."
       />
     </>
