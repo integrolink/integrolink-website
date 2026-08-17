@@ -158,14 +158,14 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
               className={`group flex min-h-40 flex-col items-center justify-center gap-4 border px-3 py-5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand ${
                 isActive
                   ? "border-brand bg-brand text-white"
-                  : "border-white/12 bg-white/[0.025] text-content-muted hover:border-brand/60 hover:text-content-foreground"
+                  : "border-[#d9e1eb] bg-white text-content-muted shadow-[0_8px_24px_rgba(19,44,78,0.04)] hover:border-brand/60 hover:text-content-foreground"
               }`}
             >
               <span
                 className={`grid size-16 place-items-center rounded-full border transition-colors sm:size-20 ${
                   isActive
                     ? "border-white/40 bg-white/10"
-                    : "border-white/15 bg-white/[0.03] group-hover:border-brand/60 group-hover:text-brand"
+                    : "border-[#d9e1eb] bg-[#f7f9fc] group-hover:border-brand/60 group-hover:text-brand"
                 }`}
               >
                 <CategoryIcon name={item.icon} />
@@ -181,7 +181,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
       <div
         key={activeItem.id}
         aria-live="polite"
-        className="mt-5 border-l-2 border-brand bg-white/[0.035] sm:mt-6"
+        className="mt-5 border border-[#d9e1eb] border-l-2 border-l-brand bg-white shadow-[0_14px_38px_rgba(19,44,78,0.06)] sm:mt-6"
       >
         <button
           type="button"
@@ -200,7 +200,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
           </span>
           <span
             aria-hidden="true"
-            className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/20 text-content-foreground transition-colors hover:border-brand hover:text-brand sm:size-12"
+            className="relative grid size-11 shrink-0 place-items-center rounded-full border border-[#d9e1eb] bg-[#f7f9fc] text-content-foreground transition-colors hover:border-brand hover:text-brand sm:size-12"
           >
             <span className="absolute h-px w-4 bg-current" />
             <span
@@ -214,7 +214,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
         <div
           id={`details-${activeItem.id}`}
           hidden={!isExpanded}
-          className="border-t border-white/10 px-6 pb-8 pt-7 sm:px-9 sm:pb-10 sm:pt-9"
+          className="border-t border-[#e2e8f0] px-6 pb-8 pt-7 sm:px-9 sm:pb-10 sm:pt-9"
         >
             <p className="max-w-4xl text-base leading-8 text-content-muted sm:text-lg">
               {activeItem.description}
@@ -228,7 +228,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
                 {activeItem.capabilities.map((capability) => (
                   <li
                     key={capability}
-                    className="flex items-start gap-3 border-t border-white/8 pt-3 text-sm leading-6 text-content-muted sm:text-base"
+                    className="flex items-start gap-3 border-t border-[#e2e8f0] pt-3 text-sm leading-6 text-content-muted sm:text-base"
                   >
                     <span
                       aria-hidden="true"
@@ -249,7 +249,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
                   block: "start",
                 });
               }}
-              className="mt-9 inline-flex min-h-11 items-center gap-3 border border-white/20 px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+              className="mt-9 inline-flex min-h-11 items-center gap-3 border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
               <span aria-hidden="true">↑</span>
               Escolher outra área

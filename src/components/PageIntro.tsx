@@ -34,9 +34,11 @@ export function PageIntro({
 
       <section className="bg-content-background">
         <Container className="py-16 sm:py-24">
-          <p className="max-w-2xl border-l-2 border-brand pl-5 text-lg leading-8 text-content-muted sm:text-xl">
-            {description}
-          </p>
+          <div className="max-w-4xl border border-[#d9e1eb] bg-white px-6 py-6 shadow-[0_12px_35px_rgba(19,44,78,0.06)] sm:px-8">
+            <p className="max-w-2xl border-l-2 border-brand pl-5 text-base leading-8 text-content-muted sm:text-lg">
+              {description}
+            </p>
+          </div>
           {children}
         </Container>
       </section>

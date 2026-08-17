@@ -160,8 +160,8 @@ export function ContactExperience() {
 
   return (
     <div className="mt-14 sm:mt-20">
-      <section className="grid overflow-hidden border border-white/10 bg-[#0c1420] lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="relative border-b border-white/10 p-6 sm:p-9 lg:border-b-0 lg:border-r lg:p-11">
+      <section className="grid overflow-hidden border border-[#d9e1eb] bg-white shadow-[0_18px_50px_rgba(19,44,78,0.08)] lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="relative border-b border-[#d9e1eb] bg-[#eef4fb] p-6 sm:p-9 lg:border-b-0 lg:border-r lg:p-11">
           <div
             aria-hidden="true"
             className="absolute -left-28 -top-28 size-72 rounded-full border border-brand/15"
@@ -176,18 +176,18 @@ export function ContactExperience() {
             Selecione o tema e encaminhamos o seu contacto para a equipa certa.
           </p>
 
-          <div className="relative mt-10 divide-y divide-white/10 border-y border-white/10">
+          <div className="relative mt-10 divide-y divide-[#d5deea] border-y border-[#d5deea]">
             {directContacts.map((contact) => (
               <a
                 key={contact.label}
                 href={contact.href}
                 className="group flex items-center gap-4 py-5"
               >
-                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-white/15 text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-[#cfd9e6] bg-white text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white">
                   <ContactIcon name={contact.icon} />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white/35">
+                  <span className="block text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#758399]">
                     {contact.kicker}
                   </span>
                   <span className="mt-1 block break-all text-sm font-semibold text-content-foreground sm:text-base">
@@ -199,7 +199,7 @@ export function ContactExperience() {
           </div>
 
           <div className="relative mt-9">
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white/35">
+            <p className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#758399]">
               Acompanhe a IntegroLink
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
@@ -210,7 +210,7 @@ export function ContactExperience() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`${social.label} da IntegroLink — abre numa nova janela`}
-                  className="grid size-12 place-items-center border border-white/15 text-content-muted transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                  className="grid size-12 place-items-center border border-[#cfd9e6] bg-white text-content-muted transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                 >
                   <ContactIcon name={social.icon} />
                 </a>
@@ -229,7 +229,7 @@ export function ContactExperience() {
                 Conte-nos a sua ideia.
               </h2>
             </div>
-            <span className="hidden text-xs font-semibold text-white/25 sm:block">
+            <span className="hidden text-xs font-semibold text-[#8794a6] sm:block">
               Campos * obrigatórios
             </span>
           </div>
@@ -241,7 +241,7 @@ export function ContactExperience() {
                 required
                 name="name"
                 autoComplete="name"
-                className="mt-3 min-h-12 w-full border border-white/15 bg-[#090f17] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-white/25 focus:border-brand"
+              className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
                 placeholder="O seu nome"
               />
             </label>
@@ -252,7 +252,7 @@ export function ContactExperience() {
                 type="email"
                 name="email"
                 autoComplete="email"
-                className="mt-3 min-h-12 w-full border border-white/15 bg-[#090f17] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-white/25 focus:border-brand"
+                className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
                 placeholder="nome@email.pt"
               />
             </label>
@@ -262,7 +262,7 @@ export function ContactExperience() {
                 type="tel"
                 name="phone"
                 autoComplete="tel"
-                className="mt-3 min-h-12 w-full border border-white/15 bg-[#090f17] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-white/25 focus:border-brand"
+                className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
                 placeholder="+351"
               />
             </label>
@@ -271,7 +271,7 @@ export function ContactExperience() {
               <input
                 name="location"
                 autoComplete="address-level2"
-                className="mt-3 min-h-12 w-full border border-white/15 bg-[#090f17] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-white/25 focus:border-brand"
+                className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
                 placeholder="Onde será o projeto?"
               />
             </label>
@@ -288,7 +288,7 @@ export function ContactExperience() {
                   className={`flex min-h-14 cursor-pointer items-center border px-4 text-sm font-semibold transition-colors ${
                     selectedRoute === route.id
                       ? "border-brand bg-brand/10 text-content-foreground"
-                      : "border-white/12 text-content-muted hover:border-white/30"
+                      : "border-[#cfd8e5] bg-[#f8fafc] text-content-muted hover:border-brand/50"
                   }`}
                 >
                   <input
@@ -302,7 +302,7 @@ export function ContactExperience() {
                   <span
                     aria-hidden="true"
                     className={`mr-3 size-2 shrink-0 rounded-full ${
-                      selectedRoute === route.id ? "bg-brand" : "bg-white/20"
+                      selectedRoute === route.id ? "bg-brand" : "bg-[#a9b4c3]"
                     }`}
                   />
                   {route.label}
@@ -317,7 +317,7 @@ export function ContactExperience() {
               required
               name="message"
               rows={6}
-              className="mt-3 w-full resize-y border border-white/15 bg-[#090f17] px-4 py-4 text-base font-normal leading-7 normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-white/25 focus:border-brand"
+              className="mt-3 w-full resize-y border border-[#cfd8e5] bg-[#f8fafc] px-4 py-4 text-base font-normal leading-7 normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
               placeholder="Fale-nos sobre o espaço, os objetivos e aquilo que gostaria de melhorar."
             />
           </label>
@@ -339,14 +339,14 @@ export function ContactExperience() {
               Preparar mensagem
               <span aria-hidden="true">→</span>
             </button>
-            <p className="max-w-xs text-[0.7rem] leading-5 text-white/35">
+            <p className="max-w-xs text-[0.7rem] leading-5 text-[#758399]">
               Ao continuar, abrimos a sua aplicação de email com a mensagem pronta a enviar.
             </p>
           </div>
         </form>
       </section>
 
-      <section className="mt-16 grid border-l border-t border-white/10 sm:grid-cols-3">
+      <section className="mt-16 grid gap-4 sm:grid-cols-3">
         {[
           ["01", "Conte-nos o desafio", "Não precisa de conhecer a solução técnica."],
           ["02", "Analisamos consigo", "Clarificamos necessidades, espaço e objetivos."],
@@ -354,7 +354,7 @@ export function ContactExperience() {
         ].map(([number, title, text]) => (
           <article
             key={number}
-            className="min-h-48 border-b border-r border-white/10 p-6 sm:p-8"
+            className="min-h-48 border border-[#d9e1eb] bg-white p-6 shadow-[0_8px_24px_rgba(19,44,78,0.04)] sm:p-8"
           >
             <span className="text-xs font-bold tracking-[0.16em] text-brand">
               {number}

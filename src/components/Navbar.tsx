@@ -1,6 +1,9 @@
+"use client";
+
 import { Logo } from "@/components/Logo";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import { useRef } from "react";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -11,12 +14,14 @@ const navigation = [
 ];
 
 export function Navbar() {
+  const menuRef = useRef<HTMLDetailsElement>(null);
+
   return (
     <header className="relative z-30 border-b border-white/12 bg-[#0c2345]">
       <Container className="flex h-[4.75rem] items-center justify-between sm:h-[5.5rem]">
         <Logo />
 
-        <details className="group relative">
+        <details ref={menuRef} className="group relative">
           <summary
             aria-label="Abrir menu de navegação"
             className="flex size-12 cursor-pointer list-none items-center justify-center rounded-sm border border-white/25 bg-white/5 transition-colors hover:border-white/60 hover:bg-white/10 active:border-brand active:bg-brand/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white [&::-webkit-details-marker]:hidden"
@@ -37,6 +42,9 @@ export function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={() => {
+                      if (menuRef.current) menuRef.current.open = false;
+                    }}
                     className="flex min-h-12 touch-manipulation items-center justify-between border-b border-white/7 px-4 text-sm font-semibold text-white/78 transition-colors last:border-0 hover:bg-white/5 hover:text-white active:bg-brand active:text-white focus-visible:outline-2 focus-visible:outline-brand"
                   >
                     {item.label}

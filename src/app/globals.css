@@ -9,9 +9,9 @@
   --brand: #2375ff;
   --brand-dark: #154699;
   --brand-soft: #eaf2ff;
-  --content-background: #0a0f17;
-  --content-foreground: #edf2f7;
-  --content-muted: #9ba8b8;
+  --content-background: #f3f6fa;
+  --content-foreground: #122238;
+  --content-muted: #5b697c;
 }
 
 @theme inline {

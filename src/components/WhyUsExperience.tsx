@@ -54,8 +54,8 @@ const pillars = [
 export function WhyUsExperience() {
   return (
     <div className="mt-16 sm:mt-24">
-      <section className="border border-white/10 bg-white/[0.025]">
-        <div className="border-b border-white/10 px-6 py-6 sm:px-9">
+      <section className="border border-[#d9e1eb] bg-white shadow-[0_16px_45px_rgba(19,44,78,0.07)]">
+        <div className="border-b border-[#e2e8f0] px-6 py-6 sm:px-9">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
             Integração, não fragmentação
           </p>
@@ -73,9 +73,9 @@ export function WhyUsExperience() {
               {isolatedSystems.map((system, index) => (
                 <div
                   key={system}
-                  className="flex items-center justify-between border border-white/10 bg-content-background px-4 py-3"
+                  className="flex items-center justify-between border border-[#d9e1eb] bg-[#f7f9fc] px-4 py-3"
                 >
-                  <span className="text-xs font-bold uppercase tracking-[0.12em] text-white/35">
+                  <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#8794a6]">
                     Aplicação {index + 1}
                   </span>
                   <span className="text-sm font-semibold text-content-muted">
@@ -86,7 +86,7 @@ export function WhyUsExperience() {
             </div>
           </div>
 
-          <div className="grid place-items-center border-y border-white/10 px-6 py-5 text-brand lg:border-x lg:border-y-0">
+          <div className="grid place-items-center border-y border-[#e2e8f0] px-6 py-5 text-brand lg:border-x lg:border-y-0">
             <span className="rotate-90 text-2xl lg:rotate-0" aria-hidden="true">
               →
             </span>
@@ -125,7 +125,7 @@ export function WhyUsExperience() {
           </p>
         </div>
 
-        <div className="divide-y divide-white/10 border-y border-white/10">
+        <div className="divide-y divide-[#d9e1eb] border-y border-[#d9e1eb] bg-white px-6 shadow-[0_12px_35px_rgba(19,44,78,0.05)] sm:px-8">
           {pillars.map((pillar) => (
             <article
               key={pillar.number}
@@ -154,7 +154,7 @@ export function WhyUsExperience() {
         </div>
       </section>
 
-      <section className="mt-24 border-l-2 border-brand bg-white/[0.035] px-6 py-10 sm:px-10 sm:py-14">
+      <section className="mt-24 border border-[#d9e1eb] border-l-2 border-l-brand bg-white px-6 py-10 shadow-[0_14px_38px_rgba(19,44,78,0.06)] sm:px-10 sm:py-14">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
           A filosofia IntegroLink
         </p>

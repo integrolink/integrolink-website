@@ -108,7 +108,7 @@ function EcosystemGraphic() {
 export function HomeExperience() {
   return (
     <div className="overflow-hidden bg-content-background text-content-foreground">
-      <section className="relative border-b border-white/8 py-20 sm:py-28">
+      <section className="relative border-b border-[#dbe3ed] py-20 sm:py-28">
         <Container className="grid items-center gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">O que fazemos</p>
@@ -119,7 +119,9 @@ export function HomeExperience() {
               Mais do que instalar equipamentos, criamos soluções integradas, simples de utilizar e preparadas para evoluir.
             </p>
           </div>
-          <EcosystemGraphic />
+          <div className="border border-[#d9e1eb] bg-white p-5 shadow-[0_18px_55px_rgba(19,44,78,0.08)] sm:p-8">
+            <EcosystemGraphic />
+          </div>
         </Container>
       </section>
 
@@ -132,11 +134,11 @@ export function HomeExperience() {
             </div>
             <Link href="/servicos" className="hidden border-b border-brand pb-1 text-sm font-bold text-brand sm:block">Explorar serviços →</Link>
           </div>
-          <div className="mt-12 grid grid-cols-2 border-l border-t border-white/10 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             {services.map((service, index) => (
-              <article key={service.title} className="group relative min-h-60 border-b border-r border-white/10 p-5 transition-colors hover:bg-white/[.035] sm:p-9">
-                <span className="absolute right-4 top-4 text-[.65rem] font-bold tracking-[.16em] text-white/20 sm:right-6 sm:top-6 sm:text-xs">0{index + 1}</span>
-                <div className="grid size-12 place-items-center rounded-full border border-white/15 text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white sm:size-14">
+              <article key={service.title} className="group relative min-h-60 border border-[#d9e1eb] bg-white p-5 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:p-9">
+                <span className="absolute right-4 top-4 text-[.65rem] font-bold tracking-[.16em] text-[#9aa6b5] sm:right-6 sm:top-6 sm:text-xs">0{index + 1}</span>
+                <div className="grid size-12 place-items-center rounded-full border border-[#d9e1eb] bg-[#f5f8fc] text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white sm:size-14">
                   <LineIcon name={service.icon} />
                 </div>
                 <h3 className="mt-7 text-base font-bold tracking-[-.025em] sm:mt-8 sm:text-xl">{service.title}</h3>
@@ -148,20 +150,20 @@ export function HomeExperience() {
         </Container>
       </section>
 
-      <section className="border-y border-white/8 bg-[#0c1420] py-20 sm:py-28">
+      <section className="border-y border-[#172a43] bg-[#0d1d31] py-20 text-white sm:py-28">
         <Container>
           <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Um problema comum</p>
-          <h2 className="mt-4 max-w-3xl text-3xl font-bold leading-tight tracking-[-.045em] sm:text-5xl">
+          <h2 className="mt-4 max-w-3xl text-3xl font-bold leading-tight tracking-[-.045em] text-white sm:text-5xl">
             Cinco aplicações não são uma solução.
           </h2>
           <div className="mt-14 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr]">
-            <div className="border border-white/10 p-6 sm:p-9">
+            <div className="border border-white/12 bg-white/[0.025] p-6 sm:p-9">
               <p className="text-xs font-bold uppercase tracking-[.18em] text-white/35">Sem integração</p>
               <div className="mt-6 grid gap-2 sm:grid-cols-2">
                 {["Câmaras", "Alarme", "Luzes", "Climatização", "Energia"].map((item, index) => (
                   <div key={item} className="grid min-w-0 grid-cols-[auto_1fr] items-center gap-3 border border-white/10 bg-[#090f17] px-4 py-4">
                     <span className="text-xs font-bold text-white/25">{index + 1}</span>
-                    <span className="min-w-0 text-content-muted">
+                    <span className="min-w-0 text-white/65">
                       <span className="block text-[.65rem] uppercase tracking-[.08em] text-white/35">
                         Aplicação
                       </span>
@@ -196,23 +198,23 @@ export function HomeExperience() {
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Setores de atuação</p>
             <h2 className="mt-4 text-3xl font-bold tracking-[-.04em] sm:text-5xl">Uma base. Diferentes realidades.</h2>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {sectors.map((sector, index) => (
-              <Link href="/setores-de-atuacao" key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-white/10 bg-[#0d1622] p-5 pb-16 sm:min-h-80 sm:p-7 sm:pb-20">
+              <Link href="/setores-de-atuacao" key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-[#d9e1eb] bg-white p-5 pb-16 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:min-h-80 sm:p-7 sm:pb-20">
                 <div className="absolute -bottom-14 -right-14 size-52 rounded-full border border-brand/15 transition-transform duration-500 group-hover:scale-125" />
                 <div className="absolute -bottom-4 -right-4 size-28 rounded-full border border-brand/25" />
-                <span className="text-xs font-bold tracking-[.16em] text-white/20">0{index + 1}</span>
+                <span className="text-xs font-bold tracking-[.16em] text-[#9aa6b5]">0{index + 1}</span>
                 <LineIcon name={sector.icon} className="mt-10 size-10 text-brand sm:mt-12 sm:size-12" />
                 <h3 className="mt-7 text-lg font-bold tracking-[-.03em] sm:mt-8 sm:text-2xl">{sector.title}</h3>
                 <p className="mt-3 max-w-[14rem] text-xs leading-5 text-content-muted sm:text-sm sm:leading-6">{sector.text}</p>
-                <span className="absolute bottom-5 left-5 right-5 border-t border-white/10 pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">Descobrir →</span>
+                <span className="absolute bottom-5 left-5 right-5 border-t border-[#e2e8f0] pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">Descobrir →</span>
               </Link>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="border-y border-white/8 bg-[#0c1420] py-20 sm:py-28">
+      <section className="border-y border-[#dbe3ed] bg-white py-20 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:gap-20">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Porquê a IntegroLink</p>
@@ -220,9 +222,9 @@ export function HomeExperience() {
             <p className="mt-6 max-w-md text-base leading-8 text-content-muted">Não começamos por marcas. Começamos pelo que precisa de funcionar melhor.</p>
             <Link href="/porque-nos" className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">Conhecer a nossa filosofia →</Link>
           </div>
-          <div className="grid grid-cols-2 border-l border-t border-white/10">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {reasons.map((reason) => (
-              <div key={reason} className="flex min-h-28 flex-col items-start justify-center gap-3 border-b border-r border-white/10 px-4 py-5 sm:flex-row sm:items-center sm:gap-5 sm:px-6">
+              <div key={reason} className="flex min-h-28 flex-col items-start justify-center gap-3 border border-[#d9e1eb] bg-[#f7f9fc] px-4 py-5 sm:flex-row sm:items-center sm:gap-5 sm:px-6">
                 <span className="grid size-7 shrink-0 place-items-center rounded-full border border-brand/40 text-xs font-bold text-brand sm:size-8">✓</span>
                 <span className="text-sm font-semibold sm:text-base">{reason}</span>
               </div>
@@ -236,10 +238,10 @@ export function HomeExperience() {
           <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Como trabalhamos</p>
           <h2 className="mt-4 text-3xl font-bold tracking-[-.04em] sm:text-5xl">Da conversa à solução.</h2>
           <div className="relative mt-14 grid gap-0 lg:grid-cols-4">
-            <div className="absolute left-0 right-0 top-5 hidden h-px bg-white/12 lg:block" />
+            <div className="absolute left-0 right-0 top-5 hidden h-px bg-[#cfd8e5] lg:block" />
             {process.map(([number, title, text]) => (
-              <article key={number} className="relative border-l border-white/12 pb-10 pl-7 last:pb-0 lg:border-l-0 lg:border-t lg:pb-0 lg:pl-0 lg:pt-10">
-                <span className="absolute -left-[.3rem] top-0 size-2.5 rounded-full bg-brand shadow-[0_0_0_7px_#0a0f17] lg:-top-[.33rem] lg:left-0" />
+              <article key={number} className="relative border-l border-[#cfd8e5] pb-10 pl-7 last:pb-0 lg:border-l-0 lg:border-t lg:pb-0 lg:pl-0 lg:pt-10">
+                <span className="absolute -left-[.3rem] top-0 size-2.5 rounded-full bg-brand shadow-[0_0_0_7px_#f3f6fa] lg:-top-[.33rem] lg:left-0" />
                 <span className="text-xs font-bold tracking-[.16em] text-brand">{number}</span>
                 <h3 className="mt-4 text-lg font-bold">{title}</h3>
                 <p className="mt-3 max-w-[15rem] text-sm leading-6 text-content-muted">{text}</p>
