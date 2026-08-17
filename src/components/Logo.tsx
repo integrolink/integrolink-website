@@ -17,12 +17,12 @@ export function Logo() {
         className="h-11 w-auto lg:hidden"
       />
       <Image
-        src="/brand/integrolink-signature-white.svg"
+        src="/brand/integrolink-slogan-white.svg"
         alt=""
-        width={1547}
-        height={377}
+        width={645}
+        height={117}
         priority
-        className="hidden h-auto w-48 lg:block"
+        className="hidden h-auto w-52 lg:block"
       />
     </Link>
   );

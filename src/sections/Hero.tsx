@@ -38,7 +38,7 @@ export function Hero() {
             </Link>
             <Link
               href="/contactos"
-              className="inline-flex min-h-12 items-center border border-white/45 bg-[#08111f]/25 px-6 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="inline-flex min-h-12 items-center border border-white/45 bg-[#08111f]/25 px-6 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden"
             >
               Pedir orçamento
             </Link>
