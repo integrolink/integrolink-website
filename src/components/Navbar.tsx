@@ -3,6 +3,7 @@
 import { Logo } from "@/components/Logo";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef } from "react";
 
 const navigation = [
@@ -15,13 +16,47 @@ const navigation = [
 
 export function Navbar() {
   const menuRef = useRef<HTMLDetailsElement>(null);
+  const pathname = usePathname();
 
   return (
-    <header className="relative z-30 border-b border-white/12 bg-[#0c2345]">
-      <Container className="flex h-[4.75rem] items-center justify-between sm:h-[5.5rem]">
+    <header className="sticky top-0 z-50 border-b border-white/12 border-t-2 border-t-brand bg-[#0c2345]/98 backdrop-blur-md">
+      <Container className="flex h-[4.75rem] items-center justify-between lg:h-[5.75rem]">
         <Logo />
 
-        <details ref={menuRef} className="group relative">
+        <div className="hidden items-stretch self-stretch lg:flex">
+          <nav aria-label="Navegação principal" className="flex items-stretch">
+            {navigation.slice(0, -1).map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative flex items-center px-4 text-[0.82rem] font-semibold transition-colors xl:px-5 ${
+                    isActive ? "text-white" : "text-white/68 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-x-4 bottom-0 h-0.5 bg-brand transition-transform xl:inset-x-5 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+          <Link
+            href="/contactos"
+            aria-current={pathname === "/contactos" ? "page" : undefined}
+            className="my-auto ml-4 inline-flex min-h-11 items-center bg-brand px-5 text-sm font-bold text-white transition-colors hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white xl:ml-6 xl:px-6"
+          >
+            Pedir orçamento
+          </Link>
+        </div>
+
+        <details ref={menuRef} className="group relative lg:hidden">
           <summary
             aria-label="Abrir menu de navegação"
             className="flex size-12 cursor-pointer list-none items-center justify-center rounded-sm border border-white/25 bg-white/5 transition-colors hover:border-white/60 hover:bg-white/10 active:border-brand active:bg-brand/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white [&::-webkit-details-marker]:hidden"
