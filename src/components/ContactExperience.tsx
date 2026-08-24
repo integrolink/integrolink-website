@@ -337,7 +337,6 @@ export function ContactExperience() {
               className="inline-flex min-h-13 items-center justify-center gap-4 bg-brand px-7 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.2)] transition-colors hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
               Preparar mensagem
-              <span aria-hidden="true">→</span>
             </button>
             <p className="max-w-xs text-[0.7rem] leading-5 text-[#758399]">
               Ao continuar, abrimos a sua aplicação de email com a mensagem pronta a enviar.

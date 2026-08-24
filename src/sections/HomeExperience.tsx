@@ -22,11 +22,11 @@ const services: { icon: IconName; title: string; text: string }[] = [
   { icon: "support", title: "Manutenção e Suporte", text: "Acompanhamento contínuo após a instalação." },
 ];
 
-const sectors: { icon: IconName; title: string; text: string }[] = [
-  { icon: "home", title: "Habitações", text: "Conforto, segurança e eficiência." },
-  { icon: "lodging", title: "Alojamento Local", text: "Uma operação simples, mesmo à distância." },
-  { icon: "business", title: "Pequenos Negócios", text: "Tecnologia ao serviço do crescimento." },
-  { icon: "building", title: "Condomínios", text: "Espaços comuns mais seguros e eficientes." },
+const sectors: { id: string; icon: IconName; title: string; text: string }[] = [
+  { id: "habitacoes", icon: "home", title: "Habitações", text: "Conforto, segurança e eficiência." },
+  { id: "alojamentos", icon: "lodging", title: "Alojamento Local", text: "Uma operação simples, mesmo à distância." },
+  { id: "negocios", icon: "business", title: "Pequenos Negócios", text: "Tecnologia ao serviço do crescimento." },
+  { id: "condominios", icon: "building", title: "Condomínios", text: "Espaços comuns mais seguros e eficientes." },
 ];
 
 const reasons = [
@@ -71,34 +71,44 @@ function LineIcon({ name, className = "size-7" }: { name: IconName; className?: 
 
 function EcosystemGraphic() {
   const nodes = [
-    ["Iluminação", "4", "14"], ["Segurança", "74", "14"], ["Climatização", "3", "76"],
-    ["Energia", "75", "76"], ["Rede", "1", "45"], ["Acessos", "77", "45"],
+    ["Iluminação", "3", "15"], ["Segurança", "69", "15"], ["Climatização", "1", "76"],
+    ["Energia", "71", "76"], ["Rede", "0", "46"], ["Acessos", "72", "46"],
   ];
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[35rem]" aria-label="Seis sistemas ligados à IntegroLink">
-      <svg className="absolute inset-0 size-full overflow-visible" viewBox="0 0 100 100" aria-hidden="true">
-        {[[22,22],[78,22],[21,78],[79,78],[18,50],[82,50]].map(([x,y]) => (
-          <line key={`${x}-${y}`} x1="50" y1="50" x2={x} y2={y} className="signal-path" stroke="#2375FF" strokeWidth=".45" opacity=".75" />
-        ))}
-        <circle cx="50" cy="50" r="17" fill="#2375FF" opacity=".08" className="hub-pulse" />
+    <div className="relative mx-auto aspect-square w-full max-w-[35rem] overflow-hidden rounded-[1.25rem] border border-[#dbe4ef] bg-[#f8fbff]" aria-label="Seis sistemas ligados à IntegroLink">
+      <svg className="absolute inset-0 size-full" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <pattern id="system-grid" width="5" height="5" patternUnits="userSpaceOnUse">
+            <path d="M5 0H0V5" fill="none" stroke="#154699" strokeWidth=".12" opacity=".12" />
+          </pattern>
+          <radialGradient id="system-glow">
+            <stop offset="0" stopColor="#2375FF" stopOpacity=".14" />
+            <stop offset="1" stopColor="#2375FF" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="100" height="100" fill="url(#system-grid)" />
+        <circle cx="50" cy="50" r="35" fill="url(#system-glow)" />
+        <path d="M50 50C39 43 34 29 28 21M50 50C61 43 66 29 72 21M50 50C38 50 32 50 26 50M50 50C62 50 68 50 74 50M50 50C39 58 34 70 28 81M50 50C61 58 66 70 72 81" fill="none" stroke="#2375FF" strokeWidth=".42" opacity=".55" className="signal-path" />
+        {["28,21", "72,21", "26,50", "74,50", "28,81", "72,81"].map((point) => {
+          const [cx, cy] = point.split(",");
+          return <circle key={point} cx={cx} cy={cy} r=".8" fill="#2375FF" />;
+        })}
+        <circle cx="50" cy="50" r="18" fill="#2375FF" opacity=".07" className="hub-pulse" />
       </svg>
       {nodes.map(([label, left, top]) => (
         <div
           key={label}
           style={{ left: `${left}%`, top: `${top}%` }}
-          className={`absolute flex h-[15%] w-[22%] min-w-0 items-center justify-center whitespace-nowrap border border-white/14 bg-[#0d1622] px-1 text-center font-bold uppercase text-white/70 sm:w-[19%] sm:min-w-16 sm:px-2 sm:text-xs sm:tracking-[0.08em] ${
-            label === "Climatização"
-              ? "text-[0.45rem] tracking-0"
-              : "text-[0.5rem] tracking-[0.04em]"
-          }`}
+          className="absolute flex h-[10%] w-[28%] min-w-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#cfdae8] bg-white/95 px-1.5 text-center text-[0.48rem] font-bold tracking-[0.035em] text-[#30435c] shadow-[0_8px_20px_rgba(19,44,78,0.08)] backdrop-blur-sm sm:w-[26%] sm:px-3 sm:text-[0.68rem]"
         >
+          <span className="size-1.5 shrink-0 rounded-full bg-brand shadow-[0_0_0_3px_rgba(35,117,255,.1)]" aria-hidden="true" />
           {label}
         </div>
       ))}
-      <div className="absolute left-1/2 top-1/2 grid size-[34%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-brand/55 bg-[#0b1728] text-center shadow-[0_0_70px_rgba(35,117,255,.18)]">
+      <div className="absolute left-1/2 top-1/2 grid size-[34%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#2f7cff] bg-[linear-gradient(145deg,#102844,#08192e)] text-center shadow-[0_18px_45px_rgba(21,70,153,.24)] ring-8 ring-brand/[.06]">
         <div>
-          <span className="block text-[0.55rem] font-bold uppercase tracking-[.2em] text-brand sm:text-xs">IntegroLink</span>
-          <span className="mt-1 block text-xs font-bold text-white sm:text-base">Um ecossistema</span>
+          <span className="block text-[0.52rem] font-bold uppercase tracking-[.18em] text-[#67a0ff] sm:text-xs">IntegroLink</span>
+          <span className="mt-1 block text-[0.65rem] font-semibold text-white sm:text-base">Sistema integrado</span>
         </div>
       </div>
     </div>
@@ -119,7 +129,7 @@ export function HomeExperience() {
               Mais do que instalar equipamentos, criamos soluções integradas, simples de utilizar e preparadas para evoluir.
             </p>
           </div>
-          <div className="border border-[#d9e1eb] bg-white p-5 shadow-[0_18px_55px_rgba(19,44,78,0.08)] sm:p-8">
+          <div className="rounded-[1.5rem] border border-[#d9e1eb] bg-white p-4 shadow-[0_18px_55px_rgba(19,44,78,0.08)] sm:p-6">
             <EcosystemGraphic />
           </div>
         </Container>
@@ -132,7 +142,7 @@ export function HomeExperience() {
               <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Os nossos serviços</p>
               <h2 className="mt-4 text-3xl font-bold tracking-[-.04em] sm:text-5xl">Tudo ligado. Sem ruído.</h2>
             </div>
-            <Link href="/servicos" className="hidden border-b border-brand pb-1 text-sm font-bold text-brand sm:block">Explorar serviços →</Link>
+            <Link href="/servicos" className="hidden border-b border-brand pb-1 text-sm font-bold text-brand sm:block">Explorar serviços</Link>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -146,7 +156,7 @@ export function HomeExperience() {
               </article>
             ))}
           </div>
-          <Link href="/servicos" className="mt-8 inline-flex min-h-12 items-center bg-brand px-6 text-sm font-bold text-white sm:hidden">Ver todos os serviços →</Link>
+          <Link href="/servicos" className="mt-8 inline-flex min-h-12 items-center bg-brand px-6 text-sm font-bold text-white sm:hidden">Ver todos os serviços</Link>
         </Container>
       </section>
 
@@ -176,7 +186,11 @@ export function HomeExperience() {
               </div>
               <p className="mt-6 text-sm font-semibold text-white/50">Mais aplicações. Mais complexidade.</p>
             </div>
-            <div className="grid min-h-16 place-items-center text-2xl text-brand lg:w-20"><span className="rotate-90 lg:rotate-0">→</span></div>
+            <div className="grid min-h-16 place-items-center lg:w-20">
+              <span className="relative block h-12 w-px bg-white/20 lg:h-px lg:w-12" aria-hidden="true">
+                <span className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand ring-4 ring-brand/15" />
+              </span>
+            </div>
             <div className="relative overflow-hidden border border-brand/45 bg-brand/[.07] p-6 sm:p-9">
               <div className="absolute -right-24 -top-24 size-64 rounded-full bg-brand/10 blur-3xl" />
               <p className="relative text-xs font-bold uppercase tracking-[.18em] text-brand">Com IntegroLink</p>
@@ -200,14 +214,14 @@ export function HomeExperience() {
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {sectors.map((sector, index) => (
-              <Link href="/setores-de-atuacao" key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-[#d9e1eb] bg-white p-5 pb-16 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:min-h-80 sm:p-7 sm:pb-20">
+              <Link href={`/setores-de-atuacao#area-${sector.id}`} key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-[#d9e1eb] bg-white p-5 pb-16 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:min-h-80 sm:p-7 sm:pb-20">
                 <div className="absolute -bottom-14 -right-14 size-52 rounded-full border border-brand/15 transition-transform duration-500 group-hover:scale-125" />
                 <div className="absolute -bottom-4 -right-4 size-28 rounded-full border border-brand/25" />
                 <span className="text-xs font-bold tracking-[.16em] text-[#9aa6b5]">0{index + 1}</span>
                 <LineIcon name={sector.icon} className="mt-10 size-10 text-brand sm:mt-12 sm:size-12" />
                 <h3 className="mt-7 text-lg font-bold tracking-[-.03em] sm:mt-8 sm:text-2xl">{sector.title}</h3>
                 <p className="mt-3 max-w-[14rem] text-xs leading-5 text-content-muted sm:text-sm sm:leading-6">{sector.text}</p>
-                <span className="absolute bottom-5 left-5 right-5 border-t border-[#e2e8f0] pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">Descobrir →</span>
+                <span className="absolute bottom-5 left-5 right-5 border-t border-[#e2e8f0] pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">Ver soluções</span>
               </Link>
             ))}
           </div>
@@ -220,7 +234,7 @@ export function HomeExperience() {
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Porquê a IntegroLink</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight tracking-[-.045em] sm:text-5xl">A tecnologia adapta-se a si.</h2>
             <p className="mt-6 max-w-md text-base leading-8 text-content-muted">Não começamos por marcas. Começamos pelo que precisa de funcionar melhor.</p>
-            <Link href="/porque-nos" className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">Conhecer a nossa filosofia →</Link>
+            <Link href="/porque-nos" className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">Conhecer a nossa filosofia</Link>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {reasons.map((reason) => (
@@ -260,8 +274,8 @@ export function HomeExperience() {
             Vamos integrar a tecnologia do seu espaço?
           </h2>
           <p className="mt-6 max-w-xl text-base leading-8 text-white/75">O primeiro passo começa com uma conversa.</p>
-          <Link href="/contactos" className="mt-9 inline-flex min-h-13 items-center gap-4 bg-white px-7 text-sm font-bold text-[#0a0f17] transition-colors hover:bg-[#0a0f17] hover:text-white">
-            Pedir orçamento <span aria-hidden="true">→</span>
+          <Link href="/contactos" className="mt-9 inline-flex min-h-13 items-center bg-white px-7 text-sm font-bold text-[#0a0f17] transition-colors hover:bg-[#0a0f17] hover:text-white">
+            Pedir orçamento
           </Link>
         </Container>
       </section>

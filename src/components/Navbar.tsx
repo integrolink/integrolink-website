@@ -83,9 +83,6 @@ export function Navbar() {
                     className="flex min-h-12 touch-manipulation items-center justify-between border-b border-white/7 px-4 text-sm font-semibold text-white/78 transition-colors last:border-0 hover:bg-white/5 hover:text-white active:bg-brand active:text-white focus-visible:outline-2 focus-visible:outline-brand"
                   >
                     {item.label}
-                    <span aria-hidden="true" className="text-brand">
-                      →
-                    </span>
                   </Link>
                 </li>
               ))}

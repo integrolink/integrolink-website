@@ -34,7 +34,6 @@ export function Hero() {
               className="inline-flex min-h-12 items-center gap-4 border border-brand bg-brand px-6 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.28)] transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               Conheça os serviços
-              <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/contactos"

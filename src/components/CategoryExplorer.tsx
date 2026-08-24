@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export type CategoryIconName =
   | "home"
@@ -128,6 +128,27 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const activeItem = items.find((item) => item.id === activeId) ?? items[0];
 
+  useEffect(() => {
+    const requestedId = decodeURIComponent(window.location.hash).replace(
+      "#area-",
+      "",
+    );
+
+    if (!items.some((item) => item.id === requestedId)) return;
+
+    setActiveId(requestedId);
+    setIsExpanded(true);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        selectorRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
+  }, [items]);
+
   if (!activeItem) {
     return null;
   }
@@ -136,7 +157,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
     <div className="mt-14 sm:mt-20">
       <div
         ref={selectorRef}
-        className={`grid gap-4 ${
+        className={`scroll-mt-28 grid gap-4 sm:scroll-mt-32 ${
           items.length > 4
             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
             : "grid-cols-2 lg:grid-cols-4"
@@ -149,6 +170,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
           return (
             <button
               key={item.id}
+              id={`area-${item.id}`}
               type="button"
               aria-pressed={isActive}
               onClick={() => {
@@ -244,14 +266,15 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
               type="button"
               onClick={() => {
                 setIsExpanded(false);
-                selectorRef.current?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
+                requestAnimationFrame(() => {
+                  selectorRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 });
               }}
-              className="mt-9 inline-flex min-h-11 items-center gap-3 border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+              className="mt-9 inline-flex min-h-11 items-center border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
-              <span aria-hidden="true">↑</span>
               Escolher outra área
             </button>
         </div>

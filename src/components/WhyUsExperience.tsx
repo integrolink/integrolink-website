@@ -86,9 +86,9 @@ export function WhyUsExperience() {
             </div>
           </div>
 
-          <div className="grid place-items-center border-y border-[#e2e8f0] px-6 py-5 text-brand lg:border-x lg:border-y-0">
-            <span className="rotate-90 text-2xl lg:rotate-0" aria-hidden="true">
-              →
+          <div className="grid place-items-center border-y border-[#e2e8f0] px-6 py-5 lg:border-x lg:border-y-0">
+            <span className="relative block h-12 w-px bg-[#cfd8e5] lg:h-px lg:w-12" aria-hidden="true">
+              <span className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand ring-4 ring-brand/10" />
             </span>
           </div>
 
