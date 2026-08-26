@@ -125,7 +125,9 @@ function ContactIcon({ name }: { name: ContactIconName }) {
   );
 }
 
-export function ContactExperience() {
+export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
+  const en = locale === "en";
+  const routeLabel = (id: ContactRouteId, fallback: string) => en ? ({ projeto:"New project or quote", comercial:"Sales enquiry", suporte:"Technical support", geral:"Other enquiry" }[id]) : fallback;
   const [selectedRoute, setSelectedRoute] = useState<ContactRouteId>(
     contactRoutes[0].id,
   );
@@ -141,15 +143,16 @@ export function ContactExperience() {
     const location = String(form.get("location") ?? "").trim();
     const message = String(form.get("message") ?? "").trim();
 
-    const subject = `[Website] ${route.label} — ${name}`;
+    const translatedRoute = routeLabel(route.id, route.label);
+    const subject = `[Website] ${translatedRoute} — ${name}`;
     const body = [
-      `Nome: ${name}`,
+      `${en ? "Name" : "Nome"}: ${name}`,
       `Email: ${email}`,
-      `Telefone: ${phone || "Não indicado"}`,
-      `Localidade: ${location || "Não indicada"}`,
-      `Assunto: ${route.label}`,
+      `${en ? "Phone" : "Telefone"}: ${phone || (en ? "Not provided" : "Não indicado")}`,
+      `${en ? "Location" : "Localidade"}: ${location || (en ? "Not provided" : "Não indicada")}`,
+      `${en ? "Subject" : "Assunto"}: ${translatedRoute}`,
       "",
-      "Mensagem:",
+      en ? "Message:" : "Mensagem:",
       message,
     ].join("\n");
 
@@ -167,13 +170,13 @@ export function ContactExperience() {
             className="absolute -left-28 -top-28 size-72 rounded-full border border-brand/15"
           />
           <p className="relative text-xs font-bold uppercase tracking-[0.2em] text-brand">
-            Fale connosco
+            {en ? "Speak with us" : "Fale connosco"}
           </p>
           <h2 className="relative mt-4 max-w-md text-3xl font-bold leading-tight tracking-[-0.04em] text-content-foreground sm:text-4xl">
-            Comecemos pelo que precisa de funcionar melhor.
+            {en ? "Let’s start with what needs to work better." : "Comecemos pelo que precisa de funcionar melhor."}
           </h2>
           <p className="relative mt-5 max-w-md text-sm leading-7 text-content-muted sm:text-base">
-            Selecione o tema e encaminhamos o seu contacto para a equipa certa.
+            {en ? "Select the topic and we will direct your enquiry to the right team." : "Selecione o tema e encaminhamos o seu contacto para a equipa certa."}
           </p>
 
           <div className="relative mt-10 divide-y divide-[#d5deea] border-y border-[#d5deea]">
@@ -188,7 +191,7 @@ export function ContactExperience() {
                 </span>
                 <span className="min-w-0">
                   <span className="block text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#758399]">
-                    {contact.kicker}
+                    {en ? ({"Projetos e orçamentos":"Projects and quotes","Apoio ao cliente":"Customer support","Contacto geral":"General enquiries"}[contact.kicker] ?? contact.kicker) : contact.kicker}
                   </span>
                   <span className="mt-1 block break-all text-sm font-semibold text-content-foreground sm:text-base">
                     {contact.label}
@@ -200,7 +203,7 @@ export function ContactExperience() {
 
           <div className="relative mt-9">
             <p className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#758399]">
-              Acompanhe a IntegroLink
+              {en ? "Follow IntegroLink" : "Acompanhe a IntegroLink"}
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               {socialLinks.map((social) => (
@@ -209,7 +212,7 @@ export function ContactExperience() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`${social.label} da IntegroLink — abre numa nova janela`}
+                  aria-label={en ? `${social.label} by IntegroLink — opens in a new window` : `${social.label} da IntegroLink — abre numa nova janela`}
                   className="grid size-12 place-items-center border border-[#cfd9e6] bg-white text-content-muted transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                 >
                   <ContactIcon name={social.icon} />
@@ -223,26 +226,26 @@ export function ContactExperience() {
           <div className="flex items-center justify-between gap-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-                O seu projeto
+                {en ? "Your project" : "O seu projeto"}
               </p>
               <h2 className="mt-3 text-2xl font-bold tracking-[-0.03em] text-content-foreground sm:text-3xl">
-                Conte-nos a sua ideia.
+                {en ? "Tell us about your idea." : "Conte-nos a sua ideia."}
               </h2>
             </div>
             <span className="hidden text-xs font-semibold text-[#8794a6] sm:block">
-              Campos * obrigatórios
+              {en ? "Required fields *" : "Campos * obrigatórios"}
             </span>
           </div>
 
           <div className="mt-9 grid gap-6 sm:grid-cols-2">
             <label className="block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
-              Nome *
+              {en ? "Name *" : "Nome *"}
               <input
                 required
                 name="name"
                 autoComplete="name"
               className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
-                placeholder="O seu nome"
+                placeholder={en ? "Your name" : "O seu nome"}
               />
             </label>
             <label className="block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
@@ -257,7 +260,7 @@ export function ContactExperience() {
               />
             </label>
             <label className="block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
-              Telefone
+              {en ? "Phone" : "Telefone"}
               <input
                 type="tel"
                 name="phone"
@@ -267,19 +270,19 @@ export function ContactExperience() {
               />
             </label>
             <label className="block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
-              Localidade
+              {en ? "Location" : "Localidade"}
               <input
                 name="location"
                 autoComplete="address-level2"
                 className="mt-3 min-h-12 w-full border border-[#cfd8e5] bg-[#f8fafc] px-4 text-base font-normal normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
-                placeholder="Onde será o projeto?"
+                placeholder={en ? "Where will the project take place?" : "Onde será o projeto?"}
               />
             </label>
           </div>
 
           <fieldset className="mt-7">
             <legend className="text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
-              Como podemos ajudar? *
+              {en ? "How can we help? *" : "Como podemos ajudar? *"}
             </legend>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {contactRoutes.map((route) => (
@@ -305,20 +308,20 @@ export function ContactExperience() {
                       selectedRoute === route.id ? "bg-brand" : "bg-[#a9b4c3]"
                     }`}
                   />
-                  {route.label}
+                  {routeLabel(route.id, route.label)}
                 </label>
               ))}
             </div>
           </fieldset>
 
           <label className="mt-7 block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
-            Mensagem *
+            {en ? "Message *" : "Mensagem *"}
             <textarea
               required
               name="message"
               rows={6}
               className="mt-3 w-full resize-y border border-[#cfd8e5] bg-[#f8fafc] px-4 py-4 text-base font-normal leading-7 normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
-              placeholder="Fale-nos sobre o espaço, os objetivos e aquilo que gostaria de melhorar."
+              placeholder={en ? "Tell us about the space, your objectives and what you would like to improve." : "Fale-nos sobre o espaço, os objetivos e aquilo que gostaria de melhorar."}
             />
           </label>
 
@@ -328,7 +331,7 @@ export function ContactExperience() {
               type="checkbox"
               className="mt-0.5 size-4 shrink-0 accent-[#2375FF]"
             />
-            Autorizo a utilização destes dados para responder ao meu pedido de contacto.
+            {en ? "I authorise the use of this information to respond to my enquiry." : "Autorizo a utilização destes dados para responder ao meu pedido de contacto."}
           </label>
 
           <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -336,21 +339,25 @@ export function ContactExperience() {
               type="submit"
               className="inline-flex min-h-13 items-center justify-center gap-4 bg-brand px-7 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.2)] transition-colors hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
-              Preparar mensagem
+              {en ? "Prepare message" : "Preparar mensagem"}
             </button>
             <p className="max-w-xs text-[0.7rem] leading-5 text-[#758399]">
-              Ao continuar, abrimos a sua aplicação de email com a mensagem pronta a enviar.
+              {en ? "When you continue, your email application will open with the message ready to send." : "Ao continuar, abrimos a sua aplicação de email com a mensagem pronta a enviar."}
             </p>
           </div>
         </form>
       </section>
 
       <section className="mt-16 grid gap-4 sm:grid-cols-3">
-        {[
+        {(en ? [
+          ["01", "Tell us the challenge", "You do not need to know the technical solution."],
+          ["02", "We review it with you", "We clarify the needs, space and objectives."],
+          ["03", "We design the way forward", "We propose a solution tailored to the project."],
+        ] : [
           ["01", "Conte-nos o desafio", "Não precisa de conhecer a solução técnica."],
           ["02", "Analisamos consigo", "Clarificamos necessidades, espaço e objetivos."],
           ["03", "Desenhamos o caminho", "Propomos uma solução ajustada ao projeto."],
-        ].map(([number, title, text]) => (
+        ]).map(([number, title, text]) => (
           <article
             key={number}
             className="min-h-48 border border-[#d9e1eb] bg-white p-6 shadow-[0_8px_24px_rgba(19,44,78,0.04)] sm:p-8"

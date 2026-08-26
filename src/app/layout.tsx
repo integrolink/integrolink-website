@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
+import { DocumentLanguage } from "@/components/DocumentLanguage";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT" data-scroll-behavior="smooth">
       <body>
+        <DocumentLanguage />
         {children}
         <Footer />
       </body>

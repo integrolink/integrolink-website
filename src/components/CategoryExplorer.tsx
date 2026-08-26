@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { Locale } from "@/lib/i18n";
 
 export type CategoryIconName =
   | "home"
@@ -26,6 +27,7 @@ export type CategoryItem = {
 
 type CategoryExplorerProps = {
   items: CategoryItem[];
+  locale?: Locale;
 };
 
 const iconPaths: Record<CategoryIconName, ReactNode> = {
@@ -122,7 +124,7 @@ function CategoryIcon({ name }: { name: CategoryIconName }) {
   );
 }
 
-export function CategoryExplorer({ items }: CategoryExplorerProps) {
+export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps) {
   const selectorRef = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
   const [isExpanded, setIsExpanded] = useState(false);
@@ -162,7 +164,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
             : "grid-cols-2 lg:grid-cols-4"
         }`}
-        aria-label="Selecionar uma área"
+        aria-label={locale === "pt" ? "Selecionar uma área" : "Select an area"}
       >
         {items.map((item) => {
           const isActive = item.id === activeItem.id;
@@ -275,7 +277,7 @@ export function CategoryExplorer({ items }: CategoryExplorerProps) {
               }}
               className="mt-9 inline-flex min-h-11 items-center border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
-              Escolher outra área
+              {locale === "pt" ? "Escolher outra área" : "Choose another area"}
             </button>
         </div>
       </div>

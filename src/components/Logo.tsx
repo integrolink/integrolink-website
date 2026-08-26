@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Logo() {
+export function Logo({ href = "/", locale = "pt" }: { href?: string; locale?: "pt" | "en" }) {
   return (
     <Link
-      href="/"
-      aria-label="IntegroLink — página inicial"
+      href={href}
+      aria-label={locale === "en" ? "IntegroLink — homepage" : "IntegroLink — página inicial"}
       className="inline-flex items-center transition-opacity active:opacity-65"
     >
       <Image

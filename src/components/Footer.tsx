@@ -1,14 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-
-const footerNavigation = [
-  { label: "Home", href: "/" },
-  { label: "Serviços", href: "/servicos" },
-  { label: "Setores de atuação", href: "/setores-de-atuacao" },
-  { label: "Porquê nós?", href: "/porque-nos" },
-  { label: "Contactos", href: "/contactos" },
-];
+import { usePathname } from "next/navigation";
+import { localeFromPath, localeNavigation } from "@/lib/i18n";
 
 const socialLinks = [
   {
@@ -20,11 +16,14 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const locale = localeFromPath(usePathname());
+  const footerNavigation = localeNavigation[locale];
+  const homeHref = locale === "pt" ? "/" : "/en";
   return (
     <footer className="border-t-2 border-t-brand bg-[#0a1b30] text-white">
       <Container className="grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.2fr_.7fr_1fr] lg:gap-16">
         <div>
-          <Link href="/" aria-label="IntegroLink — página inicial" className="inline-flex">
+          <Link href={homeHref} aria-label={locale === "pt" ? "IntegroLink — página inicial" : "IntegroLink — homepage"} className="inline-flex">
             <Image
               src="/brand/integrolink-signature-white.svg"
               alt="IntegroLink"
@@ -34,16 +33,17 @@ export function Footer() {
             />
           </Link>
           <p className="mt-7 max-w-sm text-sm leading-7 text-white/58">
-            Soluções integradas de automação, segurança, redes e gestão
-            energética para espaços mais simples, seguros e eficientes.
+            {locale === "pt"
+              ? "Soluções integradas de automação, segurança, redes e gestão energética para espaços mais simples, seguros e eficientes."
+              : "Integrated automation, security, networking and energy management solutions for simpler, safer and more efficient spaces."}
           </p>
         </div>
 
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
-            Navegação
+            {locale === "pt" ? "Navegação" : "Navigation"}
           </p>
-          <nav className="mt-5 grid gap-3" aria-label="Navegação do rodapé">
+          <nav className="mt-5 grid gap-3" aria-label={locale === "pt" ? "Navegação do rodapé" : "Footer navigation"}>
             {footerNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -58,7 +58,7 @@ export function Footer() {
 
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
-            Contactos
+            {locale === "pt" ? "Contactos" : "Contact"}
           </p>
           <div className="mt-5 grid gap-3 text-sm">
             <a href="mailto:geral@integrolink.pt" className="w-fit font-semibold text-white/70 hover:text-white">
@@ -89,8 +89,8 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <Container className="flex flex-col gap-2 py-5 text-[0.7rem] text-white/38 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} IntegroLink. Todos os direitos reservados.</p>
-          <p>Integração tecnológica à medida.</p>
+          <p>© {new Date().getFullYear()} IntegroLink. {locale === "pt" ? "Todos os direitos reservados." : "All rights reserved."}</p>
+          <p>{locale === "pt" ? "Integração tecnológica à medida." : "Technology integration, tailored to you."}</p>
         </Container>
       </div>
     </footer>

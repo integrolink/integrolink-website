@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroMedia } from "@/components/HeroMedia";
 import { Container } from "@/components/ui/Container";
+import type { Locale } from "@/lib/i18n";
 
-export function Hero() {
+export function Hero({ locale = "pt" }: { locale?: Locale }) {
+  const english = locale === "en";
   return (
     <section
       id="inicio"
-      aria-label="IntegroLink — Integramos tecnologia. Ligamos soluções."
+      aria-label={english ? "IntegroLink — We integrate technology. We connect solutions." : "IntegroLink — Integramos tecnologia. Ligamos soluções."}
       className="relative isolate min-h-[36rem] overflow-hidden bg-[#0b1d38] sm:min-h-[40rem] lg:min-h-[42rem]"
     >
       <HeroMedia />
@@ -15,31 +17,34 @@ export function Hero() {
       <Container className="relative flex min-h-[36rem] flex-col justify-center py-12 sm:min-h-[40rem] sm:py-16 lg:min-h-[42rem]">
         <div className="max-w-[34rem]">
           <Image
-            src="/brand/integrolink-signature-white.svg"
-            alt="IntegroLink — Integramos tecnologia. Ligamos soluções."
+            src={english ? "/brand/integrolink-slogan-white.svg" : "/brand/integrolink-signature-white.svg"}
+            alt="IntegroLink"
             width={1547}
             height={377}
             priority
             className="h-auto w-full max-w-[31rem] drop-shadow-[0_8px_28px_rgba(0,0,0,0.2)]"
           />
 
+          {english && <h1 className="mt-6 max-w-[32rem] text-3xl font-bold leading-[1.08] tracking-[-.04em] text-white sm:text-5xl">We integrate technology. We connect solutions.</h1>}
+
           <p className="mt-7 max-w-[34rem] text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
-            Soluções de automação, segurança, redes e gestão energética para
-            habitações, alojamentos locais, empresas e condomínios.
+            {english
+              ? "Automation, security, networking and energy management solutions for homes, short-term rentals, businesses and condominiums."
+              : "Soluções de automação, segurança, redes e gestão energética para habitações, alojamentos locais, empresas e condomínios."}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href="/servicos"
+              href={english ? "/en/services" : "/servicos"}
               className="inline-flex min-h-12 items-center gap-4 border border-brand bg-brand px-6 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.28)] transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              Conheça os serviços
+              {english ? "Explore our services" : "Conheça os serviços"}
             </Link>
             <Link
-              href="/contactos"
+              href={english ? "/en/contact" : "/contactos"}
               className="inline-flex min-h-12 items-center border border-white/45 bg-[#08111f]/25 px-6 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden"
             >
-              Pedir orçamento
+              {english ? "Request a quote" : "Pedir orçamento"}
             </Link>
           </div>
         </div>
