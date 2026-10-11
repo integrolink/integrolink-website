@@ -20,17 +20,17 @@ function LineIcon({ name, className = "size-8" }: { name: IconName; className?: 
 }
 
 const ptNeeds = [
-  { icon:"shield" as IconName, image:"/fotos/foto13.png", title:"Proteger pessoas e património", text:"Segurança, videovigilância e alertas coordenados para acompanhar o que acontece no espaço.", services:"Videovigilância · Alarmes · Controlo de acessos" },
-  { icon:"space" as IconName, image:"/fotos/foto9.png", title:"Gerir acessos e utilização", text:"Saber quem entra, como o espaço está ocupado e onde existe disponibilidade para receber pessoas.", services:"Acessos · Smart Occupancy · Monitorização" },
-  { icon:"energy" as IconName, image:"/fotos/foto8.png", title:"Operar com maior eficiência", text:"Acompanhar consumos e automatizar rotinas para reduzir desperdícios sem comprometer o conforto.", services:"Energia · Climatização · Iluminação" },
-  { icon:"systems" as IconName, image:"/fotos/foto4.jpeg", contain:true, title:"Simplificar sistemas dispersos", text:"Unir equipamentos e plataformas numa experiência coerente, preparada para acompanhar novas necessidades.", services:"Automação · Redes · Integração" },
+  { icon:"shield" as IconName, title:"Proteger pessoas e património", text:"Segurança, videovigilância e alertas coordenados para acompanhar o que acontece no espaço.", services:"Videovigilância · Alarmes · Controlo de acessos" },
+  { icon:"space" as IconName, title:"Gerir acessos e utilização", text:"Saber quem entra, como o espaço está ocupado e onde existe disponibilidade para receber pessoas.", services:"Acessos · Smart Occupancy · Monitorização" },
+  { icon:"energy" as IconName, title:"Operar com maior eficiência", text:"Acompanhar consumos e automatizar rotinas para reduzir desperdícios sem comprometer o conforto.", services:"Energia · Climatização · Iluminação" },
+  { icon:"systems" as IconName, title:"Simplificar sistemas dispersos", text:"Unir equipamentos e plataformas numa experiência coerente, preparada para acompanhar novas necessidades.", services:"Automação · Redes · Integração" },
 ];
 
 const enNeeds = [
-  { icon:"shield" as IconName, image:"/fotos/foto13.png", title:"Protect people and property", text:"Coordinated security, video surveillance and alerts to keep track of what happens across the space.", services:"Video surveillance · Alarms · Access control" },
-  { icon:"space" as IconName, image:"/fotos/foto9.png", title:"Manage access and usage", text:"Know who enters, how the space is occupied and where capacity is available for people.", services:"Access · Smart Occupancy · Monitoring" },
-  { icon:"energy" as IconName, image:"/fotos/foto8.png", title:"Operate more efficiently", text:"Monitor consumption and automate routines to reduce waste without compromising comfort.", services:"Energy · Climate · Lighting" },
-  { icon:"systems" as IconName, image:"/fotos/foto4.jpeg", contain:true, title:"Simplify disconnected systems", text:"Bring equipment and platforms into one coherent experience, ready to support future needs.", services:"Automation · Networks · Integration" },
+  { icon:"shield" as IconName, title:"Protect people and property", text:"Coordinated security, video surveillance and alerts to keep track of what happens across the space.", services:"Video surveillance · Alarms · Access control" },
+  { icon:"space" as IconName, title:"Manage access and usage", text:"Know who enters, how the space is occupied and where capacity is available for people.", services:"Access · Smart Occupancy · Monitoring" },
+  { icon:"energy" as IconName, title:"Operate more efficiently", text:"Monitor consumption and automate routines to reduce waste without compromising comfort.", services:"Energy · Climate · Lighting" },
+  { icon:"systems" as IconName, title:"Simplify disconnected systems", text:"Bring equipment and platforms into one coherent experience, ready to support future needs.", services:"Automation · Networks · Integration" },
 ];
 
 const ptSectors = [
@@ -72,14 +72,25 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
       <Container>
         <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "What needs to work better?" : "O que precisa de funcionar melhor?"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "We start with the objective, not the equipment." : "Começamos pelo objetivo, não pelo equipamento."}</h2></div>
         <div className="mt-14 grid border-l border-t border-[#ced7e2] md:grid-cols-2">
-          {needs.map((item) => <article key={item.title} className="grid grid-cols-[7rem_1fr] gap-5 border-b border-r border-[#ced7e2] bg-white p-5 sm:grid-cols-[9rem_1fr] sm:gap-7 sm:p-7">
-            <div className="relative aspect-[4/3] self-start overflow-hidden bg-[#e8edf2]"><Image src={item.image} alt="" fill sizes="(min-width: 768px) 144px, 112px" className={"contain" in item && item.contain ? "object-contain" : "object-cover"}/></div>
-            <div><div className="flex items-start gap-3"><LineIcon name={item.icon} className="mt-0.5 size-6 shrink-0 text-brand"/><h3 className="text-lg font-bold tracking-[-.02em] sm:text-xl">{item.title}</h3></div>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-content-muted">{item.text}</p>
-            <p className="mt-5 border-t border-[#e0e6ed] pt-3 text-[.68rem] font-semibold uppercase leading-5 tracking-[.07em] text-[#66768b]">{item.services}</p></div>
+          {needs.map((item) => <article key={item.title} className="border-b border-r border-[#ced7e2] bg-white p-7 sm:p-10">
+            <LineIcon name={item.icon} className="size-9 text-brand"/>
+            <h3 className="mt-8 text-xl font-bold tracking-[-.02em] sm:text-2xl">{item.title}</h3>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-content-muted sm:text-base">{item.text}</p>
+            <p className="mt-8 border-t border-[#e0e6ed] pt-4 text-xs font-semibold uppercase tracking-[.08em] text-[#66768b]">{item.services}</p>
           </article>)}
         </div>
         <Link href={en ? "/en/services" : "/servicos"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "See how we can help" : "Ver como podemos ajudar"}</Link>
+      </Container>
+    </section>
+
+    <section className="overflow-hidden border-y border-[#d8e0e9] bg-white py-20 sm:py-24">
+      <Container className="grid items-center gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+        <div><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A real interface" : "Uma interface real"}</p><h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "The home, organised around everyday decisions." : "A casa organizada em torno das decisões do dia a dia."}</h2><p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">{en ? "Climate, lighting, security, video surveillance, hot water and energy information come together in a visual experience developed for the project." : "Clima, iluminação, segurança, videovigilância, água quente e informação energética encontram-se numa experiência visual desenvolvida para o projeto."}</p></div>
+        <div className="flex items-center justify-center gap-3 sm:gap-5">
+          <div className="w-[6.5rem] overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.18)] sm:w-36"><Image src="/fotos/foto2.jpeg" alt={en ? "Video surveillance and energy screen" : "Ecrã de videovigilância e energia"} width={1080} height={2160} className="h-auto w-full"/></div>
+          <div className="w-36 overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_22px_60px_rgba(7,15,28,.25)] sm:w-52"><Image src="/fotos/foto4.jpeg" alt={en ? "Main IntegroLink home interface" : "Interface principal da habitação IntegroLink"} width={1080} height={2160} className="h-auto w-full"/></div>
+          <div className="w-[6.5rem] overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.18)] sm:w-36"><Image src="/fotos/foto3.jpeg" alt={en ? "Comfort and security screen" : "Ecrã de conforto e segurança"} width={1080} height={2160} className="h-auto w-full"/></div>
+        </div>
       </Container>
     </section>
 

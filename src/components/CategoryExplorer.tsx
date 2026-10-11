@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
 import type { Locale } from "@/lib/i18n";
 
 export type CategoryIconName =
@@ -24,6 +25,7 @@ export type CategoryItem = {
   description: string;
   capabilities: string[];
   capabilitiesTitle: string;
+  image?: { src: string; alt: string; portrait?: boolean };
 };
 
 type CategoryExplorerProps = {
@@ -254,11 +256,12 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
           hidden={!isExpanded}
           className="border-t border-[#e2e8f0] px-6 pb-8 pt-7 sm:px-9 sm:pb-10 sm:pt-9"
         >
-            <p className="max-w-4xl text-base leading-8 text-content-muted sm:text-lg">
-              {activeItem.description}
-            </p>
+          <div className={`grid items-start gap-9 ${activeItem.image ? "lg:grid-cols-[1fr_18rem]" : ""}`}>
+            <div><p className="max-w-4xl text-base leading-8 text-content-muted sm:text-lg">
+                {activeItem.description}
+              </p>
 
-            <div className="mt-9">
+              <div className="mt-9">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-content-foreground">
                 {activeItem.capabilitiesTitle}
               </p>
@@ -276,9 +279,9 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
                   </li>
                 ))}
               </ul>
-            </div>
+              </div>
 
-            <button
+              <button
               type="button"
               onClick={() => {
                 setIsExpanded(false);
@@ -292,7 +295,11 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
               className="mt-9 inline-flex min-h-11 items-center border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
             >
               {locale === "pt" ? "Escolher outra área" : "Choose another area"}
-            </button>
+              </button></div>
+            {activeItem.image && <figure className={`relative mx-auto w-full overflow-hidden bg-[#edf1f5] ${activeItem.image.portrait ? "aspect-[9/16] max-w-56" : "aspect-[4/3] max-w-md"}`}>
+              <Image src={activeItem.image.src} alt={activeItem.image.alt} fill sizes={activeItem.image.portrait ? "224px" : "(min-width: 1024px) 288px, 100vw"} className={activeItem.image.portrait ? "object-contain" : "object-cover"}/>
+            </figure>}
+          </div>
         </div>
       </div>
     </div>

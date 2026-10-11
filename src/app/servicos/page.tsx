@@ -5,7 +5,6 @@ import {
   type CategoryItem,
 } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
-import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const services: CategoryItem[] = [
   {
@@ -13,6 +12,7 @@ const services: CategoryItem[] = [
     label: "Automação e Integração",
     statement: "Tecnologia que trabalha em conjunto.",
     icon: "automation",
+    image: { src:"/fotos/foto4.jpeg", alt:"Interface IntegroLink para controlo da habitação", portrait:true },
     description:
       "Desenvolvemos soluções de automação que integram diferentes equipamentos e sistemas numa única plataforma. O objetivo é simplificar a utilização diária, aumentar o conforto e permitir que a tecnologia funcione de forma coordenada, independentemente das marcas utilizadas.",
     capabilitiesTitle: "O que podemos integrar",
@@ -30,6 +30,7 @@ const services: CategoryItem[] = [
     label: "Segurança e Videovigilância",
     statement: "Mais proteção para pessoas e património.",
     icon: "security",
+    image: { src:"/fotos/foto13.png", alt:"Câmara de videovigilância integrada numa entrada" },
     description:
       "Implementamos soluções de segurança adaptadas às necessidades de cada espaço, integrando videovigilância, alarmes e sensores numa plataforma centralizada que permite monitorização local ou remota.",
     capabilitiesTitle: "O que podemos integrar",
@@ -47,6 +48,7 @@ const services: CategoryItem[] = [
     label: "Redes e Comunicações",
     statement: "Uma infraestrutura fiável é a base de qualquer sistema.",
     icon: "network",
+    image: { src:"/fotos/foto2.jpeg", alt:"Interface central com videovigilância e consumo energético", portrait:true },
     description:
       "Projetamos e implementamos redes robustas para suportar equipamentos inteligentes, comunicações e serviços digitais, garantindo estabilidade, desempenho e cobertura adequada em todo o espaço.",
     capabilitiesTitle: "O que podemos integrar",
@@ -64,6 +66,7 @@ const services: CategoryItem[] = [
     label: "Controlo de Acessos",
     statement: "Controlo total sobre quem entra e sai.",
     icon: "access",
+    image: { src:"/fotos/foto7.png", alt:"Controlo de acesso junto à entrada de uma habitação" },
     description:
       "Desenvolvemos soluções que permitem gerir acessos de forma segura, prática e adaptada às necessidades de habitações, alojamentos locais, empresas e condomínios.",
     capabilitiesTitle: "O que podemos integrar",
@@ -81,6 +84,7 @@ const services: CategoryItem[] = [
     label: "Gestão Energética",
     statement: "Consumos mais inteligentes.",
     icon: "energy",
+    image: { src:"/fotos/foto11.png", alt:"Gestão integrada de energia e equipamentos" },
     description:
       "A monitorização e gestão da energia permitem identificar desperdícios, otimizar consumos e aumentar a eficiência da instalação, contribuindo para reduzir custos e melhorar o desempenho energético.",
     capabilitiesTitle: "O que podemos integrar",
@@ -98,6 +102,7 @@ const services: CategoryItem[] = [
     label: "Smart Occupancy",
     statement: "Saber como um espaço está a ser utilizado, em tempo real.",
     icon: "occupancy",
+    image: { src:"/fotos/foto10.png", alt:"Sala de reunião com disponibilidade e ocupação visíveis" },
     description:
       "Implementamos soluções de monitorização de ocupação e disponibilidade que ajudam pessoas e gestores a tomar decisões com informação atual. A solução pode indicar se existem lugares ou salas disponíveis, apoiar a gestão de capacidade e revelar padrões de utilização sem transformar o espaço num sistema complexo.",
     capabilitiesTitle: "O que podemos integrar",
@@ -115,6 +120,7 @@ const services: CategoryItem[] = [
     label: "Manutenção e Suporte",
     statement: "A tecnologia continua a evoluir.",
     icon: "support",
+    image: { src:"/fotos/foto3.jpeg", alt:"Interface IntegroLink com estados de conforto e segurança", portrait:true },
     description:
       "Após a instalação, continuamos a acompanhar os nossos clientes através de serviços de manutenção, suporte técnico e evolução das soluções implementadas, garantindo que o sistema continua atualizado e adaptado às novas necessidades.",
     capabilitiesTitle: "Como acompanhamos",
@@ -145,11 +151,6 @@ export default function ServicesPage() {
         title="Tecnologia integrada para espaços mais seguros, eficientes e fáceis de gerir."
         description="Explore as nossas áreas de serviço e descubra como cada solução contribui para um sistema verdadeiramente integrado."
       >
-        <ContextImageStrip items={[
-          { src:"/fotos/foto5.png", alt:"Câmara de videovigilância instalada junto a uma entrada", caption:"Proteção integrada no espaço" },
-          { src:"/fotos/foto8.png", alt:"Monitorização de energia numa habitação", caption:"Consumos visíveis e controláveis" },
-          { src:"/fotos/foto4.jpeg", alt:"Interface IntegroLink para controlo da habitação", caption:"Uma interface para o dia a dia", contain:true },
-        ]}/>
         <CategoryExplorer items={services} />
       </PageIntro>
     </>

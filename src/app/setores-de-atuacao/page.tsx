@@ -5,7 +5,6 @@ import {
   type CategoryItem,
 } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
-import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const sectors: CategoryItem[] = [
   {
@@ -13,6 +12,7 @@ const sectors: CategoryItem[] = [
     label: "Habitações",
     statement: "Uma casa mais confortável, segura e eficiente.",
     icon: "home",
+    image: { src:"/fotos/foto6.png", alt:"Entrada residencial protegida por videovigilância" },
     description:
       "Cada habitação é diferente e cada família tem necessidades próprias. Desenvolvemos soluções de automação, segurança, gestão energética e controlo inteligente adaptadas ao seu dia a dia, permitindo que a tecnologia trabalhe de forma integrada para aumentar o conforto, a segurança e a eficiência da sua casa.",
     capabilitiesTitle: "Como podemos ajudar",
@@ -30,6 +30,7 @@ const sectors: CategoryItem[] = [
     label: "Alojamento Local",
     statement: "Simplifique a gestão do seu alojamento.",
     icon: "lodging",
+    image: { src:"/fotos/foto12.png", alt:"Sensores e controlo de segurança integrados numa entrada" },
     description:
       "A tecnologia pode reduzir o tempo dedicado à gestão diária e melhorar a experiência dos hóspedes. Implementamos soluções que permitem controlar acessos, climatização, iluminação, consumos e segurança, facilitando a operação mesmo quando está longe da propriedade.",
     capabilitiesTitle: "Como podemos ajudar",
@@ -47,6 +48,7 @@ const sectors: CategoryItem[] = [
     label: "Negócios",
     statement: "Tecnologia para apoiar o crescimento do seu negócio.",
     icon: "business",
+    image: { src:"/fotos/foto8.png", alt:"Monitorização energética num espaço utilizado diariamente" },
     description:
       "Independentemente da atividade, uma infraestrutura tecnológica bem integrada aumenta a segurança, melhora a eficiência operacional e simplifica a gestão diária. Desenvolvemos soluções adaptadas às necessidades de escritórios, lojas, clínicas, restaurantes e outros espaços comerciais.",
     capabilitiesTitle: "Como podemos ajudar",
@@ -64,6 +66,7 @@ const sectors: CategoryItem[] = [
     label: "Espaços Partilhados",
     statement: "Ocupação visível. Espaços mais fáceis de utilizar e gerir.",
     icon: "occupancy",
+    image: { src:"/fotos/foto9.png", alt:"Espaço de trabalho com informação de ocupação em tempo real" },
     description:
       "Salas de estudo, espaços de trabalho, lojas, bibliotecas, clínicas e outras áreas partilhadas beneficiam de informação clara sobre ocupação e disponibilidade. Integramos sensores, acessos e plataformas de gestão para que utilizadores saibam onde existe espaço e as equipas compreendam melhor como cada zona é utilizada.",
     capabilitiesTitle: "Como podemos ajudar",
@@ -81,6 +84,7 @@ const sectors: CategoryItem[] = [
     label: "Condomínios",
     statement: "Mais segurança e melhor gestão dos espaços comuns.",
     icon: "condominium",
+    image: { src:"/fotos/foto5.png", alt:"Videovigilância discreta numa entrada comum" },
     description:
       "A integração de diferentes sistemas permite aumentar a segurança, otimizar consumos e facilitar a administração dos espaços comuns, proporcionando maior conforto aos residentes e uma gestão mais eficiente.",
     capabilitiesTitle: "Como podemos ajudar",
@@ -111,11 +115,6 @@ export default function SectorsPage() {
         title="Adaptamos cada solução às necessidades específicas de cada espaço e de cada cliente."
         description="Selecione um setor para conhecer o princípio que orienta a nossa abordagem a cada contexto."
       >
-        <ContextImageStrip items={[
-          { src:"/fotos/foto6.png", alt:"Entrada residencial com videovigilância", caption:"Habitações protegidas" },
-          { src:"/fotos/foto10.png", alt:"Sala de reunião com indicação de disponibilidade", caption:"Espaços partilhados mais claros" },
-          { src:"/fotos/foto7.png", alt:"Controlo de acesso junto à porta de uma habitação", caption:"Acessos simples e seguros" },
-        ]}/>
         <CategoryExplorer items={sectors} />
       </PageIntro>
     </>
