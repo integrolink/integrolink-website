@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contactos | IntegroLink",
   description:
     "Entre em contacto com a IntegroLink para falar sobre o seu projeto.",
+  alternates: { canonical: "/contactos", languages: { "pt-PT": "/contactos", en: "/en/contact" } },
 };
 
 export default function ContactsPage() {

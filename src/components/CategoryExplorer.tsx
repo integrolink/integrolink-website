@@ -13,6 +13,7 @@ export type CategoryIconName =
   | "network"
   | "access"
   | "energy"
+  | "occupancy"
   | "support";
 
 export type CategoryItem = {
@@ -99,6 +100,14 @@ const iconPaths: Record<CategoryIconName, ReactNode> = {
       <path d="M13 2 5 14h7l-1 8 8-12h-7z" />
     </>
   ),
+  occupancy: (
+    <>
+      <path d="M4 20v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+      <circle cx="12" cy="6" r="2" />
+      <path d="M7 16h2m2 0h2m2 0h2" />
+    </>
+  ),
   support: (
     <>
       <path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-3-3z" />
@@ -138,10 +147,9 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
 
     if (!items.some((item) => item.id === requestedId)) return;
 
-    setActiveId(requestedId);
-    setIsExpanded(true);
-
-    requestAnimationFrame(() => {
+    const frame = requestAnimationFrame(() => {
+      setActiveId(requestedId);
+      setIsExpanded(true);
       requestAnimationFrame(() => {
         selectorRef.current?.scrollIntoView({
           behavior: "smooth",
@@ -149,6 +157,8 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
         });
       });
     });
+
+    return () => cancelAnimationFrame(frame);
   }, [items]);
 
   if (!activeItem) {
@@ -160,9 +170,13 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
       <div
         ref={selectorRef}
         className={`scroll-mt-28 grid gap-4 sm:scroll-mt-32 ${
-          items.length > 4
-            ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-            : "grid-cols-2 lg:grid-cols-4"
+          items.length >= 7
+            ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+            : items.length === 5
+              ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
+              : items.length > 4
+                ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+                : "grid-cols-2 lg:grid-cols-4"
         }`}
         aria-label={locale === "pt" ? "Selecionar uma área" : "Select an area"}
       >

@@ -59,6 +59,23 @@ const sectors: CategoryItem[] = [
     ],
   },
   {
+    id: "espacos-partilhados",
+    label: "Espaços Partilhados",
+    statement: "Ocupação visível. Espaços mais fáceis de utilizar e gerir.",
+    icon: "occupancy",
+    description:
+      "Salas de estudo, espaços de trabalho, lojas, bibliotecas, clínicas e outras áreas partilhadas beneficiam de informação clara sobre ocupação e disponibilidade. Integramos sensores, acessos e plataformas de gestão para que utilizadores saibam onde existe espaço e as equipas compreendam melhor como cada zona é utilizada.",
+    capabilitiesTitle: "Como podemos ajudar",
+    capabilities: [
+      "Ocupação e lotação em tempo real",
+      "Disponibilidade de salas e lugares",
+      "Contagem de entradas e saídas",
+      "Sinalização e painéis informativos",
+      "Análise de padrões de utilização",
+      "Integração com reservas e acessos",
+    ],
+  },
+  {
     id: "condominios",
     label: "Condomínios",
     statement: "Mais segurança e melhor gestão dos espaços comuns.",
@@ -78,9 +95,10 @@ const sectors: CategoryItem[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Setores de atuação | IntegroLink",
+  title: "Soluções para habitações, negócios e espaços partilhados | IntegroLink",
   description:
-    "Descubra os setores em que a IntegroLink aplica soluções tecnológicas integradas.",
+    "Tecnologia integrada para habitações, alojamentos, negócios, condomínios e espaços partilhados com gestão inteligente de ocupação.",
+  alternates: { canonical: "/setores-de-atuacao", languages: { "pt-PT": "/setores-de-atuacao", en: "/en/sectors" } },
 };
 
 export default function SectorsPage() {

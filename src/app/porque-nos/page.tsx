@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Porquê nós? | IntegroLink",
   description:
     "Conheça a abordagem da IntegroLink à integração tecnológica.",
+  alternates: { canonical: "/porque-nos", languages: { "pt-PT": "/porque-nos", en: "/en/why-us" } },
 };
 
 export default function WhyUsPage() {

@@ -29,8 +29,8 @@ export function Hero({ locale = "pt" }: { locale?: Locale }) {
 
           <p className="mt-7 max-w-[34rem] text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
             {english
-              ? "Automation, security, networking and energy management solutions for homes, short-term rentals, businesses and condominiums."
-              : "Soluções de automação, segurança, redes e gestão energética para habitações, alojamentos locais, empresas e condomínios."}
+              ? "Integrated automation, security, networking, energy and occupancy management for homes, businesses and shared spaces."
+              : "Automação, segurança, redes, energia e gestão inteligente de ocupação para habitações, negócios e espaços partilhados."}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

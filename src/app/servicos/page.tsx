@@ -93,6 +93,23 @@ const services: CategoryItem[] = [
     ],
   },
   {
+    id: "ocupacao",
+    label: "Smart Occupancy",
+    statement: "Saber como um espaço está a ser utilizado, em tempo real.",
+    icon: "occupancy",
+    description:
+      "Implementamos soluções de monitorização de ocupação e disponibilidade que ajudam pessoas e gestores a tomar decisões com informação atual. A solução pode indicar se existem lugares ou salas disponíveis, apoiar a gestão de capacidade e revelar padrões de utilização sem transformar o espaço num sistema complexo.",
+    capabilitiesTitle: "O que podemos integrar",
+    capabilities: [
+      "Contagem de pessoas e lotação",
+      "Disponibilidade de salas e lugares",
+      "Painéis informativos em tempo real",
+      "Dashboards de utilização",
+      "Alertas de capacidade",
+      "Integração com acessos e reservas",
+    ],
+  },
+  {
     id: "suporte",
     label: "Manutenção e Suporte",
     statement: "A tecnologia continua a evoluir.",
@@ -112,9 +129,10 @@ const services: CategoryItem[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Serviços | IntegroLink",
+  title: "Automação, segurança e Smart Occupancy | IntegroLink",
   description:
-    "Conheça as soluções de automação, segurança, controlo remoto e eficiência energética da IntegroLink.",
+    "Soluções de automação, segurança, redes, controlo de acessos, gestão energética e Smart Occupancy para espaços mais eficientes.",
+  alternates: { canonical: "/servicos", languages: { "pt-PT": "/servicos", en: "/en/services" } },
 };
 
 export default function ServicesPage() {
@@ -123,7 +141,7 @@ export default function ServicesPage() {
       <Navbar />
       <PageIntro
         eyebrow="Serviços"
-        title="Soluções tecnológicas concebidas para aumentar o conforto, a segurança e a eficiência do seu espaço."
+        title="Tecnologia integrada para espaços mais seguros, eficientes e fáceis de gerir."
         description="Explore as nossas áreas de serviço e descubra como cada solução contribui para um sistema verdadeiramente integrado."
       >
         <CategoryExplorer items={services} />

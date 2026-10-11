@@ -8,6 +8,7 @@ type IconName =
   | "network"
   | "access"
   | "energy"
+  | "occupancy"
   | "support"
   | "home"
   | "lodging"
@@ -27,6 +28,7 @@ const sectors: { id: string; icon: IconName; title: string; text: string }[] = [
   { id: "habitacoes", icon: "home", title: "Habitações", text: "Conforto, segurança e eficiência." },
   { id: "alojamentos", icon: "lodging", title: "Alojamento Local", text: "Uma operação simples, mesmo à distância." },
   { id: "negocios", icon: "business", title: "Pequenos Negócios", text: "Tecnologia ao serviço do crescimento." },
+  { id: "espacos-partilhados", icon: "occupancy", title: "Espaços Partilhados", text: "Ocupação e disponibilidade em tempo real." },
   { id: "condominios", icon: "building", title: "Condomínios", text: "Espaços comuns mais seguros e eficientes." },
 ];
 
@@ -61,6 +63,7 @@ function LineIcon({ name, className = "size-7" }: { name: IconName; className?: 
       {name === "network" && <><circle cx="12" cy="12" r="2.5" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="m7 7 3.2 3.2M17 7l-3.2 3.2M7 17l3.2-3.2M17 17l-3.2-3.2" /></>}
       {name === "access" && <><rect x="4" y="3" width="13" height="18" rx="1" /><path d="M8 7h5M8 11h5M8 15h2m7-4h3m0 0-2-2m2 2-2 2" /></>}
       {name === "energy" && <path d="M13 2 5 14h7l-1 8 8-12h-7z" />}
+      {name === "occupancy" && <><path d="M4 20v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /><circle cx="12" cy="6" r="2" /><path d="M7 16h2m2 0h2m2 0h2" /></>}
       {name === "support" && <><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-3-3z" /><path d="m5 18 1 1" /></>}
       {name === "home" && <><path d="m3 11 9-7 9 7M5.5 9.5V20h13V9.5M9.5 20v-6h5v6" /></>}
       {name === "lodging" && <><path d="M4 19V7m0 8h16v4M7 11h4a3 3 0 0 1 3 3v1H7zm12-3v3m-1.5-1.5 3-3" /></>}
@@ -133,6 +136,7 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
     { id: "habitacoes", icon: "home" as IconName, title: "Homes", text: "Comfort, security and efficiency." },
     { id: "alojamentos", icon: "lodging" as IconName, title: "Short-term rentals", text: "Simple operation, even from a distance." },
     { id: "negocios", icon: "business" as IconName, title: "Small businesses", text: "Technology supporting growth." },
+    { id: "espacos-partilhados", icon: "occupancy" as IconName, title: "Shared spaces", text: "Real-time occupancy and availability." },
     { id: "condominios", icon: "building" as IconName, title: "Condominiums", text: "Safer, more efficient shared spaces." },
   ] : sectors;
   const visibleReasons = en ? ["Tailored projects", "Integrated solutions", "Ready for the future", "Compatible technologies", "Professional installation", "Ongoing support"] : reasons;
@@ -171,10 +175,9 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
             <Link href={en ? "/en/services" : "/servicos"} className="hidden border-b border-brand pb-1 text-sm font-bold text-brand sm:block">{en ? "Explore services" : "Explorar serviços"}</Link>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
-            {visibleServices.map((service, index) => (
-              <article key={service.title} className="group relative min-h-60 border border-[#d9e1eb] bg-white p-5 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:p-9">
-                <span className="absolute right-4 top-4 text-[.65rem] font-bold tracking-[.16em] text-[#9aa6b5] sm:right-6 sm:top-6 sm:text-xs">0{index + 1}</span>
-                <div className="grid size-12 place-items-center rounded-full border border-[#d9e1eb] bg-[#f5f8fc] text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white sm:size-14">
+            {visibleServices.map((service) => (
+              <article key={service.title} className="group relative min-h-56 border border-[#d9e1eb] border-t-2 border-t-[#b7c5d8] bg-white p-5 shadow-[0_8px_26px_rgba(19,44,78,0.035)] transition-colors hover:border-t-brand sm:p-9">
+                <div className="grid size-11 place-items-center border border-[#d9e1eb] bg-[#f7f9fc] text-brand transition-colors group-hover:border-brand sm:size-12">
                   <LineIcon name={service.icon} />
                 </div>
                 <h3 className="mt-7 text-base font-bold tracking-[-.025em] sm:mt-8 sm:text-xl">{service.title}</h3>
@@ -183,6 +186,38 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
             ))}
           </div>
           <Link href={en ? "/en/services" : "/servicos"} className="mt-8 inline-flex min-h-12 items-center bg-brand px-6 text-sm font-bold text-white sm:hidden">{en ? "View all services" : "Ver todos os serviços"}</Link>
+        </Container>
+      </section>
+
+      <section className="border-y border-[#dbe3ed] bg-white py-20 sm:py-28">
+        <Container className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">Smart Occupancy</p>
+            <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight tracking-[-.04em] sm:text-5xl">
+              {en ? "Make occupancy visible and every space easier to manage." : "Tornar a ocupação visível para gerir melhor cada espaço."}
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">
+              {en ? "Real-time information helps people find an available room, seat or service point, while giving managers reliable data on capacity and usage." : "Informação em tempo real ajuda as pessoas a encontrar uma sala, um lugar ou um ponto de atendimento disponível, enquanto dá aos gestores dados fiáveis sobre lotação e utilização."}
+            </p>
+            <Link href={`${en ? "/en/services" : "/servicos"}#area-ocupacao`} className="mt-8 inline-flex min-h-12 items-center border border-[#b8c5d5] bg-white px-6 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand">
+              {en ? "Explore Smart Occupancy" : "Explorar Smart Occupancy"}
+            </Link>
+          </div>
+          <div className="border border-[#cfd9e6] bg-[#f7f9fc] p-5 sm:p-7" aria-label={en ? "Example occupancy status panel" : "Exemplo de painel de ocupação"}>
+            <div className="flex items-center justify-between border-b border-[#d5deea] pb-5">
+              <div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#748198]">{en ? "Current occupancy" : "Ocupação atual"}</p><p className="mt-2 text-2xl font-bold">{en ? "Building A" : "Edifício A"}</p></div>
+              <div className="border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700">{en ? "Space available" : "Com disponibilidade"}</div>
+            </div>
+            <div className="mt-5 grid gap-3">
+              {(en ? [["Study room", "18 / 32", "56%"], ["Meeting rooms", "3 available", "72%"], ["Service area", "Low traffic", "28%"]] : [["Sala de estudo", "18 / 32", "56%"], ["Salas de reunião", "3 disponíveis", "72%"], ["Zona de atendimento", "Pouco movimento", "28%"]]).map(([label, value, width]) => (
+                <div key={label} className="border border-[#dbe3ed] bg-white p-4">
+                  <div className="flex items-center justify-between gap-4 text-sm"><span className="font-semibold">{label}</span><span className="text-content-muted">{value}</span></div>
+                  <div className="mt-3 h-1.5 bg-[#e7edf4]"><div className="h-full bg-brand" style={{width}} /></div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-5 text-[#748198]">{en ? "Illustrative interface — each solution is configured for the space and its operating rules." : "Interface ilustrativa — cada solução é configurada para o espaço e para as suas regras de funcionamento."}</p>
+          </div>
         </Container>
       </section>
 
@@ -238,13 +273,10 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand">{en ? "Sectors" : "Setores de atuação"}</p>
             <h2 className="mt-4 text-3xl font-bold tracking-[-.04em] sm:text-5xl">{en ? "One foundation. Different realities." : "Uma base. Diferentes realidades."}</h2>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-            {visibleSectors.map((sector, index) => (
-              <Link href={`${en ? "/en/sectors" : "/setores-de-atuacao"}#area-${sector.id}`} key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-[#d9e1eb] bg-white p-5 pb-16 shadow-[0_8px_26px_rgba(19,44,78,0.04)] transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_16px_38px_rgba(19,44,78,0.09)] sm:min-h-80 sm:p-7 sm:pb-20">
-                <div className="absolute -bottom-14 -right-14 size-52 rounded-full border border-brand/15 transition-transform duration-500 group-hover:scale-125" />
-                <div className="absolute -bottom-4 -right-4 size-28 rounded-full border border-brand/25" />
-                <span className="text-xs font-bold tracking-[.16em] text-[#9aa6b5]">0{index + 1}</span>
-                <LineIcon name={sector.icon} className="mt-10 size-10 text-brand sm:mt-12 sm:size-12" />
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-5">
+            {visibleSectors.map((sector) => (
+              <Link href={`${en ? "/en/sectors" : "/setores-de-atuacao"}#area-${sector.id}`} key={sector.title} className="group relative flex min-h-72 flex-col overflow-hidden border border-[#d9e1eb] border-t-2 border-t-[#b7c5d8] bg-white p-5 pb-16 shadow-[0_8px_26px_rgba(19,44,78,0.035)] transition-colors hover:border-t-brand sm:min-h-80 sm:p-7 sm:pb-20">
+                <LineIcon name={sector.icon} className="mt-4 size-10 text-brand sm:mt-5 sm:size-12" />
                 <h3 className="mt-7 text-lg font-bold tracking-[-.03em] sm:mt-8 sm:text-2xl">{sector.title}</h3>
                 <p className="mt-3 max-w-[14rem] text-xs leading-5 text-content-muted sm:text-sm sm:leading-6">{sector.text}</p>
                 <span className="absolute bottom-5 left-5 right-5 border-t border-[#e2e8f0] pt-3 text-xs font-bold text-brand sm:bottom-7 sm:left-7 sm:right-7 sm:text-sm">{en ? "View solutions" : "Ver soluções"}</span>
