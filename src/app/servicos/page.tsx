@@ -12,7 +12,7 @@ const services: CategoryItem[] = [
     label: "Automação e Integração",
     statement: "Tecnologia que trabalha em conjunto.",
     icon: "automation",
-    image: { src:"/fotos/foto4.jpeg", alt:"Interface IntegroLink para controlo da habitação", portrait:true },
+    image: { src:"/fotos/foto14.jpeg", alt:"Assistente de IA IntegroLink a executar um pedido e consultar o estado da habitação", portrait:true },
     description:
       "Desenvolvemos soluções de automação que integram diferentes equipamentos e sistemas numa única plataforma. O objetivo é simplificar a utilização diária, aumentar o conforto e permitir que a tecnologia funcione de forma coordenada, independentemente das marcas utilizadas.",
     capabilitiesTitle: "O que podemos integrar",
@@ -22,6 +22,7 @@ const services: CategoryItem[] = [
       "Integração de equipamentos",
       "Dashboards personalizados",
       "Automatizações inteligentes",
+      "Assistente IA em linguagem natural",
       "Controlo remoto",
     ],
   },
@@ -138,7 +139,7 @@ const services: CategoryItem[] = [
 export const metadata: Metadata = {
   title: "Automação, segurança e Smart Occupancy | IntegroLink",
   description:
-    "Soluções de automação, segurança, redes, controlo de acessos, gestão energética e Smart Occupancy para espaços mais eficientes.",
+    "Soluções de automação com assistência por IA, segurança, redes, controlo de acessos, gestão energética e Smart Occupancy.",
   alternates: { canonical: "/servicos", languages: { "pt-PT": "/servicos", en: "/en/services" } },
 };
 

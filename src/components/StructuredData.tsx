@@ -16,7 +16,7 @@ export function StructuredData() {
           "https://www.linkedin.com/company/integrolink/",
           "https://www.facebook.com/share/199PNxdxka/",
         ],
-        knowsAbout: ["Automação", "Smart Occupancy", "Controlo de acessos", "Videovigilância", "Redes", "Gestão energética"],
+        knowsAbout: ["Automação", "Assistência por inteligência artificial", "Smart Occupancy", "Controlo de acessos", "Videovigilância", "Redes", "Gestão energética"],
       },
       {
         "@type": "WebSite",

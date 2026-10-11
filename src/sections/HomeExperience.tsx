@@ -94,6 +94,22 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
       </Container>
     </section>
 
+    <section className="bg-[#f3f6f9] py-16 sm:py-20">
+      <Container className="grid items-center gap-10 lg:grid-cols-[16rem_1fr] lg:gap-20">
+        <div className="mx-auto w-48 overflow-hidden border border-[#293241] bg-[#252525] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.16)] sm:w-56 lg:w-full">
+          <Image src="/fotos/foto14.jpeg" alt={en ? "Conversation with the IntegroLink AI assistant" : "Conversa com o assistente de IA IntegroLink"} width={980} height={2048} className="h-auto w-full"/>
+        </div>
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Intelligent assistance" : "Assistência inteligente"}</p>
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "Ask naturally. The integrated systems respond." : "Pedir de forma natural. Os sistemas integrados respondem."}</h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-content-muted sm:text-lg">{en ? "The IntegroLink AI assistant can interpret everyday requests, act on authorised devices and summarise the current state of the space. It is not a separate application: it works with the systems already integrated into the solution." : "O assistente de IA IntegroLink pode interpretar pedidos do dia a dia, atuar sobre dispositivos autorizados e resumir o estado atual do espaço. Não é uma aplicação isolada: trabalha com os sistemas já integrados na solução."}</p>
+          <div className="mt-8 grid gap-0 border-y border-[#cfd8e3] sm:grid-cols-3">
+            {(en ? ["Natural-language control","System status at a glance","Actions with clear confirmation"] : ["Controlo em linguagem natural","Estado dos sistemas num só resumo","Ações com confirmação clara"]).map((item) => <p key={item} className="border-b border-[#cfd8e3] py-4 text-sm font-semibold last:border-b-0 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0">{item}</p>)}
+          </div>
+        </div>
+      </Container>
+    </section>
+
     <section className="border-y border-[#20354f] bg-[#10233b] py-20 text-white sm:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <div>

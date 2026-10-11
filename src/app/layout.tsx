@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   authors: [{ name: "IntegroLink", url: "https://www.integrolink.pt" }],
   creator: "IntegroLink",
   publisher: "IntegroLink",
-  keywords: ["automação", "Smart Occupancy", "gestão de ocupação", "controlo de acessos", "videovigilância", "redes", "gestão energética", "Portugal"],
+  keywords: ["automação", "assistente IA", "inteligência artificial para edifícios", "Smart Occupancy", "gestão de ocupação", "controlo de acessos", "videovigilância", "redes", "gestão energética", "Portugal"],
   openGraph: {
     type: "website",
     locale: "pt_PT",
