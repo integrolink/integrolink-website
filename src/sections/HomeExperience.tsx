@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import type { Locale } from "@/lib/i18n";
 
@@ -79,6 +80,26 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
           </article>)}
         </div>
         <Link href={en ? "/en/services" : "/servicos"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "See how we can help" : "Ver como podemos ajudar"}</Link>
+      </Container>
+    </section>
+
+    <section className="bg-white py-20 sm:py-28">
+      <Container>
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_.88fr] lg:gap-20">
+          <div className="relative min-h-[34rem] overflow-hidden bg-[#0b1018] sm:min-h-[42rem]">
+            <Image src="/fotos/foto4.jpeg" alt={en ? "Real IntegroLink home control interface" : "Interface real de controlo residencial IntegroLink"} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain object-center" />
+            <div className="absolute bottom-0 left-0 border-t border-r border-white/15 bg-[#0b1728]/95 px-5 py-4 text-xs font-bold uppercase tracking-[.14em] text-white/70">{en ? "Real project · Integrated home" : "Projeto real · Habitação integrada"}</div>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A solution in operation" : "Uma solução em funcionamento"}</p>
+            <h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "The whole home, understood from one place." : "Toda a casa, compreendida a partir de um único lugar."}</h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">{en ? "This interface brings together the home's climate, lighting, security, video surveillance, hot water and energy monitoring. The technology is complex behind the scenes; everyday use is not." : "Esta interface reúne clima, iluminação, segurança, videovigilância, água quente e monitorização energética da habitação. A tecnologia é complexa nos bastidores; a utilização diária não."}</p>
+            <dl className="mt-10 grid gap-0 border-y border-[#d8e0e9] sm:grid-cols-2">
+              {(en ? [["One interface","For the systems used every day"],["Real-time status","Clear information without changing apps"],["Remote control","Access to the home when away"],["Designed to evolve","New functions can be integrated"]] : [["Uma interface","Para os sistemas utilizados diariamente"],["Estado em tempo real","Informação clara sem trocar de aplicação"],["Controlo remoto","Acesso à habitação mesmo à distância"],["Preparada para evoluir","Novas funções podem ser integradas"]]).map(([term,detail]) => <div key={term} className="border-b border-[#d8e0e9] py-5 last:border-b-0 sm:odd:border-r sm:odd:pr-5 sm:even:pl-5 sm:[&:nth-last-child(-n+2)]:border-b-0"><dt className="font-bold">{term}</dt><dd className="mt-2 text-sm leading-6 text-content-muted">{detail}</dd></div>)}
+            </dl>
+            <Link href={en ? "/en/projects/integrated-home" : "/projetos/habitacao-integrada"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "View the project" : "Conhecer o projeto"}</Link>
+          </div>
+        </div>
       </Container>
     </section>
 
