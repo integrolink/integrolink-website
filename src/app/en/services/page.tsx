@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { CategoryExplorer, type CategoryItem } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
+import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const services: CategoryItem[] = [
   { id:"automacao", label:"Automation & Integration", statement:"Technology that works together.", icon:"automation", description:"We develop automation solutions that bring different devices and systems together on a single platform. The aim is to simplify everyday use, increase comfort and allow technology to work in coordination, regardless of the brands involved.", capabilitiesTitle:"What we can integrate", capabilities:["Home and business automation","Home Assistant","Device integration","Custom dashboards","Intelligent automations","Remote control"] },
@@ -14,4 +15,4 @@ const services: CategoryItem[] = [
 ];
 
 export const metadata: Metadata = { title:"Automation, security and Smart Occupancy | IntegroLink", description:"Integrated automation, security, networking, access control, energy management and Smart Occupancy solutions.", alternates:{canonical:"/en/services",languages:{"pt-PT":"/servicos",en:"/en/services"}} };
-export default function ServicesPage(){ return <><Navbar/><PageIntro eyebrow="Services" title="Integrated technology for safer, more efficient and easier-to-manage spaces." description="Explore our service areas and see how each one contributes to a truly integrated system."><CategoryExplorer items={services} locale="en"/></PageIntro></>; }
+export default function ServicesPage(){ return <><Navbar/><PageIntro eyebrow="Services" title="Integrated technology for safer, more efficient and easier-to-manage spaces." description="Explore our service areas and see how each one contributes to a truly integrated system."><ContextImageStrip items={[{src:"/fotos/foto5.png",alt:"Video surveillance camera by an entrance",caption:"Protection integrated into the space"},{src:"/fotos/foto8.png",alt:"Home energy monitoring",caption:"Visible and controllable consumption"},{src:"/fotos/foto4.jpeg",alt:"IntegroLink home control interface",caption:"One interface for everyday use",contain:true}]}/><CategoryExplorer items={services} locale="en"/></PageIntro></>; }

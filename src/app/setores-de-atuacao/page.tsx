@@ -5,6 +5,7 @@ import {
   type CategoryItem,
 } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
+import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const sectors: CategoryItem[] = [
   {
@@ -110,6 +111,11 @@ export default function SectorsPage() {
         title="Adaptamos cada solução às necessidades específicas de cada espaço e de cada cliente."
         description="Selecione um setor para conhecer o princípio que orienta a nossa abordagem a cada contexto."
       >
+        <ContextImageStrip items={[
+          { src:"/fotos/foto6.png", alt:"Entrada residencial com videovigilância", caption:"Habitações protegidas" },
+          { src:"/fotos/foto10.png", alt:"Sala de reunião com indicação de disponibilidade", caption:"Espaços partilhados mais claros" },
+          { src:"/fotos/foto7.png", alt:"Controlo de acesso junto à porta de uma habitação", caption:"Acessos simples e seguros" },
+        ]}/>
         <CategoryExplorer items={sectors} />
       </PageIntro>
     </>

@@ -5,6 +5,7 @@ import {
   type CategoryItem,
 } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
+import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const services: CategoryItem[] = [
   {
@@ -144,6 +145,11 @@ export default function ServicesPage() {
         title="Tecnologia integrada para espaços mais seguros, eficientes e fáceis de gerir."
         description="Explore as nossas áreas de serviço e descubra como cada solução contribui para um sistema verdadeiramente integrado."
       >
+        <ContextImageStrip items={[
+          { src:"/fotos/foto5.png", alt:"Câmara de videovigilância instalada junto a uma entrada", caption:"Proteção integrada no espaço" },
+          { src:"/fotos/foto8.png", alt:"Monitorização de energia numa habitação", caption:"Consumos visíveis e controláveis" },
+          { src:"/fotos/foto4.jpeg", alt:"Interface IntegroLink para controlo da habitação", caption:"Uma interface para o dia a dia", contain:true },
+        ]}/>
         <CategoryExplorer items={services} />
       </PageIntro>
     </>

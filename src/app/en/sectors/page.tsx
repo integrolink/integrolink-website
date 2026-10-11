@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { CategoryExplorer, type CategoryItem } from "@/components/CategoryExplorer";
 import { PageIntro } from "@/components/PageIntro";
+import { ContextImageStrip } from "@/components/ContextImageStrip";
 
 const sectors: CategoryItem[] = [
   { id:"habitacoes", label:"Homes", statement:"A more comfortable, secure and efficient home.", icon:"home", description:"Every home is different and every family has its own needs. We develop automation, security, energy management and intelligent control solutions tailored to everyday life, allowing technology to work together to improve comfort, security and efficiency.", capabilitiesTitle:"How we can help", capabilities:["Intelligent lighting control","Climate management","Integrated video surveillance","Alarm systems","Consumption monitoring","Remote control"] },
@@ -12,4 +13,4 @@ const sectors: CategoryItem[] = [
 ];
 
 export const metadata: Metadata = { title:"Solutions for homes, businesses and shared spaces | IntegroLink", description:"Integrated technology for homes, rentals, businesses, condominiums and shared spaces with intelligent occupancy management.", alternates:{canonical:"/en/sectors",languages:{"pt-PT":"/setores-de-atuacao",en:"/en/sectors"}} };
-export default function SectorsPage(){ return <><Navbar/><PageIntro eyebrow="Sectors" title="We adapt every solution to the specific needs of each space and each client." description="Select a sector to discover the principle that guides our approach to each setting."><CategoryExplorer items={sectors} locale="en"/></PageIntro></>; }
+export default function SectorsPage(){ return <><Navbar/><PageIntro eyebrow="Sectors" title="We adapt every solution to the specific needs of each space and each client." description="Select a sector to discover the principle that guides our approach to each setting."><ContextImageStrip items={[{src:"/fotos/foto6.png",alt:"Residential entrance with video surveillance",caption:"Protected homes"},{src:"/fotos/foto10.png",alt:"Meeting room with availability information",caption:"Clearer shared spaces"},{src:"/fotos/foto7.png",alt:"Access control by a home's entrance",caption:"Simple and secure access"}]}/><CategoryExplorer items={sectors} locale="en"/></PageIntro></>; }
