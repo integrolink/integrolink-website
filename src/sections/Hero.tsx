@@ -29,8 +29,8 @@ export function Hero({ locale = "pt" }: { locale?: Locale }) {
 
           <p className="mt-7 max-w-[34rem] text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
             {english
-              ? "Integrated automation, security, networking, energy and occupancy management for homes, businesses and shared spaces."
-              : "Automação, segurança, redes, energia e gestão inteligente de ocupação para habitações, negócios e espaços partilhados."}
+              ? "We make spaces safer, more efficient and easier to manage through integrated solutions tailored to each setting."
+              : "Criamos espaços mais seguros, eficientes e fáceis de gerir, através de soluções integradas adaptadas a cada realidade."}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -38,13 +38,13 @@ export function Hero({ locale = "pt" }: { locale?: Locale }) {
               href={english ? "/en/services" : "/servicos"}
               className="inline-flex min-h-12 items-center gap-4 border border-brand bg-brand px-6 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.28)] transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              {english ? "Explore our services" : "Conheça os serviços"}
+              {english ? "Explore solutions" : "Descobrir soluções"}
             </Link>
             <Link
               href={english ? "/en/contact" : "/contactos"}
               className="inline-flex min-h-12 items-center border border-white/45 bg-[#08111f]/25 px-6 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden"
             >
-              {english ? "Request a quote" : "Pedir orçamento"}
+              {english ? "Talk to us" : "Fale connosco"}
             </Link>
           </div>
         </div>

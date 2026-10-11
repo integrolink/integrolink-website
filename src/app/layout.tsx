@@ -6,9 +6,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.integrolink.pt"),
-  title: "IntegroLink | Automação, segurança e Smart Occupancy",
+  title: "IntegroLink | Espaços mais seguros, eficientes e fáceis de gerir",
   description:
-    "Integração tecnológica para habitações, negócios e espaços partilhados: automação, segurança, redes, energia, acessos e Smart Occupancy.",
+    "Soluções integradas que tornam habitações, negócios e espaços partilhados mais seguros, eficientes e fáceis de gerir.",
   applicationName: "IntegroLink",
   authors: [{ name: "IntegroLink", url: "https://www.integrolink.pt" }],
   creator: "IntegroLink",
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     alternateLocale: ["en_GB"],
     siteName: "IntegroLink",
     title: "IntegroLink | Integramos tecnologia. Ligamos soluções.",
-    description: "Automação, segurança e gestão inteligente de ocupação para espaços mais simples, seguros e eficientes.",
+    description: "Soluções integradas para espaços mais seguros, eficientes e fáceis de gerir.",
     url: "https://www.integrolink.pt",
     images: [{ url: "/brand/integrolink-hero.png", width: 1920, height: 1080, alt: "IntegroLink — integração tecnológica" }],
   },
-  twitter: { card:"summary_large_image", title:"IntegroLink | Integração tecnológica", description:"Automação, segurança e Smart Occupancy para espaços mais eficientes.", images:["/brand/integrolink-hero.png"] },
+  twitter: { card:"summary_large_image", title:"IntegroLink | Espaços que funcionam melhor", description:"Soluções integradas para espaços mais seguros, eficientes e fáceis de gerir.", images:["/brand/integrolink-hero.png"] },
   robots: { index:true, follow:true, googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1} },
 };
 

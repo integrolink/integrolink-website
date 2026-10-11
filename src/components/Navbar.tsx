@@ -56,7 +56,7 @@ export function Navbar() {
             aria-current={pathname === navigation[4].href ? "page" : undefined}
             className="my-auto ml-4 inline-flex min-h-11 items-center bg-brand px-5 text-sm font-bold text-white transition-colors hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white xl:ml-6 xl:px-6"
           >
-            {locale === "pt" ? "Pedir orçamento" : "Request a quote"}
+            {locale === "pt" ? "Fale connosco" : "Talk to us"}
           </Link>
         </div>
 

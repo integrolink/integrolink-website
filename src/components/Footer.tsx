@@ -34,8 +34,8 @@ export function Footer() {
           </Link>
           <p className="mt-7 max-w-sm text-sm leading-7 text-white/58">
             {locale === "pt"
-              ? "Soluções integradas de automação, segurança, redes e gestão energética para espaços mais simples, seguros e eficientes."
-              : "Integrated automation, security, networking and energy management solutions for simpler, safer and more efficient spaces."}
+              ? "Soluções integradas para tornar cada espaço mais seguro, eficiente e fácil de gerir."
+              : "Integrated solutions that make every space safer, more efficient and easier to manage."}
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <Container className="flex flex-col gap-2 py-5 text-[0.7rem] text-white/38 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} IntegroLink. {locale === "pt" ? "Todos os direitos reservados." : "All rights reserved."}</p>
-          <p>{locale === "pt" ? "Integração tecnológica à medida." : "Technology integration, tailored to you."}</p>
+          <p>{locale === "pt" ? "Tecnologia que serve as pessoas e os espaços." : "Technology that serves people and places."}</p>
         </Container>
       </div>
     </footer>

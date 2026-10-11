@@ -30,10 +30,10 @@ export function StructuredData() {
       {
         "@type": "Service",
         "@id": `${base}/servicos/#service`,
-        name: "Integração tecnológica e Smart Occupancy",
+        name: "Soluções integradas para espaços",
         provider: { "@id": `${base}/#organization` },
         url: `${base}/servicos`,
-        description: "Soluções integradas de automação, segurança, redes, acessos, energia e gestão inteligente de ocupação.",
+        description: "Soluções integradas para tornar habitações, negócios e espaços partilhados mais seguros, eficientes e fáceis de gerir.",
         areaServed: "Portugal",
         serviceType: ["Automação", "Segurança eletrónica", "Smart Occupancy", "Redes", "Controlo de acessos", "Gestão energética"],
       },
