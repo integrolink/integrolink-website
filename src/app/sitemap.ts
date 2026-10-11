@@ -7,7 +7,6 @@ const routes = [
   ["/setores-de-atuacao", "/en/sectors"],
   ["/porque-nos", "/en/why-us"],
   ["/contactos", "/en/contact"],
-  ["/projetos/habitacao-integrada", "/en/projects/integrated-home"],
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

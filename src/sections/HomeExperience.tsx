@@ -20,17 +20,17 @@ function LineIcon({ name, className = "size-8" }: { name: IconName; className?: 
 }
 
 const ptNeeds = [
-  { icon:"shield" as IconName, title:"Proteger pessoas e património", text:"Segurança, videovigilância e alertas coordenados para acompanhar o que acontece no espaço.", services:"Videovigilância · Alarmes · Controlo de acessos" },
-  { icon:"space" as IconName, title:"Gerir acessos e utilização", text:"Saber quem entra, como o espaço está ocupado e onde existe disponibilidade para receber pessoas.", services:"Acessos · Smart Occupancy · Monitorização" },
-  { icon:"energy" as IconName, title:"Operar com maior eficiência", text:"Acompanhar consumos e automatizar rotinas para reduzir desperdícios sem comprometer o conforto.", services:"Energia · Climatização · Iluminação" },
-  { icon:"systems" as IconName, title:"Simplificar sistemas dispersos", text:"Unir equipamentos e plataformas numa experiência coerente, preparada para acompanhar novas necessidades.", services:"Automação · Redes · Integração" },
+  { icon:"shield" as IconName, image:"/fotos/foto13.png", title:"Proteger pessoas e património", text:"Segurança, videovigilância e alertas coordenados para acompanhar o que acontece no espaço.", services:"Videovigilância · Alarmes · Controlo de acessos" },
+  { icon:"space" as IconName, image:"/fotos/foto9.png", title:"Gerir acessos e utilização", text:"Saber quem entra, como o espaço está ocupado e onde existe disponibilidade para receber pessoas.", services:"Acessos · Smart Occupancy · Monitorização" },
+  { icon:"energy" as IconName, image:"/fotos/foto8.png", title:"Operar com maior eficiência", text:"Acompanhar consumos e automatizar rotinas para reduzir desperdícios sem comprometer o conforto.", services:"Energia · Climatização · Iluminação" },
+  { icon:"systems" as IconName, image:"/fotos/foto4.jpeg", title:"Simplificar sistemas dispersos", text:"Unir equipamentos e plataformas numa experiência coerente, preparada para acompanhar novas necessidades.", services:"Automação · Redes · Integração" },
 ];
 
 const enNeeds = [
-  { icon:"shield" as IconName, title:"Protect people and property", text:"Coordinated security, video surveillance and alerts to keep track of what happens across the space.", services:"Video surveillance · Alarms · Access control" },
-  { icon:"space" as IconName, title:"Manage access and usage", text:"Know who enters, how the space is occupied and where capacity is available for people.", services:"Access · Smart Occupancy · Monitoring" },
-  { icon:"energy" as IconName, title:"Operate more efficiently", text:"Monitor consumption and automate routines to reduce waste without compromising comfort.", services:"Energy · Climate · Lighting" },
-  { icon:"systems" as IconName, title:"Simplify disconnected systems", text:"Bring equipment and platforms into one coherent experience, ready to support future needs.", services:"Automation · Networks · Integration" },
+  { icon:"shield" as IconName, image:"/fotos/foto13.png", title:"Protect people and property", text:"Coordinated security, video surveillance and alerts to keep track of what happens across the space.", services:"Video surveillance · Alarms · Access control" },
+  { icon:"space" as IconName, image:"/fotos/foto9.png", title:"Manage access and usage", text:"Know who enters, how the space is occupied and where capacity is available for people.", services:"Access · Smart Occupancy · Monitoring" },
+  { icon:"energy" as IconName, image:"/fotos/foto8.png", title:"Operate more efficiently", text:"Monitor consumption and automate routines to reduce waste without compromising comfort.", services:"Energy · Climate · Lighting" },
+  { icon:"systems" as IconName, image:"/fotos/foto4.jpeg", title:"Simplify disconnected systems", text:"Bring equipment and platforms into one coherent experience, ready to support future needs.", services:"Automation · Networks · Integration" },
 ];
 
 const ptSectors = [
@@ -72,34 +72,14 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
       <Container>
         <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "What needs to work better?" : "O que precisa de funcionar melhor?"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "We start with the objective, not the equipment." : "Começamos pelo objetivo, não pelo equipamento."}</h2></div>
         <div className="mt-14 grid border-l border-t border-[#ced7e2] md:grid-cols-2">
-          {needs.map((item) => <article key={item.title} className="border-b border-r border-[#ced7e2] bg-white p-7 sm:p-10">
-            <LineIcon name={item.icon} className="size-9 text-brand"/>
-            <h3 className="mt-8 text-xl font-bold tracking-[-.02em] sm:text-2xl">{item.title}</h3>
+          {needs.map((item) => <article key={item.title} className="border-b border-r border-[#ced7e2] bg-white p-6 sm:p-8">
+            <div className="relative h-36 overflow-hidden bg-[#e8edf2] sm:h-40"><Image src={item.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover"/></div>
+            <div className="mt-6 flex items-center gap-4"><LineIcon name={item.icon} className="size-7 shrink-0 text-brand"/><h3 className="text-xl font-bold tracking-[-.02em] sm:text-2xl">{item.title}</h3></div>
             <p className="mt-4 max-w-xl text-sm leading-7 text-content-muted sm:text-base">{item.text}</p>
             <p className="mt-8 border-t border-[#e0e6ed] pt-4 text-xs font-semibold uppercase tracking-[.08em] text-[#66768b]">{item.services}</p>
           </article>)}
         </div>
         <Link href={en ? "/en/services" : "/servicos"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "See how we can help" : "Ver como podemos ajudar"}</Link>
-      </Container>
-    </section>
-
-    <section className="bg-white py-20 sm:py-28">
-      <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_.88fr] lg:gap-20">
-          <div className="relative min-h-[34rem] overflow-hidden bg-[#0b1018] sm:min-h-[42rem]">
-            <Image src="/fotos/foto4.jpeg" alt={en ? "Real IntegroLink home control interface" : "Interface real de controlo residencial IntegroLink"} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain object-center" />
-            <div className="absolute bottom-0 left-0 border-t border-r border-white/15 bg-[#0b1728]/95 px-5 py-4 text-xs font-bold uppercase tracking-[.14em] text-white/70">{en ? "Real project · Integrated home" : "Projeto real · Habitação integrada"}</div>
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A solution in operation" : "Uma solução em funcionamento"}</p>
-            <h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "The whole home, understood from one place." : "Toda a casa, compreendida a partir de um único lugar."}</h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">{en ? "This interface brings together the home's climate, lighting, security, video surveillance, hot water and energy monitoring. The technology is complex behind the scenes; everyday use is not." : "Esta interface reúne clima, iluminação, segurança, videovigilância, água quente e monitorização energética da habitação. A tecnologia é complexa nos bastidores; a utilização diária não."}</p>
-            <dl className="mt-10 grid gap-0 border-y border-[#d8e0e9] sm:grid-cols-2">
-              {(en ? [["One interface","For the systems used every day"],["Real-time status","Clear information without changing apps"],["Remote control","Access to the home when away"],["Designed to evolve","New functions can be integrated"]] : [["Uma interface","Para os sistemas utilizados diariamente"],["Estado em tempo real","Informação clara sem trocar de aplicação"],["Controlo remoto","Acesso à habitação mesmo à distância"],["Preparada para evoluir","Novas funções podem ser integradas"]]).map(([term,detail]) => <div key={term} className="border-b border-[#d8e0e9] py-5 last:border-b-0 sm:odd:border-r sm:odd:pr-5 sm:even:pl-5 sm:[&:nth-last-child(-n+2)]:border-b-0"><dt className="font-bold">{term}</dt><dd className="mt-2 text-sm leading-6 text-content-muted">{detail}</dd></div>)}
-            </dl>
-            <Link href={en ? "/en/projects/integrated-home" : "/projetos/habitacao-integrada"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "View the project" : "Conhecer o projeto"}</Link>
-          </div>
-        </div>
       </Container>
     </section>
 
