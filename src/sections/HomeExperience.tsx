@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { HomeControlDemo } from "@/components/home/HomeControlDemo";
+import { HomeNeedsExplorer } from "@/components/home/HomeNeedsExplorer";
 import type { Locale } from "@/lib/i18n";
 
 type IconName = "shield" | "space" | "energy" | "systems" | "home" | "lodging" | "business" | "building" | "shared";
@@ -18,20 +19,6 @@ function LineIcon({ name, className = "size-8" }: { name: IconName; className?: 
     {name === "shared" && <><path d="M4 5h16v14H4zM8 9h8M8 13h3M14 13h2M8 17h8"/></>}
   </svg>;
 }
-
-const ptNeeds = [
-  { icon:"shield" as IconName, title:"Proteger pessoas e património", text:"Segurança, videovigilância e alertas coordenados para acompanhar o que acontece no espaço.", services:"Videovigilância · Alarmes · Controlo de acessos" },
-  { icon:"space" as IconName, title:"Gerir acessos e utilização", text:"Saber quem entra, como o espaço está ocupado e onde existe disponibilidade para receber pessoas.", services:"Acessos · Smart Occupancy · Monitorização" },
-  { icon:"energy" as IconName, title:"Operar com maior eficiência", text:"Acompanhar consumos e automatizar rotinas para reduzir desperdícios sem comprometer o conforto.", services:"Energia · Climatização · Iluminação" },
-  { icon:"systems" as IconName, title:"Simplificar sistemas dispersos", text:"Unir equipamentos e plataformas numa experiência coerente, preparada para acompanhar novas necessidades.", services:"Automação · Redes · Integração" },
-];
-
-const enNeeds = [
-  { icon:"shield" as IconName, title:"Protect people and property", text:"Coordinated security, video surveillance and alerts to keep track of what happens across the space.", services:"Video surveillance · Alarms · Access control" },
-  { icon:"space" as IconName, title:"Manage access and usage", text:"Know who enters, how the space is occupied and where capacity is available for people.", services:"Access · Smart Occupancy · Monitoring" },
-  { icon:"energy" as IconName, title:"Operate more efficiently", text:"Monitor consumption and automate routines to reduce waste without compromising comfort.", services:"Energy · Climate · Lighting" },
-  { icon:"systems" as IconName, title:"Simplify disconnected systems", text:"Bring equipment and platforms into one coherent experience, ready to support future needs.", services:"Automation · Networks · Integration" },
-];
 
 const ptSectors = [
   ["habitacoes", "home", "Habitações", "Mais conforto, segurança e controlo no dia a dia."],
@@ -51,7 +38,6 @@ const enSectors = [
 
 export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
   const en = locale === "en";
-  const needs = en ? enNeeds : ptNeeds;
   const sectors = en ? enSectors : ptSectors;
 
   return <div className="overflow-hidden bg-white text-content-foreground">
@@ -62,8 +48,10 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
           <h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.035em] sm:text-5xl">{en ? "Spaces that work better for the people who use them." : "Espaços que funcionam melhor para quem os utiliza."}</h2>
         </div>
         <div className="border-l-2 border-brand pl-6 sm:pl-9">
-          <p className="max-w-3xl text-lg leading-9 text-content-muted sm:text-2xl sm:leading-10">{en ? "We help homes and organisations protect what matters, simplify everyday operations and make better decisions about their spaces." : "Ajudamos pessoas e organizações a proteger o que importa, simplificar a operação diária e tomar melhores decisões sobre os seus espaços."}</p>
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-[#748196] sm:text-base">{en ? "Technology remains in the background. The result is visible in greater control, comfort, continuity and efficiency." : "A tecnologia fica nos bastidores. O resultado vê-se em mais controlo, conforto, continuidade e eficiência."}</p>
+          <p className="max-w-3xl text-lg leading-9 text-content-muted sm:text-2xl sm:leading-10">{en ? "We connect security, comfort and operations so people can understand and control their spaces without unnecessary complexity." : "Ligamos segurança, conforto e operação para que as pessoas compreendam e controlem os seus espaços sem complexidade desnecessária."}</p>
+          <div className="mt-8 grid grid-cols-3 border-y border-[#d8e0e9]">
+            {(en ? ["More control", "Less complexity", "Ready to evolve"] : ["Mais controlo", "Menos complexidade", "Preparado para evoluir"]).map((item) => <span key={item} className="flex min-h-20 items-center border-r border-[#d8e0e9] px-3 text-xs font-bold leading-5 text-[#42536a] last:border-r-0 sm:px-5 sm:text-sm">{item}</span>)}
+          </div>
         </div>
       </Container>
     </section>
@@ -71,54 +59,23 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
     <section className="bg-[#f4f6f8] py-20 sm:py-28">
       <Container>
         <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "What needs to work better?" : "O que precisa de funcionar melhor?"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "We start with the objective, not the equipment." : "Começamos pelo objetivo, não pelo equipamento."}</h2></div>
-        <div className="mt-14 grid border-l border-t border-[#ced7e2] md:grid-cols-2">
-          {needs.map((item) => <article key={item.title} className="border-b border-r border-[#ced7e2] bg-white p-7 sm:p-10">
-            <LineIcon name={item.icon} className="size-9 text-brand"/>
-            <h3 className="mt-8 text-xl font-bold tracking-[-.02em] sm:text-2xl">{item.title}</h3>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-content-muted sm:text-base">{item.text}</p>
-            <p className="mt-8 border-t border-[#e0e6ed] pt-4 text-xs font-semibold uppercase tracking-[.08em] text-[#66768b]">{item.services}</p>
-          </article>)}
-        </div>
-        <Link href={en ? "/en/services" : "/servicos"} className="mt-8 inline-flex min-h-12 items-center bg-[#102844] px-6 text-sm font-bold text-white transition-colors hover:bg-brand">{en ? "See how we can help" : "Ver como podemos ajudar"}</Link>
+        <HomeNeedsExplorer locale={locale} />
       </Container>
     </section>
 
-    <section className="overflow-hidden border-y border-[#d8e0e9] bg-white py-20 sm:py-24">
-      <Container className="grid items-center gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-        <div><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A real interface" : "Uma interface real"}</p><h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "The home, organised around everyday decisions." : "A casa organizada em torno das decisões do dia a dia."}</h2><p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">{en ? "Climate, lighting, security, video surveillance, hot water and energy information come together in a visual experience developed for the project." : "Clima, iluminação, segurança, videovigilância, água quente e informação energética encontram-se numa experiência visual desenvolvida para o projeto."}</p></div>
-        <div className="flex items-center justify-center gap-3 sm:gap-5">
-          <div className="w-[6.5rem] overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.18)] sm:w-36"><Image src="/fotos/foto2.jpeg" alt={en ? "Video surveillance and energy screen" : "Ecrã de videovigilância e energia"} width={1080} height={2160} className="h-auto w-full"/></div>
-          <div className="w-36 overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_22px_60px_rgba(7,15,28,.25)] sm:w-52"><Image src="/fotos/foto4.jpeg" alt={en ? "Main IntegroLink home interface" : "Interface principal da habitação IntegroLink"} width={1080} height={2160} className="h-auto w-full"/></div>
-          <div className="w-[6.5rem] overflow-hidden border border-[#293241] bg-[#0b0d12] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.18)] sm:w-36"><Image src="/fotos/foto3.jpeg" alt={en ? "Comfort and security screen" : "Ecrã de conforto e segurança"} width={1080} height={2160} className="h-auto w-full"/></div>
-        </div>
-      </Container>
+    <section className="overflow-hidden border-y border-[#20354f] bg-[#10233b] py-20 sm:py-28">
+      <Container><HomeControlDemo locale={locale} /></Container>
     </section>
 
-    <section className="bg-[#f3f6f9] py-16 sm:py-20">
-      <Container className="grid items-center gap-10 lg:grid-cols-[16rem_1fr] lg:gap-20">
-        <div className="mx-auto w-48 overflow-hidden border border-[#293241] bg-[#252525] p-1.5 shadow-[0_18px_45px_rgba(7,15,28,.16)] sm:w-56 lg:w-full">
-          <Image src="/fotos/foto14.jpeg" alt={en ? "Conversation with the IntegroLink AI assistant" : "Conversa com o assistente de IA IntegroLink"} width={980} height={2048} className="h-auto w-full"/>
-        </div>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Intelligent assistance" : "Assistência inteligente"}</p>
-          <h2 className="mt-5 max-w-3xl text-3xl font-bold leading-[1.12] tracking-[-.04em] sm:text-5xl">{en ? "Ask naturally. The integrated systems respond." : "Pedir de forma natural. Os sistemas integrados respondem."}</h2>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-content-muted sm:text-lg">{en ? "The IntegroLink AI assistant can interpret everyday requests, act on authorised devices and summarise the current state of the space. It is not a separate application: it works with the systems already integrated into the solution." : "O assistente de IA IntegroLink pode interpretar pedidos do dia a dia, atuar sobre dispositivos autorizados e resumir o estado atual do espaço. Não é uma aplicação isolada: trabalha com os sistemas já integrados na solução."}</p>
-          <div className="mt-8 grid gap-0 border-y border-[#cfd8e3] sm:grid-cols-3">
-            {(en ? ["Natural-language control","System status at a glance","Actions with clear confirmation"] : ["Controlo em linguagem natural","Estado dos sistemas num só resumo","Ações com confirmação clara"]).map((item) => <p key={item} className="border-b border-[#cfd8e3] py-4 text-sm font-semibold last:border-b-0 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0">{item}</p>)}
-          </div>
-        </div>
-      </Container>
-    </section>
-
-    <section className="border-y border-[#20354f] bg-[#10233b] py-20 text-white sm:py-28">
+    <section className="border-b border-[#d8e0e9] bg-white py-20 sm:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#69a0ff]">{en ? "Better use of space" : "Melhor utilização do espaço"}</p>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Better use of space" : "Melhor utilização do espaço"}</p>
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-[-.04em] sm:text-5xl">{en ? "Know where there is space before you need it." : "Saber onde existe espaço antes de precisar dele."}</h2>
-          <p className="mt-6 max-w-xl text-base leading-8 text-white/70 sm:text-lg">{en ? "Occupancy information becomes useful when it improves a real decision: where to sit, whether a room is available, when a shop is busiest or which areas are underused." : "A informação sobre ocupação torna-se útil quando melhora uma decisão real: onde sentar, se uma sala está disponível, quando uma loja tem mais movimento ou que zonas são pouco utilizadas."}</p>
-          <Link href={`${en ? "/en/services" : "/servicos"}#area-ocupacao`} className="mt-8 inline-flex border-b border-[#69a0ff] pb-1 text-sm font-bold text-white">{en ? "Smart Occupancy solutions" : "Soluções de Smart Occupancy"}</Link>
+          <p className="mt-6 max-w-xl text-base leading-8 text-content-muted sm:text-lg">{en ? "Occupancy information becomes useful when it improves a real decision: where to sit, whether a room is available, when a shop is busiest or which areas are underused." : "A informação sobre ocupação torna-se útil quando melhora uma decisão real: onde sentar, se uma sala está disponível, quando uma loja tem mais movimento ou que zonas são pouco utilizadas."}</p>
+          <Link href={`${en ? "/en/services" : "/servicos"}#area-ocupacao`} className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">{en ? "Smart Occupancy solutions" : "Soluções de Smart Occupancy"}</Link>
         </div>
-        <div className="border border-white/15 bg-white/[.035]">
+        <div className="border border-[#20354f] bg-[#10233b] text-white shadow-[0_24px_65px_rgba(15,35,60,.16)]">
           <div className="flex items-center justify-between border-b border-white/12 px-6 py-5"><span className="text-xs font-bold uppercase tracking-[.15em] text-white/45">{en ? "Space status" : "Estado dos espaços"}</span><span className="size-2 bg-emerald-400"/></div>
           {(en ? [["Study area","18 of 32 seats","Available"],["Meeting rooms","3 rooms","Available"],["Service point","Low demand","No waiting"]] : [["Zona de estudo","18 de 32 lugares","Disponível"],["Salas de reunião","3 salas","Disponível"],["Atendimento","Pouco movimento","Sem espera"]]).map(([name,value,status]) => <div key={name} className="grid grid-cols-[1fr_auto] gap-4 border-b border-white/10 px-6 py-5 last:border-b-0 sm:grid-cols-[1fr_auto_auto] sm:items-center">
             <span className="font-semibold">{name}</span><span className="text-sm text-white/50">{value}</span><span className="col-span-2 text-xs font-bold uppercase tracking-[.1em] text-emerald-300 sm:col-span-1">{status}</span>
