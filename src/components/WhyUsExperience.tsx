@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const isolatedSystems = [
   "Iluminação",
   "Videovigilância",
@@ -60,10 +64,48 @@ const englishPillars = [
   { number:"06", title:"Simplicity", description:"Technology complexity remains behind the scenes. For the client, everything should be simple, intuitive and work when needed.", highlight:"Press one button. The rest simply happens." },
 ];
 
+const teamExpertise = [
+  {
+    number: "01",
+    short: "Software",
+    role: "Engenharia informática",
+    title: "A lógica que une toda a solução.",
+    description: "Experiência de vários anos em desenvolvimento de software permite desenhar integrações sólidas, interfaces claras e automatizações adaptadas ao funcionamento real de cada espaço.",
+    strengths: ["Desenvolvimento de software", "Integração de sistemas", "Automação e interfaces"],
+  },
+  {
+    number: "02",
+    short: "Terreno",
+    role: "Instalação elétrica",
+    title: "Experiência prática onde tudo acontece.",
+    description: "Um eletricista com forte experiência no terreno assegura que cada solução é pensada para as condições reais da instalação e executada com rigor, segurança e atenção ao detalhe.",
+    strengths: ["Instalação e execução", "Diagnóstico no local", "Segurança e fiabilidade"],
+  },
+  {
+    number: "03",
+    short: "Engenharia",
+    role: "Engenharia eletrotécnica",
+    title: "Conhecimento técnico para decisões exigentes.",
+    description: "A experiência em circuitos elétricos e sistemas de alta tensão acrescenta profundidade técnica ao dimensionamento, à análise e à integração de infraestruturas elétricas.",
+    strengths: ["Circuitos elétricos", "Sistemas de alta tensão", "Dimensionamento técnico"],
+  },
+];
+
+const englishTeamExpertise = [
+  { number:"01", short:"Software", role:"Computer engineering", title:"The logic that brings the solution together.", description:"Several years of software development experience support robust integrations, clear interfaces and automations tailored to the real operation of each space.", strengths:["Software development","Systems integration","Automation and interfaces"] },
+  { number:"02", short:"On site", role:"Electrical installation", title:"Practical experience where everything happens.", description:"An electrician with extensive field experience ensures every solution reflects real installation conditions and is delivered with rigour, safety and attention to detail.", strengths:["Installation and delivery","On-site diagnostics","Safety and reliability"] },
+  { number:"03", short:"Engineering", role:"Electrical engineering", title:"Technical knowledge for demanding decisions.", description:"Experience in electrical circuits and high-voltage systems adds technical depth to the design, analysis and integration of electrical infrastructure.", strengths:["Electrical circuits","High-voltage systems","Technical design"] },
+];
+
 export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
   const en = locale === "en";
   const systems = en ? ["Lighting", "Video surveillance", "Climate control", "Access", "Energy"] : isolatedSystems;
   const localPillars = en ? englishPillars : pillars;
+  const localTeam = en ? englishTeamExpertise : teamExpertise;
+  const [activeExpertise, setActiveExpertise] = useState(0);
+  const [activePillar, setActivePillar] = useState(0);
+  const expertise = localTeam[activeExpertise];
+  const pillar = localPillars[activePillar];
   return (
     <div className="mt-16 sm:mt-24">
       <section className="border border-[#d9e1eb] bg-white shadow-[0_16px_45px_rgba(19,44,78,0.07)]">
@@ -123,6 +165,40 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
         </div>
       </section>
 
+      <section className="mt-24 overflow-hidden border border-[#20354f] bg-[#10233b] text-white shadow-[0_24px_70px_rgba(12,31,53,.15)]">
+        <div className="grid gap-8 border-b border-white/12 px-6 py-9 sm:px-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end lg:px-12 lg:py-12">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#79aaff]">{en ? "Complementary expertise" : "Competências complementares"}</p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-[-.04em] sm:text-5xl">{en ? "A multidisciplinary team behind every solution." : "Uma equipa multidisciplinar por detrás de cada solução."}</h2>
+          </div>
+          <p className="max-w-2xl text-base leading-8 text-white/65 sm:text-lg">{en ? "Software, field execution and electrical engineering are considered together from the outset. This reduces gaps between design, installation and day-to-day use." : "Software, execução no terreno e engenharia eletrotécnica são pensados em conjunto desde o início. Assim, reduzimos as falhas entre o projeto, a instalação e a utilização diária."}</p>
+        </div>
+
+        <div className="grid lg:grid-cols-[.72fr_1.28fr]">
+          <div className="border-b border-white/12 p-4 lg:border-b-0 lg:border-r lg:p-6">
+            <p className="px-3 pb-4 pt-2 text-[.68rem] font-bold uppercase tracking-[.18em] text-white/40">{en ? "Explore the team" : "Conheça as competências"}</p>
+            <div role="tablist" aria-label={en ? "Team expertise" : "Competências da equipa"} className="grid grid-cols-3 gap-2 lg:grid-cols-1">
+              {localTeam.map((item, index) => <button key={item.number} type="button" role="tab" aria-selected={activeExpertise === index} aria-controls="expertise-panel" onClick={() => setActiveExpertise(index)} className={`min-h-20 border px-3 py-4 text-left transition-colors sm:px-4 ${activeExpertise === index ? "border-white bg-white text-[#10233b]" : "border-white/12 bg-white/[.035] text-white/68 hover:bg-white/10 hover:text-white"}`}>
+                <span className={`block text-[.62rem] font-bold tracking-[.14em] ${activeExpertise === index ? "text-brand" : "text-[#79aaff]"}`}>{item.number}</span>
+                <span className="mt-2 block text-xs font-bold sm:text-base">{item.short}</span>
+              </button>)}
+            </div>
+          </div>
+
+          <div id="expertise-panel" role="tabpanel" aria-live="polite" className="flex min-h-[29rem] flex-col justify-between p-7 sm:p-10 lg:p-12">
+            <div key={expertise.number}>
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#79aaff]">{expertise.role}</p>
+              <h3 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.12] tracking-[-.035em] sm:text-4xl">{expertise.title}</h3>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">{expertise.description}</p>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {expertise.strengths.map((strength) => <span key={strength} className="border border-white/15 bg-white/[.045] px-3 py-2 text-xs font-semibold text-white/72">{strength}</span>)}
+              </div>
+            </div>
+            <p className="mt-12 border-t border-white/12 pt-6 text-sm font-semibold leading-7 text-white/85">{en ? "Three perspectives, considered as one project." : "Três perspetivas, pensadas como um único projeto."}</p>
+          </div>
+        </div>
+      </section>
+
       <section className="mt-24 grid items-start gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
         <div className="lg:sticky lg:top-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
@@ -136,32 +212,21 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
           </p>
         </div>
 
-        <div className="divide-y divide-[#d9e1eb] border-y border-[#d9e1eb] bg-white px-6 shadow-[0_12px_35px_rgba(19,44,78,0.05)] sm:px-8">
-          {localPillars.map((pillar) => (
-            <article
-              key={pillar.number}
-              className="group grid gap-5 py-8 sm:grid-cols-[4rem_1fr] sm:py-10"
-            >
-              <span className="text-sm font-bold tracking-[0.14em] text-brand">
-                {pillar.number}
-              </span>
-              <div>
-                <h3 className="text-xl font-bold tracking-[-0.025em] text-content-foreground sm:text-2xl">
-                  {pillar.title}
-                </h3>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-content-muted">
-                  {pillar.description}
-                </p>
-                <p className="mt-5 flex items-start gap-3 text-sm font-semibold leading-6 text-content-foreground">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 size-1.5 shrink-0 rounded-full bg-brand"
-                  />
-                  {pillar.highlight}
-                </p>
-              </div>
-            </article>
-          ))}
+        <div className="overflow-hidden border border-[#d9e1eb] bg-white shadow-[0_16px_45px_rgba(19,44,78,0.07)]">
+          <div role="tablist" aria-label={en ? "Our six principles" : "Os nossos seis princípios"} className="grid grid-cols-2 border-l border-t border-[#d9e1eb] sm:grid-cols-3">
+            {localPillars.map((item, index) => <button key={item.number} type="button" role="tab" aria-selected={activePillar === index} aria-controls="pillar-panel" onClick={() => setActivePillar(index)} className={`min-h-24 border-b border-r border-[#d9e1eb] px-4 py-4 text-left transition-colors ${activePillar === index ? "bg-[#102844] text-white" : "bg-white text-content-foreground hover:bg-[#f3f6f9]"}`}>
+              <span className={`block text-[.62rem] font-bold tracking-[.14em] ${activePillar === index ? "text-[#79aaff]" : "text-brand"}`}>{item.number}</span>
+              <span className="mt-2 block text-sm font-bold leading-5">{item.title}</span>
+            </button>)}
+          </div>
+          <article id="pillar-panel" role="tabpanel" aria-live="polite" className="min-h-[22rem] p-7 sm:p-10">
+            <div key={pillar.number}>
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-brand">{en ? "Principle" : "Princípio"} {pillar.number}</p>
+              <h3 className="mt-5 text-2xl font-bold tracking-[-.03em] text-content-foreground sm:text-3xl">{pillar.title}</h3>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-content-muted">{pillar.description}</p>
+              <p className="mt-8 border-l-2 border-brand pl-5 text-base font-bold leading-7 text-content-foreground">{pillar.highlight}</p>
+            </div>
+          </article>
         </div>
       </section>
 
