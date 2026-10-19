@@ -37,7 +37,7 @@ export function HomeControlDemo({ locale }: { locale: Locale }) {
   const item = content.items[active];
 
   return (
-    <div className="grid items-center gap-12 lg:grid-cols-[.92fr_1.08fr] lg:gap-20">
+    <div className="grid items-start gap-8 lg:grid-cols-[.92fr_1.08fr] lg:gap-x-20 lg:gap-y-0">
       <div>
         <p className="text-xs font-bold uppercase tracking-[.2em] text-[#79aaff]">{content.eyebrow}</p>
         <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.08] tracking-[-.04em] text-white sm:text-5xl">{content.title}</h2>
@@ -50,15 +50,11 @@ export function HomeControlDemo({ locale }: { locale: Locale }) {
             </button>
           ))}
         </div>
-        <div id="home-control-panel" role="tabpanel" aria-live="polite" key={item.label} className="mt-7 min-h-32 border-l-2 border-[#5d91e9] pl-5">
-          <h3 className="text-xl font-bold text-white sm:text-2xl">{item.title}</h3>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-white/62 sm:text-base">{item.text}</p>
-        </div>
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-xl items-center justify-center py-4 sm:py-8">
+      <div className="relative mx-auto flex w-full max-w-xl items-center justify-center py-2 sm:py-8 lg:col-start-2 lg:row-span-2 lg:row-start-1">
         <div className="absolute inset-x-[8%] top-[16%] h-[65%] border border-white/10 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.045)_1px,transparent_1px)] bg-[size:32px_32px]" aria-hidden="true" />
-        <div key={item.image} className="relative mx-auto w-[min(16.5rem,72vw)] overflow-hidden rounded-[1.65rem] border border-white/25 bg-[#090d13] p-2 shadow-[0_30px_80px_rgba(0,0,0,.42)]">
+        <div key={item.image} className="relative mx-auto w-[min(13rem,58vw)] overflow-hidden rounded-[1.45rem] border border-white/25 bg-[#090d13] p-1.5 shadow-[0_30px_80px_rgba(0,0,0,.42)] sm:w-[min(16.5rem,72vw)] sm:rounded-[1.65rem] sm:p-2">
           <div className="relative aspect-[.49] overflow-hidden rounded-[1.2rem] bg-[#111820]">
             <Image src={item.image} alt={item.alt} fill sizes="(max-width: 640px) 72vw, 264px" className="object-contain" priority={active === 0} />
           </div>
@@ -67,6 +63,10 @@ export function HomeControlDemo({ locale }: { locale: Locale }) {
           <span className="block h-1 w-8 bg-[#5d91e9]" />
           <span className="mt-3 block text-xs font-semibold leading-5 text-white/72">{item.label}</span>
         </div>
+      </div>
+      <div id="home-control-panel" role="tabpanel" aria-live="polite" key={item.label} className="min-h-28 border-l-2 border-[#5d91e9] pl-5 lg:col-start-1 lg:row-start-2 lg:mt-7 lg:min-h-32">
+        <h3 className="text-xl font-bold text-white sm:text-2xl">{item.title}</h3>
+        <p className="mt-3 max-w-xl text-sm leading-7 text-white/62 sm:text-base">{item.text}</p>
       </div>
     </div>
   );

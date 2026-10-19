@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { HomeControlDemo } from "@/components/home/HomeControlDemo";
 import { HomeNeedsExplorer } from "@/components/home/HomeNeedsExplorer";
+import { HomeCommitmentInteraction, HomeProcessInteraction, HomePurposeInteraction } from "@/components/home/HomeInstitutionalInteractions";
 import type { Locale } from "@/lib/i18n";
 
 type IconName = "shield" | "space" | "energy" | "systems" | "home" | "lodging" | "business" | "building" | "shared";
@@ -49,9 +50,7 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
         </div>
         <div className="border-l-2 border-brand pl-6 sm:pl-9">
           <p className="max-w-3xl text-lg leading-9 text-content-muted sm:text-2xl sm:leading-10">{en ? "We connect security, comfort and operations so people can understand and control their spaces without unnecessary complexity." : "Ligamos segurança, conforto e operação para que as pessoas compreendam e controlem os seus espaços sem complexidade desnecessária."}</p>
-          <div className="mt-8 grid grid-cols-3 border-y border-[#d8e0e9]">
-            {(en ? ["More control", "Less complexity", "Ready to evolve"] : ["Mais controlo", "Menos complexidade", "Preparado para evoluir"]).map((item) => <span key={item} className="flex min-h-20 items-center border-r border-[#d8e0e9] px-3 text-xs font-bold leading-5 text-[#42536a] last:border-r-0 sm:px-5 sm:text-sm">{item}</span>)}
-          </div>
+          <HomePurposeInteraction locale={locale} />
         </div>
       </Container>
     </section>
@@ -99,11 +98,11 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
     <section className="border-y border-[#d8e0e9] bg-[#f4f6f8] py-20 sm:py-28">
       <Container className="grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
         <div><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Our commitment" : "O nosso compromisso"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "A solution you can understand and rely on." : "Uma solução que consegue compreender e na qual pode confiar."}</h2><Link href={en ? "/en/why-us" : "/porque-nos"} className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">{en ? "Why IntegroLink" : "Porquê a IntegroLink"}</Link></div>
-        <div className="grid gap-x-10 sm:grid-cols-2">{(en ? [["Designed for your reality","We understand the space before proposing a solution."],["Independent technology","We select compatible technology suited to the objective."],["Clear from day one","We explain how the solution works and what it delivers."],["Present after installation","We support, maintain and evolve the system."]] : [["Pensada para a sua realidade","Compreendemos o espaço antes de propor uma solução."],["Tecnologia independente","Selecionamos tecnologia compatível e adequada ao objetivo."],["Clara desde o primeiro dia","Explicamos como funciona e o que a solução entrega."],["Presentes depois da instalação","Acompanhamos, mantemos e fazemos evoluir o sistema."]]).map(([title,text]) => <div key={title} className="border-t border-[#cbd5e1] py-6"><h3 className="font-bold">{title}</h3><p className="mt-3 text-sm leading-7 text-content-muted">{text}</p></div>)}</div>
+        <HomeCommitmentInteraction locale={locale} />
       </Container>
     </section>
 
-    <section className="py-20 sm:py-28"><Container><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A straightforward process" : "Um processo simples"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "From the first conversation to ongoing support." : "Da primeira conversa ao acompanhamento contínuo."}</h2><div className="mt-12 grid border-l border-t border-[#cfd8e3] md:grid-cols-4">{(en ? [["Understand","We visit or discuss the space, priorities and constraints."],["Design","We define a clear and scalable solution."],["Implement","We install, configure and test the complete system."],["Support","We remain available for maintenance and evolution."]] : [["Compreender","Conhecemos o espaço, as prioridades e os condicionantes."],["Desenhar","Definimos uma solução clara e preparada para evoluir."],["Implementar","Instalamos, configuramos e testamos o sistema completo."],["Acompanhar","Mantemo-nos disponíveis para manutenção e evolução."]]).map(([title,text]) => <article key={title} className="border-b border-r border-[#cfd8e3] p-6 sm:p-8"><h3 className="text-lg font-bold">{title}</h3><p className="mt-4 text-sm leading-7 text-content-muted">{text}</p></article>)}</div></Container></section>
+    <section className="py-20 sm:py-28"><Container><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A straightforward process" : "Um processo simples"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "From the first conversation to ongoing support." : "Da primeira conversa ao acompanhamento contínuo."}</h2><HomeProcessInteraction locale={locale} /></Container></section>
 
     <section className="bg-brand py-20 text-white sm:py-24"><Container className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-white/65">{en ? "Your space, working better" : "O seu espaço, a funcionar melhor"}</p><h2 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.08] tracking-[-.045em] sm:text-6xl">{en ? "What would you like to make simpler, safer or more efficient?" : "O que gostaria de tornar mais simples, seguro ou eficiente?"}</h2></div><Link href={en ? "/en/contact" : "/contactos"} className="inline-flex min-h-13 items-center justify-center bg-white px-7 text-sm font-bold text-[#10233b] transition-colors hover:bg-[#10233b] hover:text-white">{en ? "Talk to us" : "Falar connosco"}</Link></Container></section>
   </div>;
