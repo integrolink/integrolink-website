@@ -49,16 +49,28 @@ const processCopy = {
 export function HomePurposeInteraction({ locale }: { locale: Locale }) {
   const items = purposeCopy[locale];
 
-  return <div className="relative mt-10 pl-8 sm:pl-0 sm:pt-8">
-    <div className="absolute bottom-2 left-[.43rem] top-2 w-px bg-[linear-gradient(to_bottom,#2375ff,#b9c6d6_75%,transparent)] sm:bottom-auto sm:left-[8%] sm:right-[8%] sm:top-[2.7rem] sm:h-px sm:w-auto sm:bg-[linear-gradient(to_right,#2375ff,#91b7f8_50%,#b9c6d6)]" aria-hidden="true" />
-    <div className="relative grid gap-9 sm:grid-cols-3 sm:gap-7">
-      {items.map((item,index) => <article key={item.title} className={`relative sm:pt-10 ${index === 1 ? "sm:translate-y-6" : index === 2 ? "sm:translate-y-12" : ""}`}>
-        <span className="absolute -left-[1.9rem] top-1 size-3 rounded-full bg-brand ring-4 ring-white sm:left-0 sm:top-0 sm:size-4" aria-hidden="true" />
-        <span className="select-none text-5xl font-black tracking-[-.07em] text-brand/[.09] sm:text-6xl" aria-hidden="true">0{index + 1}</span>
-        <h3 className="-mt-4 text-lg font-bold tracking-[-.02em] text-content-foreground sm:text-xl">{item.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-content-muted">{item.text}</p>
-      </article>)}
+  return <div className="relative mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-12 sm:gap-y-10 lg:grid-cols-[1fr_1.15fr_1fr] lg:items-center lg:gap-5">
+    <article className="border-t border-[#cbd5e1] pt-5 lg:border-0 lg:pr-7 lg:text-right">
+      <h3 className="text-lg font-bold tracking-[-.02em] text-content-foreground sm:text-xl">{items[0].title}</h3>
+      <p className="mt-3 text-[.78rem] leading-6 text-content-muted sm:text-sm sm:leading-7">{items[0].text}</p>
+    </article>
+
+    <div className="relative order-first col-span-full mx-auto grid aspect-square w-[min(18rem,80vw)] place-items-center rounded-full border border-brand/35 bg-[radial-gradient(circle_at_center,rgba(35,117,255,.11)_0,rgba(35,117,255,.04)_48%,transparent_49%)] sm:w-72 lg:order-none lg:col-span-1 lg:w-full" aria-label={locale === "en" ? "People at the centre of the solution" : "As pessoas no centro da solução"}>
+      <div className="absolute inset-[12%] rounded-full border border-brand/20" aria-hidden="true" />
+      <div className="absolute inset-[27%] rounded-full bg-brand shadow-[0_18px_50px_rgba(35,117,255,.25)]" aria-hidden="true" />
+      <p className="relative max-w-32 text-center text-sm font-bold leading-5 text-white sm:text-base">{locale === "en" ? <>People at the<br/>centre</> : <>As pessoas<br/>no centro</>}</p>
+      <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-3 text-[.62rem] font-bold uppercase tracking-[.18em] text-brand">IntegroLink</span>
     </div>
+
+    <article className="border-t border-[#cbd5e1] pt-5 lg:border-0 lg:pl-7">
+      <h3 className="text-lg font-bold tracking-[-.02em] text-content-foreground sm:text-xl">{items[1].title}</h3>
+      <p className="mt-3 text-[.78rem] leading-6 text-content-muted sm:text-sm sm:leading-7">{items[1].text}</p>
+    </article>
+
+    <article className="col-span-2 mx-auto max-w-md border-t border-[#cbd5e1] pt-5 text-center lg:col-span-1 lg:col-start-2 lg:mx-8 lg:max-w-none">
+      <h3 className="text-lg font-bold tracking-[-.02em] text-content-foreground sm:text-xl">{items[2].title}</h3>
+      <p className="mt-3 text-[.78rem] leading-6 text-content-muted sm:text-sm sm:leading-7">{items[2].text}</p>
+    </article>
   </div>;
 }
 
@@ -67,12 +79,12 @@ export function HomeCommitmentInteraction({ locale }: { locale: Locale }) {
   const verbs = locale === "en" ? ["Understand", "Select", "Explain", "Support"] : ["Compreender", "Selecionar", "Explicar", "Acompanhar"];
 
   return <div className="relative border-y border-[#cbd5e1]">
-    <span className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 rotate-90 select-none text-[5rem] font-black uppercase tracking-[.18em] text-brand/[.035] xl:block" aria-hidden="true">IntegroLink</span>
-    <div className="divide-y divide-[#cbd5e1]">
-      {items.map((item,index) => <article key={item.title} className={`relative grid gap-x-5 py-6 sm:grid-cols-[4rem_.72fr_1.28fr] sm:items-center sm:py-7 ${index % 2 === 1 ? "sm:ml-10" : "sm:mr-10"}`}>
-        <span className="row-span-2 text-4xl font-black tracking-[-.06em] text-brand/18 sm:text-5xl" aria-hidden="true">0{index + 1}</span>
-        <div><p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{verbs[index]}</p><h3 className="mt-2 text-lg font-bold leading-6 tracking-[-.02em] text-content-foreground">{item.title}</h3></div>
-        <p className="mt-3 text-sm leading-7 text-content-muted sm:mt-0 sm:border-l sm:border-[#d6dee8] sm:pl-6">{item.text}</p>
+    <div className="grid grid-cols-2">
+      {items.map((item,index) => <article key={item.title} className={`relative overflow-hidden py-7 ${index % 2 === 0 ? "pr-4 sm:pr-9" : "border-l border-[#cbd5e1] pl-4 sm:pl-9"} ${index > 1 ? "border-t border-[#cbd5e1]" : ""}`}>
+        <p className="pointer-events-none absolute -right-2 -top-2 select-none text-[2rem] font-black uppercase tracking-[-.06em] text-brand/[.055] sm:-top-3 sm:text-[3.5rem]" aria-hidden="true">{verbs[index]}</p>
+        <p className="relative text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{verbs[index]}</p>
+        <h3 className="relative mt-4 max-w-xs text-base font-bold leading-6 tracking-[-.025em] text-content-foreground sm:text-xl sm:leading-7">{item.title}</h3>
+        <p className="relative mt-3 max-w-sm text-[.76rem] leading-6 text-content-muted sm:mt-4 sm:text-sm sm:leading-7">{item.text}</p>
       </article>)}
     </div>
   </div>;
