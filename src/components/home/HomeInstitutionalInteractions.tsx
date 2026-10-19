@@ -47,48 +47,33 @@ const processCopy = {
 };
 
 export function HomePurposeInteraction({ locale }: { locale: Locale }) {
-  const [active, setActive] = useState(0);
   const items = purposeCopy[locale];
-  const item = items[active];
 
-  return <div className="relative mt-10">
-    <div className="absolute left-2 right-2 top-3 h-px bg-[#cbd6e2]" aria-hidden="true"><span className="block h-px bg-brand transition-[width] duration-300" style={{ width: `${(active / (items.length - 1)) * 100}%` }} /></div>
-    <div role="tablist" aria-label={locale === "en" ? "Purpose outcomes" : "Resultados do nosso propósito"} className="relative grid grid-cols-3 gap-3">
-      {items.map((option,index) => <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="purpose-panel" onClick={() => setActive(index)} className="group text-left">
-        <span className={`block size-6 rounded-full border-[5px] transition-all ${active === index ? "border-brand bg-white ring-4 ring-brand/10" : "border-[#cbd6e2] bg-white group-hover:border-[#7ca8ed]"}`} aria-hidden="true" />
-        <span className={`mt-4 block text-xs font-bold leading-5 transition-colors sm:text-sm ${active === index ? "text-[#102844]" : "text-[#718096]"}`}>{option.title}</span>
-      </button>)}
-    </div>
-    <div id="purpose-panel" role="tabpanel" aria-live="polite" className="relative mt-8 min-h-36 overflow-hidden bg-[linear-gradient(100deg,#edf4ff_0%,rgba(237,244,255,.25)_70%,transparent_100%)] px-6 py-7 sm:px-8">
-      <span className="absolute -right-1 -top-7 select-none text-[7rem] font-black leading-none text-brand/[.055]" aria-hidden="true">0{active + 1}</span>
-      <p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{locale === "en" ? "The outcome" : "O resultado"}</p>
-      <p key={item.title} className="relative mt-3 max-w-xl text-base font-semibold leading-8 text-content-muted">{item.text}</p>
+  return <div className="relative mt-10 pl-8 sm:pl-0 sm:pt-8">
+    <div className="absolute bottom-2 left-[.43rem] top-2 w-px bg-[linear-gradient(to_bottom,#2375ff,#b9c6d6_75%,transparent)] sm:bottom-auto sm:left-[8%] sm:right-[8%] sm:top-[2.7rem] sm:h-px sm:w-auto sm:bg-[linear-gradient(to_right,#2375ff,#91b7f8_50%,#b9c6d6)]" aria-hidden="true" />
+    <div className="relative grid gap-9 sm:grid-cols-3 sm:gap-7">
+      {items.map((item,index) => <article key={item.title} className={`relative sm:pt-10 ${index === 1 ? "sm:translate-y-6" : index === 2 ? "sm:translate-y-12" : ""}`}>
+        <span className="absolute -left-[1.9rem] top-1 size-3 rounded-full bg-brand ring-4 ring-white sm:left-0 sm:top-0 sm:size-4" aria-hidden="true" />
+        <span className="select-none text-5xl font-black tracking-[-.07em] text-brand/[.09] sm:text-6xl" aria-hidden="true">0{index + 1}</span>
+        <h3 className="-mt-4 text-lg font-bold tracking-[-.02em] text-content-foreground sm:text-xl">{item.title}</h3>
+        <p className="mt-3 text-sm leading-7 text-content-muted">{item.text}</p>
+      </article>)}
     </div>
   </div>;
 }
 
 export function HomeCommitmentInteraction({ locale }: { locale: Locale }) {
-  const [active, setActive] = useState(0);
   const items = commitmentCopy[locale];
-  const item = items[active];
+  const verbs = locale === "en" ? ["Understand", "Select", "Explain", "Support"] : ["Compreender", "Selecionar", "Explicar", "Acompanhar"];
 
-  return <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
-    <div className="relative min-h-[25rem] overflow-hidden">
-      <div className="absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b9cce4]" aria-hidden="true" />
-      <div className="absolute left-1/2 top-1/2 size-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/25 bg-brand/[.035]" aria-hidden="true" />
-      <svg className="absolute inset-0 size-full text-[#b9cce4]" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"><path d="M250 200 90 80M250 200 410 80M250 200 90 320M250 200 410 320" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="5 6"/></svg>
-      <div className="absolute left-1/2 top-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[#102844] text-center shadow-[0_18px_50px_rgba(16,40,68,.22)]"><span className="text-[.68rem] font-bold uppercase tracking-[.14em] text-white">Integro<br/><span className="text-[#79aaff]">Link</span></span></div>
-      <div role="tablist" aria-label={locale === "en" ? "Our commitments" : "Os nossos compromissos"}>
-        {items.map((option,index) => {
-          const positions = ["left-0 top-8", "right-0 top-8 text-right", "bottom-8 left-0", "bottom-8 right-0 text-right"];
-          return <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="commitment-panel" onClick={() => setActive(index)} className={`absolute max-w-[9rem] sm:max-w-[12rem] ${positions[index]} group`}><span className={`inline-flex size-8 items-center justify-center rounded-full text-[.62rem] font-bold transition-all ${active === index ? "bg-brand text-white ring-4 ring-brand/12" : "border border-[#b9cce4] bg-white text-brand group-hover:border-brand"}`}>0{index + 1}</span><span className={`mt-2 block text-xs font-bold leading-5 transition-colors sm:text-sm ${active === index ? "text-brand" : "text-content-foreground"}`}>{option.title}</span></button>;
-        })}
-      </div>
-    </div>
-    <div id="commitment-panel" role="tabpanel" aria-live="polite" className="relative min-h-60 border-l border-[#b9cce4] pl-7 sm:pl-10">
-      <span className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{locale === "en" ? "Our commitment in practice" : "O compromisso na prática"}</span>
-      <div key={item.title}><h3 className="mt-5 max-w-md text-2xl font-bold leading-tight tracking-[-.03em] sm:text-3xl">{item.title}</h3><p className="mt-5 max-w-lg text-base leading-8 text-content-muted">{item.text}</p></div>
-      <span className="absolute bottom-0 left-0 h-16 w-px bg-brand" aria-hidden="true" />
+  return <div className="relative border-y border-[#cbd5e1]">
+    <span className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 rotate-90 select-none text-[5rem] font-black uppercase tracking-[.18em] text-brand/[.035] xl:block" aria-hidden="true">IntegroLink</span>
+    <div className="divide-y divide-[#cbd5e1]">
+      {items.map((item,index) => <article key={item.title} className={`relative grid gap-x-5 py-6 sm:grid-cols-[4rem_.72fr_1.28fr] sm:items-center sm:py-7 ${index % 2 === 1 ? "sm:ml-10" : "sm:mr-10"}`}>
+        <span className="row-span-2 text-4xl font-black tracking-[-.06em] text-brand/18 sm:text-5xl" aria-hidden="true">0{index + 1}</span>
+        <div><p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{verbs[index]}</p><h3 className="mt-2 text-lg font-bold leading-6 tracking-[-.02em] text-content-foreground">{item.title}</h3></div>
+        <p className="mt-3 text-sm leading-7 text-content-muted sm:mt-0 sm:border-l sm:border-[#d6dee8] sm:pl-6">{item.text}</p>
+      </article>)}
     </div>
   </div>;
 }
