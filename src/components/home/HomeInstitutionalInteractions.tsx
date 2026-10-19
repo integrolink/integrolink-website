@@ -51,11 +51,19 @@ export function HomePurposeInteraction({ locale }: { locale: Locale }) {
   const items = purposeCopy[locale];
   const item = items[active];
 
-  return <div className="mt-8 border border-[#d8e0e9] bg-white">
-    <div role="tablist" aria-label={locale === "en" ? "Purpose outcomes" : "Resultados do nosso propósito"} className="grid grid-cols-3 border-l border-t border-[#d8e0e9]">
-      {items.map((option,index) => <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="purpose-panel" onClick={() => setActive(index)} className={`min-h-20 border-b border-r border-[#d8e0e9] px-2 py-3 text-left text-xs font-bold leading-5 transition-colors sm:px-4 sm:text-sm ${active === index ? "bg-[#102844] text-white" : "bg-[#f7f9fb] text-[#42536a] hover:bg-white"}`}><span className={`mb-2 block text-[.58rem] tracking-[.14em] ${active === index ? "text-[#79aaff]" : "text-brand"}`}>0{index + 1}</span>{option.title}</button>)}
+  return <div className="relative mt-10">
+    <div className="absolute left-2 right-2 top-3 h-px bg-[#cbd6e2]" aria-hidden="true"><span className="block h-px bg-brand transition-[width] duration-300" style={{ width: `${(active / (items.length - 1)) * 100}%` }} /></div>
+    <div role="tablist" aria-label={locale === "en" ? "Purpose outcomes" : "Resultados do nosso propósito"} className="relative grid grid-cols-3 gap-3">
+      {items.map((option,index) => <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="purpose-panel" onClick={() => setActive(index)} className="group text-left">
+        <span className={`block size-6 rounded-full border-[5px] transition-all ${active === index ? "border-brand bg-white ring-4 ring-brand/10" : "border-[#cbd6e2] bg-white group-hover:border-[#7ca8ed]"}`} aria-hidden="true" />
+        <span className={`mt-4 block text-xs font-bold leading-5 transition-colors sm:text-sm ${active === index ? "text-[#102844]" : "text-[#718096]"}`}>{option.title}</span>
+      </button>)}
     </div>
-    <div id="purpose-panel" role="tabpanel" aria-live="polite" className="min-h-32 px-5 py-6 sm:px-7"><p key={item.title} className="max-w-2xl text-sm font-semibold leading-7 text-content-muted sm:text-base">{item.text}</p></div>
+    <div id="purpose-panel" role="tabpanel" aria-live="polite" className="relative mt-8 min-h-36 overflow-hidden bg-[linear-gradient(100deg,#edf4ff_0%,rgba(237,244,255,.25)_70%,transparent_100%)] px-6 py-7 sm:px-8">
+      <span className="absolute -right-1 -top-7 select-none text-[7rem] font-black leading-none text-brand/[.055]" aria-hidden="true">0{active + 1}</span>
+      <p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{locale === "en" ? "The outcome" : "O resultado"}</p>
+      <p key={item.title} className="relative mt-3 max-w-xl text-base font-semibold leading-8 text-content-muted">{item.text}</p>
+    </div>
   </div>;
 }
 
@@ -64,11 +72,24 @@ export function HomeCommitmentInteraction({ locale }: { locale: Locale }) {
   const items = commitmentCopy[locale];
   const item = items[active];
 
-  return <div className="overflow-hidden border border-[#cbd5e1] bg-white shadow-[0_18px_45px_rgba(16,40,68,.07)]">
-    <div role="tablist" aria-label={locale === "en" ? "Our commitments" : "Os nossos compromissos"} className="grid grid-cols-2 border-l border-t border-[#d8e0e9]">
-      {items.map((option,index) => <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="commitment-panel" onClick={() => setActive(index)} className={`min-h-28 border-b border-r border-[#d8e0e9] p-4 text-left transition-colors sm:p-5 ${active === index ? "bg-brand text-white" : "bg-white text-content-foreground hover:bg-[#f4f7fa]"}`}><span className={`block text-[.62rem] font-bold tracking-[.14em] ${active === index ? "text-white/65" : "text-brand"}`}>0{index + 1}</span><span className="mt-3 block text-sm font-bold leading-5 sm:text-base">{option.title}</span></button>)}
+  return <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
+    <div className="relative min-h-[25rem] overflow-hidden">
+      <div className="absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b9cce4]" aria-hidden="true" />
+      <div className="absolute left-1/2 top-1/2 size-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/25 bg-brand/[.035]" aria-hidden="true" />
+      <svg className="absolute inset-0 size-full text-[#b9cce4]" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"><path d="M250 200 90 80M250 200 410 80M250 200 90 320M250 200 410 320" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="5 6"/></svg>
+      <div className="absolute left-1/2 top-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[#102844] text-center shadow-[0_18px_50px_rgba(16,40,68,.22)]"><span className="text-[.68rem] font-bold uppercase tracking-[.14em] text-white">Integro<br/><span className="text-[#79aaff]">Link</span></span></div>
+      <div role="tablist" aria-label={locale === "en" ? "Our commitments" : "Os nossos compromissos"}>
+        {items.map((option,index) => {
+          const positions = ["left-0 top-8", "right-0 top-8 text-right", "bottom-8 left-0", "bottom-8 right-0 text-right"];
+          return <button key={option.title} type="button" role="tab" aria-selected={active === index} aria-controls="commitment-panel" onClick={() => setActive(index)} className={`absolute max-w-[9rem] sm:max-w-[12rem] ${positions[index]} group`}><span className={`inline-flex size-8 items-center justify-center rounded-full text-[.62rem] font-bold transition-all ${active === index ? "bg-brand text-white ring-4 ring-brand/12" : "border border-[#b9cce4] bg-white text-brand group-hover:border-brand"}`}>0{index + 1}</span><span className={`mt-2 block text-xs font-bold leading-5 transition-colors sm:text-sm ${active === index ? "text-brand" : "text-content-foreground"}`}>{option.title}</span></button>;
+        })}
+      </div>
     </div>
-    <div id="commitment-panel" role="tabpanel" aria-live="polite" className="min-h-40 p-6 sm:p-8"><div key={item.title} className="border-l-2 border-brand pl-5"><p className="text-xs font-bold uppercase tracking-[.16em] text-brand">{locale === "en" ? "Our commitment in practice" : "O compromisso na prática"}</p><p className="mt-4 max-w-2xl text-base leading-8 text-content-muted">{item.text}</p></div></div>
+    <div id="commitment-panel" role="tabpanel" aria-live="polite" className="relative min-h-60 border-l border-[#b9cce4] pl-7 sm:pl-10">
+      <span className="text-[.65rem] font-bold uppercase tracking-[.18em] text-brand">{locale === "en" ? "Our commitment in practice" : "O compromisso na prática"}</span>
+      <div key={item.title}><h3 className="mt-5 max-w-md text-2xl font-bold leading-tight tracking-[-.03em] sm:text-3xl">{item.title}</h3><p className="mt-5 max-w-lg text-base leading-8 text-content-muted">{item.text}</p></div>
+      <span className="absolute bottom-0 left-0 h-16 w-px bg-brand" aria-hidden="true" />
+    </div>
   </div>;
 }
 
@@ -77,11 +98,16 @@ export function HomeProcessInteraction({ locale }: { locale: Locale }) {
   const items = processCopy[locale];
   const item = items[active];
 
-  return <div className="mt-12 overflow-hidden border border-[#cbd5e1] bg-white shadow-[0_18px_45px_rgba(16,40,68,.06)]">
-    <div className="h-1 bg-[#e3e9f0]"><div className="h-full bg-brand transition-[width] duration-300" style={{ width: `${((active + 1) / items.length) * 100}%` }} /></div>
-    <div role="tablist" aria-label={locale === "en" ? "Project stages" : "Etapas do projeto"} className="grid grid-cols-4 border-l border-[#d8e0e9]">
-      {items.map((option,index) => <button key={option.verb} type="button" role="tab" aria-selected={active === index} aria-controls="process-panel" onClick={() => setActive(index)} className={`min-h-24 border-b border-r border-[#d8e0e9] px-2 py-4 text-left transition-colors sm:px-5 ${active === index ? "bg-[#102844] text-white" : "bg-white text-content-foreground hover:bg-[#f4f7fa]"}`}><span className={`block text-[.62rem] font-bold tracking-[.14em] ${active === index ? "text-[#79aaff]" : "text-brand"}`}>0{index + 1}</span><span className="mt-2 block text-[.7rem] font-bold leading-4 sm:text-base">{option.verb}</span></button>)}
+  return <div className="mt-14">
+    <div className="relative px-1 pt-1">
+      <div className="absolute left-[7%] right-[7%] top-6 h-px bg-[#b9c6d6]" aria-hidden="true"><span className="block h-px bg-brand transition-[width] duration-300" style={{ width: `${(active / (items.length - 1)) * 100}%` }} /></div>
+      <div role="tablist" aria-label={locale === "en" ? "Project stages" : "Etapas do projeto"} className="relative grid grid-cols-4">
+        {items.map((option,index) => <button key={option.verb} type="button" role="tab" aria-selected={active === index} aria-controls="process-panel" onClick={() => setActive(index)} className="group flex flex-col items-center text-center"><span className={`grid size-11 place-items-center rounded-full border text-[.65rem] font-bold transition-all ${active === index ? "border-brand bg-brand text-white shadow-[0_0_0_6px_rgba(35,117,255,.1)]" : "border-[#b9c6d6] bg-white text-[#708197] group-hover:border-brand group-hover:text-brand"}`}>0{index + 1}</span><span className={`mt-4 text-[.68rem] font-bold leading-4 transition-colors sm:text-base ${active === index ? "text-[#102844]" : "text-[#708197]"}`}>{option.verb}</span></button>)}
+      </div>
     </div>
-    <div id="process-panel" role="tabpanel" aria-live="polite" className="grid min-h-52 gap-5 p-7 sm:grid-cols-[.7fr_1.3fr] sm:items-center sm:p-10"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand">{locale === "en" ? `Stage 0${active + 1}` : `Etapa 0${active + 1}`}</p><div key={item.verb}><h3 className="text-2xl font-bold tracking-[-.03em] sm:text-3xl">{item.label}</h3><p className="mt-4 max-w-2xl text-base leading-8 text-content-muted">{item.text}</p></div></div>
+    <div id="process-panel" role="tabpanel" aria-live="polite" className="relative mt-12 grid min-h-60 overflow-hidden bg-[#102844] text-white sm:grid-cols-[.42fr_1.58fr] sm:items-center">
+      <div className="relative grid min-h-36 place-items-center overflow-hidden bg-brand sm:min-h-full"><span className="select-none text-7xl font-black tracking-[-.08em] text-white/18 sm:text-8xl" aria-hidden="true">0{active + 1}</span><span className="absolute text-[.65rem] font-bold uppercase tracking-[.2em] text-white">{locale === "en" ? "Stage" : "Etapa"}</span></div>
+      <div key={item.verb} className="px-7 py-8 sm:px-12"><h3 className="text-2xl font-bold tracking-[-.03em] sm:text-4xl">{item.label}</h3><p className="mt-4 max-w-2xl text-base leading-8 text-white/65">{item.text}</p></div>
+    </div>
   </div>;
 }
