@@ -10,7 +10,6 @@ const copy = {
     title: "Uma interface. Várias formas de controlar o espaço.",
     intro: "Da visão geral ao assistente de IA, a informação mantém o mesmo contexto. Não são aplicações soltas: são diferentes portas de entrada para a mesma solução.",
     select: "Explorar a interface",
-    screen: "Ecrã selecionado",
     items: [
       { label: "Visão geral", title: "O essencial, visível num instante.", text: "Clima, iluminação, segurança e energia organizados em torno das decisões do dia a dia.", image: "/fotos/foto4.jpeg", alt: "Interface principal da habitação IntegroLink" },
       { label: "Segurança", title: "Ver e agir sem trocar de aplicação.", text: "Câmaras, estados e alertas ficam disponíveis no mesmo ambiente de controlo.", image: "/fotos/foto2.jpeg", alt: "Ecrã de videovigilância e energia" },
@@ -23,7 +22,6 @@ const copy = {
     title: "One interface. Several ways to control the space.",
     intro: "From the overview to the AI assistant, information keeps the same context. These are not separate apps: they are different entry points into the same solution.",
     select: "Explore the interface",
-    screen: "Selected screen",
     items: [
       { label: "Overview", title: "What matters, visible at a glance.", text: "Climate, lighting, security and energy organised around everyday decisions.", image: "/fotos/foto4.jpeg", alt: "Main IntegroLink home interface" },
       { label: "Security", title: "See and act without switching apps.", text: "Cameras, system states and alerts remain available in the same control environment.", image: "/fotos/foto2.jpeg", alt: "Video surveillance and energy screen" },
@@ -60,7 +58,6 @@ export function HomeControlDemo({ locale }: { locale: Locale }) {
 
       <div className="relative mx-auto flex w-full max-w-xl items-center justify-center py-4 sm:py-8">
         <div className="absolute inset-x-[8%] top-[16%] h-[65%] border border-white/10 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.045)_1px,transparent_1px)] bg-[size:32px_32px]" aria-hidden="true" />
-        <div className="absolute left-[8%] top-[16%] hidden border border-white/15 bg-[#122b49] px-3 py-2 text-[.62rem] font-bold uppercase tracking-[.14em] text-white/50 sm:block">{content.screen}</div>
         <div key={item.image} className="relative mx-auto w-[min(16.5rem,72vw)] overflow-hidden rounded-[1.65rem] border border-white/25 bg-[#090d13] p-2 shadow-[0_30px_80px_rgba(0,0,0,.42)]">
           <div className="relative aspect-[.49] overflow-hidden rounded-[1.2rem] bg-[#111820]">
             <Image src={item.image} alt={item.alt} fill sizes="(max-width: 640px) 72vw, 264px" className="object-contain" priority={active === 0} />
