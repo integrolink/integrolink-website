@@ -128,7 +128,7 @@ function CategoryIcon({ name }: { name: CategoryIconName }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="size-7 sm:size-8"
+      className="size-5 sm:size-8"
     >
       {iconPaths[name]}
     </svg>
@@ -195,14 +195,14 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
                 setActiveId(item.id);
                 setIsExpanded(false);
               }}
-              className={`group flex min-h-28 flex-col items-center justify-center gap-2.5 border px-2 py-4 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:min-h-40 sm:gap-4 sm:px-3 sm:py-5 ${
+              className={`group flex min-h-[4.5rem] items-center justify-start gap-2.5 border px-2.5 py-2.5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:min-h-40 sm:flex-col sm:justify-center sm:gap-4 sm:px-3 sm:py-5 sm:text-center ${
                 isActive
                   ? "border-brand bg-brand text-white"
                   : "border-[#d9e1eb] bg-white text-content-muted shadow-[0_8px_24px_rgba(19,44,78,0.04)] hover:border-brand/60 hover:text-content-foreground"
               }`}
             >
               <span
-                className={`grid size-12 place-items-center rounded-full border transition-colors sm:size-20 ${
+                className={`grid size-9 shrink-0 place-items-center rounded-full border transition-colors sm:size-20 ${
                   isActive
                     ? "border-white/40 bg-white/10"
                     : "border-[#d9e1eb] bg-[#f7f9fc] group-hover:border-brand/60 group-hover:text-brand"
@@ -210,7 +210,7 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
               >
                 <CategoryIcon name={item.icon} />
               </span>
-              <span className="text-xs font-semibold leading-snug sm:text-base">
+              <span className="text-[.68rem] font-semibold leading-[1.25] sm:text-base sm:leading-snug">
                 {item.label}
               </span>
             </button>
