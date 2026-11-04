@@ -162,9 +162,9 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
   }
 
   return (
-    <div className="mt-14 sm:mt-20">
+    <div className="mt-10 sm:mt-20">
       <section className="grid overflow-hidden border border-[#d9e1eb] bg-white shadow-[0_18px_50px_rgba(19,44,78,0.08)] lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="relative border-b border-[#d9e1eb] bg-[#eef4fb] p-6 sm:p-9 lg:border-b-0 lg:border-r lg:p-11">
+        <div className="relative border-b border-[#d9e1eb] bg-[#eef4fb] p-5 sm:p-9 lg:border-b-0 lg:border-r lg:p-11">
           <div
             aria-hidden="true"
             className="absolute -left-28 -top-28 size-72 rounded-full border border-brand/15"
@@ -179,12 +179,12 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             {en ? "Select the topic and we will direct your enquiry to the right team." : "Selecione o tema e encaminhamos o seu contacto para a equipa certa."}
           </p>
 
-          <div className="relative mt-10 divide-y divide-[#d5deea] border-y border-[#d5deea]">
+          <div className="relative mt-7 divide-y divide-[#d5deea] border-y border-[#d5deea] sm:mt-10">
             {directContacts.map((contact) => (
               <a
                 key={contact.label}
                 href={contact.href}
-                className="group flex items-center gap-4 py-5"
+                className="group flex items-center gap-3 py-4 sm:gap-4 sm:py-5"
               >
                 <span className="grid size-11 shrink-0 place-items-center rounded-full border border-[#cfd9e6] bg-white text-brand transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white">
                   <ContactIcon name={contact.icon} />
@@ -201,7 +201,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             ))}
           </div>
 
-          <div className="relative mt-9">
+          <div className="relative mt-7 sm:mt-9">
             <p className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#758399]">
               {en ? "Follow IntegroLink" : "Acompanhe a IntegroLink"}
             </p>
@@ -213,7 +213,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={en ? `${social.label} by IntegroLink — opens in a new window` : `${social.label} da IntegroLink — abre numa nova janela`}
-                  className="grid size-12 place-items-center border border-[#cfd9e6] bg-white text-content-muted transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                className="grid size-11 place-items-center border border-[#cfd9e6] bg-white text-content-muted transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:size-12"
                 >
                   <ContactIcon name={social.icon} />
                 </a>
@@ -222,7 +222,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 sm:p-9 lg:p-11">
+        <form onSubmit={handleSubmit} className="p-5 sm:p-9 lg:p-11">
           <div className="flex items-center justify-between gap-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
@@ -237,7 +237,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             </span>
           </div>
 
-          <div className="mt-9 grid gap-6 sm:grid-cols-2">
+          <div className="mt-7 grid gap-4 sm:mt-9 sm:grid-cols-2 sm:gap-6">
             <label className="block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
               {en ? "Name *" : "Nome *"}
               <input
@@ -280,7 +280,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             </label>
           </div>
 
-          <fieldset className="mt-7">
+          <fieldset className="mt-6 sm:mt-7">
             <legend className="text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
               {en ? "How can we help? *" : "Como podemos ajudar? *"}
             </legend>
@@ -288,7 +288,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
               {contactRoutes.map((route) => (
                 <label
                   key={route.id}
-                  className={`flex min-h-14 cursor-pointer items-center border px-4 text-sm font-semibold transition-colors ${
+                  className={`flex min-h-12 cursor-pointer items-center border px-3 text-xs font-semibold transition-colors sm:min-h-14 sm:px-4 sm:text-sm ${
                     selectedRoute === route.id
                       ? "border-brand bg-brand/10 text-content-foreground"
                       : "border-[#cfd8e5] bg-[#f8fafc] text-content-muted hover:border-brand/50"
@@ -314,12 +314,12 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             </div>
           </fieldset>
 
-          <label className="mt-7 block text-xs font-bold uppercase tracking-[0.12em] text-content-muted">
+          <label className="mt-6 block text-xs font-bold uppercase tracking-[0.12em] text-content-muted sm:mt-7">
             {en ? "Message *" : "Mensagem *"}
             <textarea
               required
               name="message"
-              rows={6}
+              rows={4}
               className="mt-3 w-full resize-y border border-[#cfd8e5] bg-[#f8fafc] px-4 py-4 text-base font-normal leading-7 normal-case tracking-normal text-content-foreground outline-none transition-colors placeholder:text-[#9aa6b5] focus:border-brand focus:bg-white"
               placeholder={en ? "Tell us about the space, your objectives and what you would like to improve." : "Fale-nos sobre o espaço, os objetivos e aquilo que gostaria de melhorar."}
             />
@@ -348,7 +348,7 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
         </form>
       </section>
 
-      <section className="mt-16 grid gap-4 sm:grid-cols-3">
+          <section className="mt-10 grid gap-3 sm:mt-16 sm:grid-cols-3 sm:gap-4">
         {(en ? [
           ["01", "Tell us the challenge", "You do not need to know the technical solution."],
           ["02", "We review it with you", "We clarify the needs, space and objectives."],
@@ -360,12 +360,12 @@ export function ContactExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
         ]).map(([number, title, text]) => (
           <article
             key={number}
-            className="min-h-48 border border-[#d9e1eb] bg-white p-6 shadow-[0_8px_24px_rgba(19,44,78,0.04)] sm:p-8"
+            className="border border-[#d9e1eb] bg-white p-5 shadow-[0_8px_24px_rgba(19,44,78,0.04)] sm:min-h-48 sm:p-8"
           >
             <span className="text-xs font-bold tracking-[0.16em] text-brand">
               {number}
             </span>
-            <h3 className="mt-7 text-lg font-bold text-content-foreground">
+            <h3 className="mt-3 text-lg font-bold text-content-foreground sm:mt-7">
               {title}
             </h3>
             <p className="mt-3 max-w-xs text-sm leading-6 text-content-muted">

@@ -21,7 +21,7 @@ export function Footer() {
   const homeHref = locale === "pt" ? "/" : "/en";
   return (
     <footer className="border-t-2 border-t-brand bg-[#0a1b30] text-white">
-      <Container className="grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.2fr_.7fr_1fr] lg:gap-16">
+      <Container className="grid gap-8 py-10 sm:gap-12 sm:py-16 lg:grid-cols-[1.2fr_.7fr_1fr] lg:gap-16">
         <div>
           <Link href={homeHref} aria-label={locale === "pt" ? "IntegroLink — página inicial" : "IntegroLink — homepage"} className="inline-flex">
             <Image
@@ -32,7 +32,7 @@ export function Footer() {
               className="h-auto w-56"
             />
           </Link>
-          <p className="mt-7 max-w-sm text-sm leading-7 text-white/58">
+          <p className="mt-5 max-w-sm text-sm leading-6 text-white/58 sm:mt-7 sm:leading-7">
             {locale === "pt"
               ? "Soluções integradas para tornar cada espaço mais seguro, eficiente e fácil de gerir."
               : "Integrated solutions that make every space safer, more efficient and easier to manage."}
@@ -43,7 +43,7 @@ export function Footer() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
             {locale === "pt" ? "Navegação" : "Navigation"}
           </p>
-          <nav className="mt-5 grid gap-3" aria-label={locale === "pt" ? "Navegação do rodapé" : "Footer navigation"}>
+          <nav className="mt-4 grid grid-cols-2 gap-3 sm:mt-5 sm:grid-cols-1" aria-label={locale === "pt" ? "Navegação do rodapé" : "Footer navigation"}>
             {footerNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -60,7 +60,7 @@ export function Footer() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
             {locale === "pt" ? "Contactos" : "Contact"}
           </p>
-          <div className="mt-5 grid gap-3 text-sm">
+          <div className="mt-4 grid gap-2.5 text-sm sm:mt-5 sm:gap-3">
             <a href="mailto:geral@integrolink.pt" className="w-fit font-semibold text-white/70 hover:text-white">
               geral@integrolink.pt
             </a>
@@ -71,7 +71,7 @@ export function Footer() {
               suporte@integrolink.pt
             </a>
           </div>
-          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3">
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 sm:mt-7">
             {socialLinks.map((social) => (
               <a
                 key={social.label}

@@ -35,7 +35,7 @@ export function HomeNeedsExplorer({ locale }: { locale: Locale }) {
   const item = content.items[active];
 
   return (
-    <div className="mt-12 overflow-hidden border border-[#cbd5e1] bg-white shadow-[0_22px_65px_rgba(15,35,60,.08)] lg:grid lg:grid-cols-[.72fr_1.28fr]">
+    <div className="mt-8 overflow-hidden border border-[#cbd5e1] bg-white shadow-[0_22px_65px_rgba(15,35,60,.08)] sm:mt-12 lg:grid lg:grid-cols-[.72fr_1.28fr]">
       <div className="border-b border-[#d8e0e9] bg-[#eef2f6] p-3 lg:border-b-0 lg:border-r lg:p-5">
         <p className="px-3 pb-3 pt-2 text-[.68rem] font-bold uppercase tracking-[.18em] text-[#65758a]">{content.label}</p>
         <div role="tablist" aria-label={content.label} className="grid grid-cols-2 gap-2 lg:grid-cols-1">
@@ -47,7 +47,7 @@ export function HomeNeedsExplorer({ locale }: { locale: Locale }) {
               aria-selected={active === index}
               aria-controls="home-need-panel"
               onClick={() => setActive(index)}
-              className={`group flex min-h-16 items-center gap-3 border px-4 text-left transition-all sm:min-h-18 ${active === index ? "border-[#174f9c] bg-[#102844] text-white shadow-[0_10px_24px_rgba(16,40,68,.18)]" : "border-transparent bg-white/70 text-[#10233b] hover:border-[#b8c6d6] hover:bg-white"}`}
+              className={`group flex min-h-14 items-center gap-2 border px-3 text-left transition-all sm:min-h-18 sm:gap-3 sm:px-4 ${active === index ? "border-[#174f9c] bg-[#102844] text-white shadow-[0_10px_24px_rgba(16,40,68,.18)]" : "border-transparent bg-white/70 text-[#10233b] hover:border-[#b8c6d6] hover:bg-white"}`}
             >
               <span className={`text-[.65rem] font-bold tracking-[.12em] ${active === index ? "text-[#79aaff]" : "text-[#8290a2]"}`}>{option.number}</span>
               <span className="text-sm font-bold sm:text-base">{option.title}</span>
@@ -57,16 +57,16 @@ export function HomeNeedsExplorer({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div id="home-need-panel" role="tabpanel" aria-live="polite" className="flex min-h-[25rem] flex-col justify-between p-7 sm:p-10 lg:p-14">
+      <div id="home-need-panel" role="tabpanel" aria-live="polite" className="flex flex-col justify-between p-5 sm:min-h-[25rem] sm:p-10 lg:p-14">
         <div key={item.number}>
           <div className="flex items-center gap-4"><span className="h-px w-10 bg-brand" /><span className="text-xs font-bold uppercase tracking-[.18em] text-brand">{content.detail}</span></div>
-          <h3 className="mt-7 max-w-2xl text-3xl font-bold leading-[1.12] tracking-[-.035em] sm:text-4xl">{item.heading}</h3>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-content-muted sm:text-lg">{item.text}</p>
-          <div className="mt-8 flex flex-wrap gap-2">
+          <h3 className="mt-5 max-w-2xl text-2xl font-bold leading-[1.12] tracking-[-.035em] sm:mt-7 sm:text-4xl">{item.heading}</h3>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-content-muted sm:mt-6 sm:text-lg sm:leading-8">{item.text}</p>
+          <div className="mt-5 flex flex-wrap gap-2 sm:mt-8">
             {item.tags.map((tag) => <span key={tag} className="border border-[#cbd7e4] bg-[#f6f8fa] px-3 py-2 text-xs font-semibold text-[#42536a]">{tag}</span>)}
           </div>
         </div>
-        <Link href={locale === "en" ? "/en/services" : "/servicos"} className="mt-10 inline-flex w-fit items-center border-b-2 border-brand pb-1 text-sm font-bold text-brand transition-colors hover:border-[#102844] hover:text-[#102844]">{content.action}</Link>
+        <Link href={locale === "en" ? "/en/services" : "/servicos"} className="mt-7 inline-flex w-fit items-center border-b-2 border-brand pb-1 text-sm font-bold text-brand transition-colors hover:border-[#102844] hover:text-[#102844] sm:mt-10">{content.action}</Link>
       </div>
     </div>
   );

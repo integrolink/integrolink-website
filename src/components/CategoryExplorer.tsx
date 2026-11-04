@@ -168,10 +168,10 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
   }
 
   return (
-    <div className="mt-14 sm:mt-20">
+    <div className="mt-10 sm:mt-20">
       <div
         ref={selectorRef}
-        className={`scroll-mt-28 grid gap-4 sm:scroll-mt-32 ${
+        className={`scroll-mt-24 grid gap-2.5 sm:scroll-mt-32 sm:gap-4 ${
           items.length >= 7
             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
             : items.length === 5
@@ -195,14 +195,14 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
                 setActiveId(item.id);
                 setIsExpanded(false);
               }}
-              className={`group flex min-h-40 flex-col items-center justify-center gap-4 border px-3 py-5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand ${
+              className={`group flex min-h-28 flex-col items-center justify-center gap-2.5 border px-2 py-4 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:min-h-40 sm:gap-4 sm:px-3 sm:py-5 ${
                 isActive
                   ? "border-brand bg-brand text-white"
                   : "border-[#d9e1eb] bg-white text-content-muted shadow-[0_8px_24px_rgba(19,44,78,0.04)] hover:border-brand/60 hover:text-content-foreground"
               }`}
             >
               <span
-                className={`grid size-16 place-items-center rounded-full border transition-colors sm:size-20 ${
+                className={`grid size-12 place-items-center rounded-full border transition-colors sm:size-20 ${
                   isActive
                     ? "border-white/40 bg-white/10"
                     : "border-[#d9e1eb] bg-[#f7f9fc] group-hover:border-brand/60 group-hover:text-brand"
@@ -210,7 +210,7 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
               >
                 <CategoryIcon name={item.icon} />
               </span>
-              <span className="text-sm font-semibold leading-snug sm:text-base">
+              <span className="text-xs font-semibold leading-snug sm:text-base">
                 {item.label}
               </span>
             </button>
@@ -228,19 +228,19 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
           aria-expanded={isExpanded}
           aria-controls={`details-${activeItem.id}`}
           onClick={() => setIsExpanded((current) => !current)}
-          className="flex w-full items-center justify-between gap-6 px-6 py-7 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:px-9 sm:py-9"
+          className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:gap-6 sm:px-9 sm:py-9"
         >
           <span>
             <span className="block text-xs font-bold uppercase tracking-[0.18em] text-brand">
               {activeItem.label}
             </span>
-            <span className="mt-3 block max-w-3xl text-xl font-semibold leading-snug tracking-[-0.025em] text-content-foreground sm:text-3xl">
+            <span className="mt-2 block max-w-3xl text-lg font-semibold leading-snug tracking-[-0.025em] text-content-foreground sm:mt-3 sm:text-3xl">
               {activeItem.statement}
             </span>
           </span>
           <span
             aria-hidden="true"
-            className="relative grid size-11 shrink-0 place-items-center rounded-full border border-[#d9e1eb] bg-[#f7f9fc] text-content-foreground transition-colors hover:border-brand hover:text-brand sm:size-12"
+            className="relative grid size-9 shrink-0 place-items-center rounded-full border border-[#d9e1eb] bg-[#f7f9fc] text-content-foreground transition-colors hover:border-brand hover:text-brand sm:size-12"
           >
             <span className="absolute h-px w-4 bg-current" />
             <span
@@ -254,18 +254,18 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
         <div
           id={`details-${activeItem.id}`}
           hidden={!isExpanded}
-          className="border-t border-[#e2e8f0] px-6 pb-8 pt-7 sm:px-9 sm:pb-10 sm:pt-9"
+          className="border-t border-[#e2e8f0] px-5 pb-6 pt-5 sm:px-9 sm:pb-10 sm:pt-9"
         >
-          <div className={`grid items-start gap-9 ${activeItem.image ? "lg:grid-cols-[1fr_18rem]" : ""}`}>
-            <div><p className="max-w-4xl text-base leading-8 text-content-muted sm:text-lg">
+          <div className={`grid items-start gap-6 sm:gap-9 ${activeItem.image ? "lg:grid-cols-[1fr_18rem]" : ""}`}>
+            <div><p className="max-w-4xl text-sm leading-7 text-content-muted sm:text-lg sm:leading-8">
                 {activeItem.description}
               </p>
 
-              <div className="mt-9">
+              <div className="mt-6 sm:mt-9">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-content-foreground">
                 {activeItem.capabilitiesTitle}
               </p>
-              <ul className="mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-2">
+              <ul className="mt-4 grid gap-x-10 gap-y-2 sm:mt-5 sm:grid-cols-2 sm:gap-y-3">
                 {activeItem.capabilities.map((capability) => (
                   <li
                     key={capability}
@@ -292,7 +292,7 @@ export function CategoryExplorer({ items, locale = "pt" }: CategoryExplorerProps
                   });
                 });
               }}
-              className="mt-9 inline-flex min-h-11 items-center border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+              className="mt-6 inline-flex min-h-11 items-center border border-[#cfd8e5] bg-[#f7f9fc] px-5 text-sm font-bold text-content-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:mt-9"
             >
               {locale === "pt" ? "Escolher outra área" : "Choose another area"}
               </button></div>

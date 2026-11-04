@@ -107,9 +107,9 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
   const expertise = localTeam[activeExpertise];
   const pillar = localPillars[activePillar];
   return (
-    <div className="mt-16 sm:mt-24">
+    <div className="mt-10 sm:mt-24">
       <section className="border border-[#d9e1eb] bg-white shadow-[0_16px_45px_rgba(19,44,78,0.07)]">
-        <div className="border-b border-[#e2e8f0] px-6 py-6 sm:px-9">
+        <div className="border-b border-[#e2e8f0] px-5 py-5 sm:px-9 sm:py-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
             {en ? "Integration, not fragmentation" : "Integração, não fragmentação"}
           </p>
@@ -119,15 +119,15 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
         </div>
 
         <div className="grid lg:grid-cols-[1fr_auto_1fr]">
-          <div className="p-6 sm:p-9">
+          <div className="p-5 sm:p-9">
             <p className="text-sm font-semibold text-content-muted">
               {en ? "Standalone systems" : "Sistemas isolados"}
             </p>
-            <div className="mt-6 space-y-3">
+            <div className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
               {systems.map((system, index) => (
                 <div
                   key={system}
-                  className="flex items-center justify-between border border-[#d9e1eb] bg-[#f7f9fc] px-4 py-3"
+                  className="flex items-center justify-between border border-[#d9e1eb] bg-[#f7f9fc] px-3 py-2.5 sm:px-4 sm:py-3"
                 >
                   <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#8794a6]">
                     {en ? "Application" : "Aplicação"} {index + 1}
@@ -140,14 +140,14 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
             </div>
           </div>
 
-          <div className="grid place-items-center border-y border-[#e2e8f0] px-6 py-5 lg:border-x lg:border-y-0">
-            <span className="relative block h-12 w-px bg-[#cfd8e5] lg:h-px lg:w-12" aria-hidden="true">
+          <div className="grid place-items-center border-y border-[#e2e8f0] px-6 py-3 sm:py-5 lg:border-x lg:border-y-0">
+            <span className="relative block h-8 w-px bg-[#cfd8e5] sm:h-12 lg:h-px lg:w-12" aria-hidden="true">
               <span className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand ring-4 ring-brand/10" />
             </span>
           </div>
 
-          <div className="flex min-h-72 items-center justify-center p-6 sm:p-9">
-            <div className="relative grid aspect-square w-full max-w-64 place-items-center rounded-full border border-brand/50 bg-brand/8 text-center shadow-[0_0_80px_rgba(35,117,255,0.12)]">
+          <div className="flex min-h-56 items-center justify-center p-5 sm:min-h-72 sm:p-9">
+            <div className="relative grid aspect-square w-full max-w-48 place-items-center rounded-full border border-brand/50 bg-brand/8 text-center shadow-[0_0_80px_rgba(35,117,255,0.12)] sm:max-w-64">
               <div
                 aria-hidden="true"
                 className="absolute inset-5 rounded-full border border-brand/20"
@@ -156,7 +156,7 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
                   IntegroLink
                 </p>
-                <p className="mt-3 text-2xl font-bold leading-tight tracking-[-0.035em] text-content-foreground">
+                <p className="mt-2 text-xl font-bold leading-tight tracking-[-0.035em] text-content-foreground sm:mt-3 sm:text-2xl">
                   {en ? "One central platform" : "Uma plataforma central"}
                 </p>
               </div>
@@ -165,41 +165,41 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
         </div>
       </section>
 
-      <section className="mt-24 overflow-hidden border border-[#20354f] bg-[#10233b] text-white shadow-[0_24px_70px_rgba(12,31,53,.15)]">
-        <div className="grid gap-8 border-b border-white/12 px-6 py-9 sm:px-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end lg:px-12 lg:py-12">
+      <section className="mt-14 overflow-hidden border border-[#20354f] bg-[#10233b] text-white shadow-[0_24px_70px_rgba(12,31,53,.15)] sm:mt-24">
+        <div className="grid gap-5 border-b border-white/12 px-5 py-7 sm:gap-8 sm:px-10 sm:py-9 lg:grid-cols-[.72fr_1.28fr] lg:items-end lg:px-12 lg:py-12">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.2em] text-[#79aaff]">{en ? "Complementary expertise" : "Competências complementares"}</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-[-.04em] sm:text-5xl">{en ? "A multidisciplinary team behind every solution." : "Uma equipa multidisciplinar por detrás de cada solução."}</h2>
+            <h2 className="mt-3 text-2xl font-bold leading-tight tracking-[-.04em] sm:mt-4 sm:text-5xl">{en ? "A multidisciplinary team behind every solution." : "Uma equipa multidisciplinar por detrás de cada solução."}</h2>
           </div>
           <p className="max-w-2xl text-base leading-8 text-white/65 sm:text-lg">{en ? "Software, field execution and electrical engineering are considered together from the outset. This reduces gaps between design, installation and day-to-day use." : "Software, execução no terreno e engenharia eletrotécnica são pensados em conjunto desde o início. Assim, reduzimos as falhas entre o projeto, a instalação e a utilização diária."}</p>
         </div>
 
         <div className="grid lg:grid-cols-[.72fr_1.28fr]">
-          <div className="border-b border-white/12 p-4 lg:border-b-0 lg:border-r lg:p-6">
+          <div className="border-b border-white/12 p-3 sm:p-4 lg:border-b-0 lg:border-r lg:p-6">
             <p className="px-3 pb-4 pt-2 text-[.68rem] font-bold uppercase tracking-[.18em] text-white/40">{en ? "Explore the team" : "Conheça as competências"}</p>
             <div role="tablist" aria-label={en ? "Team expertise" : "Competências da equipa"} className="grid grid-cols-3 gap-2 lg:grid-cols-1">
-              {localTeam.map((item, index) => <button key={item.number} type="button" role="tab" aria-selected={activeExpertise === index} aria-controls="expertise-panel" onClick={() => setActiveExpertise(index)} className={`min-h-20 border px-3 py-4 text-left transition-colors sm:px-4 ${activeExpertise === index ? "border-white bg-white text-[#10233b]" : "border-white/12 bg-white/[.035] text-white/68 hover:bg-white/10 hover:text-white"}`}>
+              {localTeam.map((item, index) => <button key={item.number} type="button" role="tab" aria-selected={activeExpertise === index} aria-controls="expertise-panel" onClick={() => setActiveExpertise(index)} className={`min-h-16 border px-2.5 py-3 text-left transition-colors sm:min-h-20 sm:px-4 sm:py-4 ${activeExpertise === index ? "border-white bg-white text-[#10233b]" : "border-white/12 bg-white/[.035] text-white/68 hover:bg-white/10 hover:text-white"}`}>
                 <span className={`block text-[.62rem] font-bold tracking-[.14em] ${activeExpertise === index ? "text-brand" : "text-[#79aaff]"}`}>{item.number}</span>
                 <span className="mt-2 block text-xs font-bold sm:text-base">{item.short}</span>
               </button>)}
             </div>
           </div>
 
-          <div id="expertise-panel" role="tabpanel" aria-live="polite" className="flex min-h-[29rem] flex-col justify-between p-7 sm:p-10 lg:p-12">
+          <div id="expertise-panel" role="tabpanel" aria-live="polite" className="flex flex-col justify-between p-5 sm:min-h-[29rem] sm:p-10 lg:p-12">
             <div key={expertise.number}>
               <p className="text-xs font-bold uppercase tracking-[.18em] text-[#79aaff]">{expertise.role}</p>
-              <h3 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.12] tracking-[-.035em] sm:text-4xl">{expertise.title}</h3>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">{expertise.description}</p>
-              <div className="mt-8 flex flex-wrap gap-2">
+              <h3 className="mt-4 max-w-2xl text-2xl font-bold leading-[1.12] tracking-[-.035em] sm:mt-5 sm:text-4xl">{expertise.title}</h3>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/68 sm:mt-6 sm:text-lg sm:leading-8">{expertise.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2 sm:mt-8">
                 {expertise.strengths.map((strength) => <span key={strength} className="border border-white/15 bg-white/[.045] px-3 py-2 text-xs font-semibold text-white/72">{strength}</span>)}
               </div>
             </div>
-            <p className="mt-12 border-t border-white/12 pt-6 text-sm font-semibold leading-7 text-white/85">{en ? "Three perspectives, considered as one project." : "Três perspetivas, pensadas como um único projeto."}</p>
+            <p className="mt-7 border-t border-white/12 pt-5 text-sm font-semibold leading-6 text-white/85 sm:mt-12 sm:pt-6 sm:leading-7">{en ? "Three perspectives, considered as one project." : "Três perspetivas, pensadas como um único projeto."}</p>
           </div>
         </div>
       </section>
 
-      <section className="mt-24 grid items-start gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+      <section className="mt-14 grid items-start gap-8 sm:mt-24 sm:gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
         <div className="lg:sticky lg:top-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
             {en ? "Our way of working" : "A nossa forma de trabalhar"}
@@ -219,25 +219,25 @@ export function WhyUsExperience({ locale = "pt" }: { locale?: "pt" | "en" }) {
               <span className="mt-2 block text-sm font-bold leading-5">{item.title}</span>
             </button>)}
           </div>
-          <article id="pillar-panel" role="tabpanel" aria-live="polite" className="min-h-[22rem] p-7 sm:p-10">
+          <article id="pillar-panel" role="tabpanel" aria-live="polite" className="p-5 sm:min-h-[22rem] sm:p-10">
             <div key={pillar.number}>
               <p className="text-xs font-bold uppercase tracking-[.18em] text-brand">{en ? "Principle" : "Princípio"} {pillar.number}</p>
               <h3 className="mt-5 text-2xl font-bold tracking-[-.03em] text-content-foreground sm:text-3xl">{pillar.title}</h3>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-content-muted">{pillar.description}</p>
-              <p className="mt-8 border-l-2 border-brand pl-5 text-base font-bold leading-7 text-content-foreground">{pillar.highlight}</p>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-content-muted sm:mt-5 sm:text-base sm:leading-8">{pillar.description}</p>
+              <p className="mt-5 border-l-2 border-brand pl-4 text-sm font-bold leading-6 text-content-foreground sm:mt-8 sm:pl-5 sm:text-base sm:leading-7">{pillar.highlight}</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="mt-24 border border-[#d9e1eb] border-l-2 border-l-brand bg-white px-6 py-10 shadow-[0_14px_38px_rgba(19,44,78,0.06)] sm:px-10 sm:py-14">
+      <section className="mt-14 border border-[#d9e1eb] border-l-2 border-l-brand bg-white px-5 py-7 shadow-[0_14px_38px_rgba(19,44,78,0.06)] sm:mt-24 sm:px-10 sm:py-14">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
           {en ? "The IntegroLink philosophy" : "A filosofia IntegroLink"}
         </p>
-        <blockquote className="mt-5 max-w-4xl text-3xl font-bold leading-tight tracking-[-0.045em] text-content-foreground sm:text-5xl">
+        <blockquote className="mt-4 max-w-4xl text-2xl font-bold leading-tight tracking-[-0.045em] text-content-foreground sm:mt-5 sm:text-5xl">
           {en ? "Technology should adapt to people, not the other way around." : "A tecnologia deve adaptar-se às pessoas, não o contrário."}
         </blockquote>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-content-muted sm:text-lg">
+        <p className="mt-5 max-w-3xl text-sm leading-7 text-content-muted sm:mt-8 sm:text-lg sm:leading-8">
           {en ? "We do not merely sell equipment, brands or applications. We develop integrated technology ecosystems that simplify everyday life for people and businesses." : "Não vendemos apenas equipamentos, marcas ou aplicações. Desenvolvemos ecossistemas tecnológicos integrados que simplificam o dia a dia das pessoas e das empresas."}
         </p>
       </section>

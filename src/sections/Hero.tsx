@@ -10,11 +10,11 @@ export function Hero({ locale = "pt" }: { locale?: Locale }) {
     <section
       id="inicio"
       aria-label={english ? "IntegroLink — We integrate technology. We connect solutions." : "IntegroLink — Integramos tecnologia. Ligamos soluções."}
-      className="relative isolate min-h-[36rem] overflow-hidden bg-[#0b1d38] sm:min-h-[40rem] lg:min-h-[42rem]"
+      className="relative isolate min-h-[31rem] overflow-hidden bg-[#0b1d38] sm:min-h-[40rem] lg:min-h-[42rem]"
     >
       <HeroMedia />
 
-      <Container className="relative flex min-h-[36rem] flex-col justify-center py-12 sm:min-h-[40rem] sm:py-16 lg:min-h-[42rem]">
+      <Container className="relative flex min-h-[31rem] flex-col justify-center py-10 sm:min-h-[40rem] sm:py-16 lg:min-h-[42rem]">
         <div className="max-w-[34rem]">
           <Image
             src={english ? "/brand/integrolink-slogan-white.svg" : "/brand/integrolink-signature-white.svg"}
@@ -27,13 +27,13 @@ export function Hero({ locale = "pt" }: { locale?: Locale }) {
 
           {english && <h1 className="mt-6 max-w-[32rem] text-3xl font-bold leading-[1.08] tracking-[-.04em] text-white sm:text-5xl">We integrate technology. We connect solutions.</h1>}
 
-          <p className="mt-7 max-w-[34rem] text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
+          <p className="mt-5 max-w-[34rem] text-sm leading-6 text-white/85 sm:mt-7 sm:text-lg sm:leading-8">
             {english
               ? "We make spaces safer, more efficient and easier to manage through integrated solutions tailored to each setting."
               : "Criamos espaços mais seguros, eficientes e fáceis de gerir, através de soluções integradas adaptadas a cada realidade."}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
             <Link
               href={english ? "/en/services" : "/servicos"}
               className="inline-flex min-h-12 items-center gap-4 border border-brand bg-brand px-6 text-sm font-bold text-white shadow-[0_12px_35px_rgba(35,117,255,0.28)] transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"

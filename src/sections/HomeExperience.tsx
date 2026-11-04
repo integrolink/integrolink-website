@@ -42,8 +42,8 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
   const sectors = en ? enSectors : ptSectors;
 
   return <div className="overflow-hidden bg-white text-content-foreground">
-    <section className="border-b border-[#d8e0e9] py-20 sm:py-28">
-      <Container className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+    <section className="border-b border-[#d8e0e9] py-14 sm:py-28">
+      <Container className="grid gap-8 sm:gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <div>
           <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Our purpose" : "O nosso propósito"}</p>
           <h2 className="mt-5 text-3xl font-bold leading-[1.12] tracking-[-.035em] sm:text-5xl">{en ? "Spaces that work better for the people who use them." : "Espaços que funcionam melhor para quem os utiliza."}</h2>
@@ -55,19 +55,19 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
       </Container>
     </section>
 
-    <section className="bg-[#f4f6f8] py-20 sm:py-28">
+    <section className="bg-[#f4f6f8] py-14 sm:py-28">
       <Container>
         <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "What needs to work better?" : "O que precisa de funcionar melhor?"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "We start with the objective, not the equipment." : "Começamos pelo objetivo, não pelo equipamento."}</h2></div>
         <HomeNeedsExplorer locale={locale} />
       </Container>
     </section>
 
-    <section className="overflow-hidden border-y border-[#20354f] bg-[#10233b] py-20 sm:py-28">
+    <section className="overflow-hidden border-y border-[#20354f] bg-[#10233b] py-14 sm:py-28">
       <Container><HomeControlDemo locale={locale} /></Container>
     </section>
 
-    <section className="border-b border-[#d8e0e9] bg-white py-20 sm:py-28">
-      <Container className="grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
+    <section className="border-b border-[#d8e0e9] bg-white py-14 sm:py-28">
+      <Container className="grid items-center gap-9 sm:gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <div>
           <p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Better use of space" : "Melhor utilização do espaço"}</p>
           <h2 className="mt-5 text-3xl font-bold leading-tight tracking-[-.04em] sm:text-5xl">{en ? "Know where there is space before you need it." : "Saber onde existe espaço antes de precisar dele."}</h2>
@@ -84,26 +84,26 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
       </Container>
     </section>
 
-    <section className="py-20 sm:py-28">
+    <section className="py-14 sm:py-28">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[.65fr_1.35fr] lg:gap-20"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Different settings" : "Diferentes contextos"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "One approach, adapted to each reality." : "Uma abordagem adaptada a cada realidade."}</h2></div><p className="max-w-2xl text-base leading-8 text-content-muted lg:pt-7">{en ? "The priorities of a home are not those of a shop, a condominium or a shared workplace. We adjust the solution to the people, risks and operation of each setting." : "As prioridades de uma habitação não são as de uma loja, de um condomínio ou de um espaço de trabalho partilhado. Ajustamos a solução às pessoas, aos riscos e à operação de cada contexto."}</p></div>
-        <div className="mt-12 divide-y divide-[#d8e0e9] border-y border-[#d8e0e9]">
-          {sectors.map(([id,icon,title,text]) => <Link href={`${en ? "/en/sectors" : "/setores-de-atuacao"}#area-${id}`} key={id} className="group grid gap-4 py-6 transition-colors hover:bg-[#f6f8fa] sm:grid-cols-[3rem_1fr_1fr_auto] sm:items-center sm:px-4">
+        <div className="mt-8 divide-y divide-[#d8e0e9] border-y border-[#d8e0e9] sm:mt-12">
+          {sectors.map(([id,icon,title,text]) => <Link href={`${en ? "/en/sectors" : "/setores-de-atuacao"}#area-${id}`} key={id} className="group grid gap-2 py-4 transition-colors hover:bg-[#f6f8fa] sm:grid-cols-[3rem_1fr_1fr_auto] sm:items-center sm:gap-4 sm:px-4 sm:py-6">
             <LineIcon name={icon} className="size-7 text-brand"/><h3 className="text-lg font-bold">{title}</h3><p className="text-sm leading-6 text-content-muted">{text}</p><span className="text-sm font-bold text-brand">{en ? "Explore" : "Conhecer"}</span>
           </Link>)}
         </div>
       </Container>
     </section>
 
-    <section className="border-y border-[#d8e0e9] bg-[#f4f6f8] py-20 sm:py-28">
-      <Container className="grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+    <section className="border-y border-[#d8e0e9] bg-[#f4f6f8] py-14 sm:py-28">
+      <Container className="grid gap-9 sm:gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
         <div><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "Our commitment" : "O nosso compromisso"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "A solution you can understand and rely on." : "Uma solução que consegue compreender e na qual pode confiar."}</h2><Link href={en ? "/en/why-us" : "/porque-nos"} className="mt-8 inline-flex border-b border-brand pb-1 text-sm font-bold text-brand">{en ? "Why IntegroLink" : "Porquê a IntegroLink"}</Link></div>
         <HomeCommitmentInteraction locale={locale} />
       </Container>
     </section>
 
-    <section className="py-20 sm:py-28"><Container><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A straightforward process" : "Um processo simples"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "From the first conversation to ongoing support." : "Da primeira conversa ao acompanhamento contínuo."}</h2><HomeProcessInteraction locale={locale} /></Container></section>
+    <section className="py-14 sm:py-28"><Container><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A straightforward process" : "Um processo simples"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "From the first conversation to ongoing support." : "Da primeira conversa ao acompanhamento contínuo."}</h2><HomeProcessInteraction locale={locale} /></Container></section>
 
-    <section className="bg-brand py-20 text-white sm:py-24"><Container className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-white/65">{en ? "Your space, working better" : "O seu espaço, a funcionar melhor"}</p><h2 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.08] tracking-[-.045em] sm:text-6xl">{en ? "What would you like to make simpler, safer or more efficient?" : "O que gostaria de tornar mais simples, seguro ou eficiente?"}</h2></div><Link href={en ? "/en/contact" : "/contactos"} className="inline-flex min-h-13 items-center justify-center bg-white px-7 text-sm font-bold text-[#10233b] transition-colors hover:bg-[#10233b] hover:text-white">{en ? "Talk to us" : "Falar connosco"}</Link></Container></section>
+    <section className="bg-brand py-14 text-white sm:py-24"><Container className="grid gap-6 sm:gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-white/65">{en ? "Your space, working better" : "O seu espaço, a funcionar melhor"}</p><h2 className="mt-4 max-w-4xl text-3xl font-bold leading-[1.08] tracking-[-.045em] sm:mt-5 sm:text-6xl">{en ? "What would you like to make simpler, safer or more efficient?" : "O que gostaria de tornar mais simples, seguro ou eficiente?"}</h2></div><Link href={en ? "/en/contact" : "/contactos"} className="inline-flex min-h-12 items-center justify-center bg-white px-7 text-sm font-bold text-[#10233b] transition-colors hover:bg-[#10233b] hover:text-white sm:min-h-13">{en ? "Talk to us" : "Falar connosco"}</Link></Container></section>
   </div>;
 }
