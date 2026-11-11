@@ -12,6 +12,7 @@ export function Navbar() {
   const pathname = usePathname();
   const locale = localeFromPath(pathname);
   const navigation = localeNavigation[locale];
+  const contactItem = navigation[navigation.length - 1];
   const alternateLocale = locale === "pt" ? "EN" : "PT";
 
   return (
@@ -52,8 +53,8 @@ export function Navbar() {
             {alternateLocale}
           </Link>
           <Link
-            href={navigation[4].href}
-            aria-current={pathname === navigation[4].href ? "page" : undefined}
+            href={contactItem.href}
+            aria-current={pathname === contactItem.href ? "page" : undefined}
             className="my-auto ml-4 inline-flex min-h-11 items-center bg-brand px-5 text-sm font-bold text-white transition-colors hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white xl:ml-6 xl:px-6"
           >
             {locale === "pt" ? "Fale connosco" : "Talk to us"}

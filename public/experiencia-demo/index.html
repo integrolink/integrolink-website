@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf2f7">
+  <meta name="description" content="Explora uma casa inteligente IntegroLink em 3D. Controlos, energia e alertas com dados fictícios.">
+  <title>IntegroLink Casa · Demonstração interativa</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" type="module"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#casa" aria-label="IntegroLink, início"><img src="./integrolink.svg" alt="IntegroLink"></a>
+    <div class="site-tools">
+      <button id="mobile-view" class="action" type="button" aria-pressed="false">Ver casa 3D</button>
+      <span class="demo-label">Demonstração</span>
+      <button id="demo-reset" class="icon-button" type="button" aria-label="Repor demonstração" title="Repor demonstração"></button>
+      <button id="fullscreen" class="icon-button" type="button" aria-label="Ecrã inteiro" title="Ecrã inteiro" hidden></button>
+    </div>
+  </header>
+  <div class="shell">
+    <main id="main" class="app-panel" aria-label="App IntegroLink">
+      <div class="app-scroll" id="app-scroll" tabindex="0" aria-label="Controlos da casa"><div id="view"></div></div>
+      <nav class="app-nav" aria-label="Navegação da app"></nav>
+      <div id="security-notification" role="status" aria-live="polite" aria-atomic="true"></div>
+    </main>
+    <section class="house-panel" aria-label="Casa interativa em 3D">
+      <div class="house-toolbar">
+        <div><h2 id="house-title">Toda a casa</h2><span class="house-mode"><i></i><span id="house-mode">Em casa</span></span></div>
+        <div class="house-tools" aria-label="Controlos da maquete">
+          <button class="icon-button" id="house-zoom-out" type="button" aria-label="Afastar" title="Afastar">−</button>
+          <button class="icon-button" id="house-zoom-in" type="button" aria-label="Aproximar" title="Aproximar">+</button>
+          <button class="icon-button" id="house-overview" type="button" aria-label="Vista geral" title="Vista geral"></button>
+        </div>
+      </div>
+      <div id="house-viewport">
+        <div class="house-loading" id="house-loading">A preparar a casa 3D…</div>
+        <div id="house-labels"></div>
+      </div>
+      <div class="house-footer">
+        <label for="house-room-picker">Divisão</label>
+        <span id="house-hint">Toca numa divisão ou nos controlos sobre a casa. Arrasta para rodar.</span>
+      </div>
+    </section>
+  </div>
+  <dialog id="welcome" aria-labelledby="welcome-title">
+    <img src="./integrolink.svg" alt="IntegroLink">
+    <h1 id="welcome-title">Demonstração interativa IntegroLink</h1>
+    <p>A aplicação permite controlar iluminação, estores e outros equipamentos. A maquete 3D apresenta o efeito de cada comando e permite explorar as divisões da casa.</p>
+    <dl class="welcome-devices">
+      <div><dt>Computador, iPad ou tablet</dt><dd>Formato recomendado. A aplicação e a maquete 3D são apresentadas lado a lado, permitindo acompanhar os efeitos dos comandos em tempo real.</dd></div>
+      <div><dt>Telemóvel</dt><dd>A experiência começa na aplicação. Os botões <strong>Ver casa 3D</strong> e <strong>Voltar à app</strong>, no topo do ecrã, permitem alternar entre as duas vistas.</dd></div>
+    </dl>
+    <div class="welcome-example"><strong>Exemplo de utilização</strong><span>Para simular um alerta, ative o modo Ausente na aplicação e ligue a luz do quarto na maquete. O aviso fica disponível em Mais › Atividade.</span></div>
+    <p class="small">A demonstração utiliza uma casa e dados simulados.</p>
+    <form method="dialog"><button class="action primary" autofocus>Iniciar demonstração</button></form>
+  </dialog>
+</body>
+</html>

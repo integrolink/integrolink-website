@@ -16,9 +16,11 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const locale = localeFromPath(usePathname());
+  const pathname = usePathname();
+  const locale = localeFromPath(pathname);
   const footerNavigation = localeNavigation[locale];
   const homeHref = locale === "pt" ? "/" : "/en";
+  if (pathname === "/experiencia" || pathname === "/en/experience") return null;
   return (
     <footer className="border-t-2 border-t-brand bg-[#0a1b30] text-white">
       <Container className="grid gap-8 py-10 sm:gap-12 sm:py-16 lg:grid-cols-[1.2fr_.7fr_1fr] lg:gap-16">

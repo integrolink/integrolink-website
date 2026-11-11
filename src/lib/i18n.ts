@@ -5,6 +5,7 @@ const routePairs = [
   ["/servicos", "/en/services"],
   ["/setores-de-atuacao", "/en/sectors"],
   ["/porque-nos", "/en/why-us"],
+  ["/experiencia", "/en/experience"],
   ["/contactos", "/en/contact"],
 ] as const;
 
@@ -23,6 +24,7 @@ export const localeNavigation = {
     { label: "Serviços", href: "/servicos" },
     { label: "Setores de atuação", href: "/setores-de-atuacao" },
     { label: "Porquê nós?", href: "/porque-nos" },
+    { label: "Experiência", href: "/experiencia" },
     { label: "Contactos", href: "/contactos" },
   ],
   en: [
@@ -30,6 +32,7 @@ export const localeNavigation = {
     { label: "Services", href: "/en/services" },
     { label: "Sectors", href: "/en/sectors" },
     { label: "Why us?", href: "/en/why-us" },
+    { label: "Experience", href: "/en/experience" },
     { label: "Contact", href: "/en/contact" },
   ],
 } as const;
