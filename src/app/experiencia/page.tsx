@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencePage() {
-  return <><Navbar /><ExperienceEmbed /></>;
+  return <div className="flex h-dvh flex-col overflow-hidden [&>header]:shrink-0"><Navbar /><ExperienceEmbed /></div>;
 }
