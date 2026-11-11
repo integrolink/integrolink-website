@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Static third-party demo bundle, kept byte-for-byte from its source project.
+    "public/experiencia-demo/**",
   ]),
 ]);
 

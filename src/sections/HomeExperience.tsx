@@ -104,28 +104,17 @@ export function HomeExperience({ locale = "pt" }: { locale?: Locale }) {
 
     <section className="py-14 sm:py-28"><Container><p className="text-xs font-bold uppercase tracking-[.2em] text-brand">{en ? "A straightforward process" : "Um processo simples"}</p><h2 className="mt-4 text-3xl font-bold tracking-[-.035em] sm:text-5xl">{en ? "From the first conversation to ongoing support." : "Da primeira conversa ao acompanhamento contínuo."}</h2><HomeProcessInteraction locale={locale} /></Container></section>
 
-    <section className="overflow-hidden border-y border-[#20354f] bg-[#10233b] py-14 text-white sm:py-24">
-      <Container className="grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#79aaff]">{en ? "Interactive experience" : "Experiência interativa"}</p>
-          <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-[1.08] tracking-[-.04em] sm:text-5xl">{en ? "Control the app. See the house respond." : "Controle a aplicação. Veja a casa responder."}</h2>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-white/68 sm:mt-6 sm:text-lg sm:leading-8">{en ? "Explore a simulated IntegroLink installation: operate lighting, shutters and equipment while the 3D house reacts in real time." : "Explore uma instalação IntegroLink simulada: controle iluminação, estores e equipamentos enquanto a casa 3D reage em tempo real."}</p>
-          <Link href={en ? "/en/experience" : "/experiencia"} className="mt-7 inline-flex min-h-12 items-center border border-brand bg-brand px-6 text-sm font-bold text-white transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8">{en ? "Open the experience" : "Abrir a experiência"}</Link>
-        </div>
-        <div className="relative border border-white/15 bg-[#0a192c] p-4 shadow-[0_28px_80px_rgba(0,0,0,.28)] sm:p-6" aria-hidden="true">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4"><span className="text-[.62rem] font-bold uppercase tracking-[.18em] text-white/42">IntegroLink Casa</span><span className="flex items-center gap-2 text-[.62rem] font-bold uppercase tracking-[.12em] text-emerald-300"><i className="size-1.5 rounded-full bg-emerald-300" />{en ? "Simulation active" : "Simulação ativa"}</span></div>
-          <div className="grid gap-3 pt-4 sm:grid-cols-[.72fr_1.28fr]">
-            <div className="space-y-2">
-              {[en ? "Lighting" : "Iluminação", en ? "Shutters" : "Estores", en ? "Climate" : "Climatização"].map((label,index) => <div key={label} className="flex items-center justify-between border border-white/10 bg-white/[.035] px-3 py-3 text-xs font-semibold text-white/72"><span>{label}</span><span className={`h-4 w-7 rounded-full p-0.5 ${index === 0 ? "bg-brand" : "bg-white/15"}`}><i className={`block size-3 rounded-full bg-white ${index === 0 ? "ml-3" : ""}`} /></span></div>)}
-            </div>
-            <div className="relative min-h-40 overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_50%_62%,rgba(35,117,255,.24),transparent_46%)] sm:min-h-52">
-              <div className="absolute inset-x-[12%] bottom-[16%] top-[20%] skew-y-[-6deg] border border-[#79aaff]/35 bg-[#132d4b]/75" />
-              <div className="absolute left-[22%] top-[35%] size-12 border border-[#79aaff]/30 bg-brand/15 shadow-[0_0_28px_rgba(35,117,255,.25)]" />
-              <div className="absolute right-[20%] top-[48%] h-14 w-20 border border-[#79aaff]/30 bg-white/[.045]" />
-              <span className="absolute bottom-4 left-4 text-[.62rem] font-bold uppercase tracking-[.16em] text-[#79aaff]">{en ? "Live 3D house" : "Casa 3D em tempo real"}</span>
-            </div>
+    <section className="border-y border-[#20354f] bg-[#10233b] py-10 text-white sm:py-16">
+      <Container className="grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
+        <div className="max-w-4xl">
+          <p className="text-[.65rem] font-bold uppercase tracking-[.2em] text-[#79aaff] sm:text-xs">{en ? "Try the technology" : "Experimente a tecnologia"}</p>
+          <h2 className="mt-3 text-2xl font-bold leading-[1.12] tracking-[-.035em] sm:mt-4 sm:text-4xl">{en ? "Explore an IntegroLink solution before choosing one." : "Explore uma solução IntegroLink antes de escolher a sua."}</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-white/70 sm:text-base sm:leading-7">{en ? "This interactive demo lets you use the application as a customer would: control lights, shutters and equipment, and watch the simulated 3D house respond in real time." : "Nesta demonstração interativa pode utilizar a aplicação como um cliente: controlar luzes, estores e equipamentos e acompanhar, em tempo real, a resposta de uma casa 3D simulada."}</p>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-white/58 sm:mt-6 sm:text-sm" aria-label={en ? "Demo capabilities" : "Funcionalidades da demonstração"}>
+            {(en ? ["Use the application", "Control equipment", "Explore the 3D house"] : ["Utilizar a aplicação", "Controlar equipamentos", "Explorar a casa 3D"]).map((item) => <span key={item} className="flex items-center gap-2"><i className="size-1.5 bg-[#79aaff]" aria-hidden="true" />{item}</span>)}
           </div>
         </div>
+        <Link href={en ? "/en/experience" : "/experiencia"} className="inline-flex min-h-11 w-fit items-center justify-center border border-brand bg-brand px-5 text-sm font-bold text-white transition-colors hover:border-[#4b91ff] hover:bg-[#4b91ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:min-h-12 sm:px-7">{en ? "Try the demo" : "Experimentar demonstração"}</Link>
       </Container>
     </section>
 

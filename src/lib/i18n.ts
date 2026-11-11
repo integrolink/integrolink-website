@@ -24,7 +24,7 @@ export const localeNavigation = {
     { label: "Serviços", href: "/servicos" },
     { label: "Setores de atuação", href: "/setores-de-atuacao" },
     { label: "Porquê nós?", href: "/porque-nos" },
-    { label: "Experiência", href: "/experiencia" },
+    { label: "Demonstração", href: "/experiencia" },
     { label: "Contactos", href: "/contactos" },
   ],
   en: [
@@ -32,7 +32,7 @@ export const localeNavigation = {
     { label: "Services", href: "/en/services" },
     { label: "Sectors", href: "/en/sectors" },
     { label: "Why us?", href: "/en/why-us" },
-    { label: "Experience", href: "/en/experience" },
+    { label: "Demo", href: "/en/experience" },
     { label: "Contact", href: "/en/contact" },
   ],
 } as const;
